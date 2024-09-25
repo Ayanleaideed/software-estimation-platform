@@ -1,0 +1,11 @@
+<html t:type="layout" title="ViewHours"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+
+<!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
+
+<!-- Main hero unit for a primary marketing message or call to action -->
+<div class="row hero-unit">
+    <h1>${message:greeting}</h1>
+</div>
+
+</html>

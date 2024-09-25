@@ -1,0 +1,24 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter" title="Estimation | EstiMate">
+	<link rel="stylesheet" type="text/css" href="/css/estimation.css" />
+	<t:security.authenticated>
+		<t:security.authenticated HasRole="admin">
+			<t:pagelink page="estimation/ModeratorPage" class="btn btn-default navbar-btn">View Suggestions</t:pagelink>
+		</t:security.authenticated>
+		
+		<t:grid source="categories" row="category" include="name, description" add="actions">
+			<p:actionsCell>
+				<t:pagelink page="estimation/ViewExercises" context="category.pk"> View Exercises</t:pagelink> | 
+				<t:pagelink page="estimation/SuggestNewEvent" context="category.pk"> Suggest new event</t:pagelink>
+			</p:actionsCell> 
+		</t:grid>
+	</t:security.authenticated>
+	<t:security.notauthenticated>
+		<div class="container d-flex justify-content-center align-items-center loginMessage">
+			<div class="row">
+				<div class="col text-center">
+					<h2>You need to log in to view this.</h2>
+				</div>
+			</div>
+		</div>
+	</t:security.notauthenticated>
+</t:layout>

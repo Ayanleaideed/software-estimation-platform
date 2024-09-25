@@ -1,0 +1,81 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" title="Events | EstiMate">
+    <link rel="stylesheet" type="text/css" href="/css/events.css"></link>
+    <t:security.authenticated>
+        <div class="container my-3">
+            <div class="row align-items-center">
+                <div class="col-12 col-lg-2 order-lg-1 order-1 mb-2 mb-lg-0 text-center text-lg-start enav">
+                    <h3>Events</h3>
+                </div>
+                <div class="col-12 col-lg-7 order-lg-2 order-2 mb-2 mb-lg-0 text-center">
+                    <t:form t:id="dateForm" class="date-form w-100">
+                        <div class="input-group">
+                            <span class="input-group-text" title="Event Date">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                            <input t:id="dateRange" type="text" class="form-control" placeholder="Showing all dates" readonly="readonly"/>
+                            <select t:id="category" type="Select" class="form-select" value="category" model="categoryModel"></select>
+                            <input t:id="hiddenCategory" type="hidden" />
+                            <input type="submit" class="btn btn-primary" value="Search"/>
+                            <button type="button" class="btn btn-secondary" onclick="resetDateRange()">Show All</button>
+                        </div>
+                    </t:form>
+                </div>
+                <div class="col-12 col-lg-3 order-lg-3 order-3 mb-2 mb-lg-0 text-center text-lg-end">
+                    <t:pagelink class="btn btn-success create-task" page="events/add">Suggest New Event</t:pagelink>
+                </div>
+            </div>
+        </div>
+        <t:if test="noEvents">
+            <div class="container d-flex justify-content-center align-items-center noEvents">
+                <div class="row">
+                    <div class="col text-center">
+                        <h2>No events to display.</h2>
+                    </div>
+                </div>
+            </div>
+        </t:if>
+        <t:unless test="noEvents">
+            <div class="container mt-4">
+                <table class="table table-striped mt-4">
+                    <thead>
+                        <tr>
+                            <th class="col-md-2">Event Date</th>
+                            <th class="col-md-2">Category</th>
+                            <th class="col-md-2">Name</th>
+                            <th class="col-md-3">Description</th>
+                            <th class="col-md-2">Actions</th>
+                        </tr>
+                    </thead>                    
+                    <tbody>
+                        <t:loop source="events" value="currentEvent">
+                            <tr>
+                                <td>${currentEvent.formattedEventDate}</td>
+                                <td>${currentEvent.category}</td>
+                                <td>${currentEvent.name}</td>
+                                <td>${currentEvent.description}</td>
+                                <td>
+                                    <t:pagelink page="events/Edit" context="${currentEvent.id}" class="btn btn-sm btn-warning me-2">Edit</t:pagelink>
+                                    <t:actionlink t:id="delete" event="action" context="${currentEvent.id}" class="btn btn-sm btn-danger">Delete</t:actionlink>
+                                </td>
+                            </tr>
+                        </t:loop>
+                    </tbody>              
+                </table>
+            </div>
+        </t:unless>
+        <div class="container">
+            <p>Looking for the original <a href="/estimation">estimation calibration</a>?</p>
+        </div>
+        <script src="/js/eventFormFix.js"></script>
+        <script src="/js/dateRange.js"></script>
+	</t:security.authenticated>
+	<t:security.notauthenticated>
+		<div class="container d-flex justify-content-center align-items-center loginMessage">
+			<div class="row">
+				<div class="col text-center">
+					<h2>You need to log in to view this.</h2>
+				</div>
+			</div>
+		</div>
+	</t:security.notauthenticated>
+</t:layout>

@@ -1,0 +1,104 @@
+.noTasks {
+	min-height: 50vh;
+}
+
+
+@media (max-width: 992px) {
+  .date-form,
+  .enav {
+    margin-bottom: 21px;
+  }
+}
+
+.chart-label {
+    font-size: 15px;
+    color: #54caff;
+    background-color: white;
+    margin: 0 0;
+}
+
+.estimated {
+    color: #F63 ;
+}
+
+.graph {
+    background-color: white;
+}
+
+.chart-container {
+    display: flex;
+    overflow-x: auto;
+    margin: 1em 0 1em 2.8em;
+    padding: 0;
+    background: repeating-linear-gradient(
+        180deg,
+        rgba(170, 170, 170, 0.7) 0,
+        rgba(170, 170, 170, 0.7) 1px,
+        transparent 1px,
+        transparent 20%
+    );
+}
+
+.bar-container {
+    display: flex;
+    align-items: flex-end;
+    margin-right: 2em;
+    position: relative;
+    
+}
+
+.bar {
+    width: 150px;
+    background-color: #F63;
+    border-radius: 0.5em 0.5em 0 0;
+    transition: background 0.5s;
+}
+
+.bar.actual {
+    background-color: #54caff;
+}
+
+.bar:hover {
+    opacity: 0.7;
+}
+
+.bar span {
+    overflow: hidden;
+    position: absolute;
+    left: 50%;
+    bottom: 0; /* Align the span to the bottom */
+    transform: translateX(-50%);
+    width: 100%;
+    padding: 0.5em 0;
+    font: normal 85%/120% arial, helvetica, sans-serif;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.5s;
+    color: white;
+}
+
+.bar:hover span {
+    opacity: 1;
+}
+
+.label {
+
+    text-align: center;
+    white-space: nowrap;
+    font-size: 20px;
+    font-weight: normal;
+    color: #000;
+    left: 25%;
+    position: absolute;
+}
+
+.y-axis {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+}
+
+.scale-label {
+    font-size: 15px;
+    margin-bottom: 1em;
+}

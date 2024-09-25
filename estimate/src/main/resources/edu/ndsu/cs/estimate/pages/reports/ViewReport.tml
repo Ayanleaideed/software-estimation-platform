@@ -1,0 +1,44 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" title="EstiMate">
+    <link rel="stylesheet" type="text/css" href="/css/index.css" />
+    <div class="row hero-unit">
+        <h1>Report Overview</h1>
+        <t:security.notauthenticated>
+            <h2>Please log in or create an account to get started.</h2>
+        </t:security.notauthenticated>
+        <t:if test="returnReport">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name of Task</th>
+                        <th>Estimated Time (Days)</th>
+                        <th>Actual Time (Days)</th>
+                        <th>Status</th>
+                        <th>Hours Logged</th>
+						<th>Net Loss/Gain</th>
+                    </tr>
+                </thead>
+                <tbody>
+<t:loop source="taskNames" value="taskName" index="index">
+    <tr>
+        <td>${taskName}</td>
+        <td>${estimatedTimes.get(index)}</td>
+        <td>${actualTimes.get(index)}</td>
+        <td>${statuses.get(index)}</td>
+        <td>${hoursLogged.get(index)}</td>
+		<td>${net.get(index)}</td>
+    </tr>
+</t:loop>
+            <tr style="font-weight: bold;">
+                <td>Mean</td>
+                <td>${meanEstimated}</td>
+                <td>${meanActual}</td>
+                <td></td> <!-- Since status doesn't have a mean -->
+                <td>${meanHoursLogged}</td>
+				<td>${meanNet}</td>
+            </tr>
+
+                </tbody>
+            </table>
+        </t:if>
+    </div>
+</t:layout>

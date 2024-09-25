@@ -1,0 +1,86 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter" title="Edit Task | EstiMate">
+    <link rel="stylesheet" type="text/css" href="/css/tasks.css" />
+    <t:security.authenticated>
+        <div class="container mt-3">
+            <h2 class="text-center mb-5">Edit Task</h2>
+            <t:if test="task">
+                <t:form t:id="taskForm" class="form-horizontal">	
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 col-lg-4 mb-3">
+                            <t:errors class="alert alert-danger" />
+                            <t:label for="name" class="form-label" />
+                            <t:textField t:id="name" value="task.name" class="form-control" />
+                        </div>
+                    </div>
+                    
+                    <div class="row justify-content-center">
+                    <div class="col-md-6 col-lg-4 mb-3">
+                        <label for="estEndDateStr" class="form-label">Estimated End Date</label>
+                        <div class="input-group" id="estEndDatePicker">
+                            <span class="input-group-text" data-td-target="#estEndDatePicker" data-td-toggle="datetimepicker">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                            <input t:id="estEndDateStr" type="text" t:value="estEndDateStr" class="form-control datetimepicker-input" readonly="readonly"/>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center mb-5">
+                        <div class="col-md-6 col-lg-4 d-grid gap-2">
+                            <t:submit value="Submit" class="btn btn-warning" />
+                            <t:pagelink page="tasks" class="btn btn-secondary">Return To Tasks List</t:pagelink>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+
+                    <t:if test="noHours">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6 col-lg-4 mb-3">
+                                <p class="text-center">No hours have been logged.</p>
+                            </div>
+                        </div>
+                    </t:if>
+					<t:unless test="noHours">
+						<t:grid source="hours" row="hour" include="timestamp, hoursLogged" add="actions" >
+							<p:timestampCell>${hour.getTimestamp()}</p:timestampCell>
+							<p:hoursLogged>${hour.getHoursLogged()}</p:hoursLogged>
+							<p:actionsCell>
+								<t:pagelink page="hours/ViewHours" context="hour.pk">View</t:pagelink> |
+								<t:security.hasRole role="manager">
+									<t:pagelink page="hours/EditHours" context="hour.pk">Edit</t:pagelink> |
+								</t:security.hasRole>
+								<t:security.hasAnyRoles roles="manager, admin">
+									<t:eventlink event="delete" context="hour.pk" 
+											t:mixins="Confirm" Confirm.message="Delete Product?">Delete</t:eventlink>
+								</t:security.hasAnyRoles>
+							</p:actionsCell>
+						</t:grid>
+					</t:unless>
+					<div class="row justify-content-center mb-3">
+						<div class="col-md-6 col-lg-4 d-grid gap-2">
+							<t:pagelink page="hours/AddHours" class="btn btn-success">Add Hours</t:pagelink>
+						</div>
+					</div>
+                </t:form>
+            </t:if>
+            <t:if test="!task">
+                <div class="row justify-content-center">
+                    <div class="col-md-6 col-lg-4 mb-3">
+                        <h2 class="text-center">Task does not exist.</h2>
+                    </div>
+                </div>
+            </t:if>
+        </div>
+        <script src="/js/dateRangeEditTask.js"></script>
+    </t:security.authenticated>
+	<t:security.notauthenticated>
+		<div class="container d-flex justify-content-center align-items-center loginMessage">
+			<div class="row">
+				<div class="col text-center">
+					<h2>You need to log in to view this.</h2>
+				</div>
+			</div>
+		</div>
+	</t:security.notauthenticated>
+</t:layout>

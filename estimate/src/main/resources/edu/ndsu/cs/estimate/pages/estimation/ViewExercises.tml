@@ -1,0 +1,22 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter" title="Estimation | EstiMate">
+	<link rel="stylesheet" type="text/css" href="/css/estimation.css" />
+    <t:security.authenticated>
+		<t:grid source="exercises" row="exercise" include="name, descritption" add="actions">
+			<p:actionsCell>
+				<t:pagelink page="estimation/CreateEstimate" context="exercise.pk">Predict Outcome</t:pagelink>
+				<t:security.authenticated HasRole="admin">
+				| <t:pagelink page="estimation/ReportOutcome" context="exercise.pk">Report Outcome</t:pagelink>
+				</t:security.authenticated>
+			</p:actionsCell> 
+		</t:grid>
+	</t:security.authenticated>
+	<t:security.notauthenticated>
+		<div class="container d-flex justify-content-center align-items-center loginMessage">
+			<div class="row">
+				<div class="col text-center">
+					<h2>You need to log in to view this.</h2>
+				</div>
+			</div>
+		</div>
+	</t:security.notauthenticated>
+</t:layout>

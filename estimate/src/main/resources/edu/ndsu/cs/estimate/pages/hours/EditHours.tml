@@ -1,0 +1,62 @@
+<html t:type="layout" title="Edit Hours"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+ <div class="container">
+        <div class="card" style="width: 80rem; margin-top: 3rem;">
+          <div class="card-body">
+              <h3>Your Tasks: <t:pagelink class="btn btn-success" style="margin-left:58rem;" page="tasks/AddTask">Create new Task</t:pagelink></h3>
+              <div class="row">
+               
+                <t:form t:id="dateForm">
+                    <t:label for="start"/>
+                    <t:datefield t:id="start"/>
+                    <t:label for="end"/>
+                    <t:datefield t:id="end"/>
+                    <t:submit value="Search" />
+				</t:form>
+                </div>
+          </div>
+        </div>
+        <div class="row" style="margin-top:2rem;">
+          <div class="col-3"   style="padding:2rem;" t:type="loop" t:source="tasks" t:value="task">
+            <div class="card" style="width:18rem; border-width:1rem;background-color: #7C74F6;">
+              <div class="card-body" style="background-color: #ffffff;">
+                 <h4>${task.getName()}</h4>
+                 <h6>Start Date: ${task.getStartDate()}</h6>
+                 <h6>Planned End Date: ${task.getEstEndDate()}</h6>
+                 <h6>Hours Logged: ${task.getTimeTaken()}</h6>
+                 <div class="row">
+                 <t:pagelink class="btn btn-primary" page="tasks/EditTask" context="task.pk">Edit Task</t:pagelink>
+				  <button class="btn btn-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+				    Log Hours
+				  </button>
+				  <ul class="dropdown-menu">
+				  	<li>
+					    Log hours here: 
+					    <t:form t:id="addHourForm" context="task.PK"><t:textfield t:id="hours"/>
+					    <t:submit value="Add Hours" />
+				  	</t:form>
+				  </li>
+				  </ul>
+				
+                 <!--<a href="login.html" role="button" class="btn btn-danger">Close Task</a></div>-->
+                  <button class="btn btn-danger" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+				    Close Task
+				  </button>
+				  <ul class="dropdown-menu">
+				     <li>
+				    	<t:actionlink t:id="complete"  aria-expanded="false" context="task.PK">End Task as Completed</t:actionlink>
+				  	</li>
+				    <li>
+				    	<t:actionlink t:id="drop"  aria-expanded="false" context="task.PK">End Task as Dropped</t:actionlink>
+				  	</li>
+				  	<li>
+				    	<t:actionlink t:id="willNotComplete"  aria-expanded="false" context="task.PK">End Task as Will Not Complete</t:actionlink>
+				  	</li>
+				  </ul>
+              </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+</html>

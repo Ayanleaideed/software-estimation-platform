@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" class="h-100">
+  <head>
+      <meta charset="utf-8" />
+      <title>${title}</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="author" content="Group L Fall 2023" />
+      <link rel="shortcut icon" href="/favicon.ico" />
+      <link rel="stylesheet" href="/fontawesome-free-6.4.2-web/css/all.min.css"/>
+      <link rel="stylesheet" type="text/css" href="/css/layout.css" />
+      <link rel="stylesheet" href="/tempus-dominus/css/tempus-dominus.min.css"/>
+      <script src="/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
+      <script src="/tempus-dominus/popperjs/popper.min.js"></script>
+      <script src="/tempus-dominus/js/tempus-dominus.min.js"></script>
+  </head>
+<body class ="d-flex flex-column h-100">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-logo" href="/">
+          <img src="/images/EstiMateLogo.png" alt="Home" class="logo"></img>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-spacing">
+            <t:security.authenticated>
+              <li class="nav-item">
+                <t:pagelink class="nav-link" page="tasks">Tasks</t:pagelink>
+              </li>
+              <li class="nav-item">
+                <t:pagelink class="nav-link" page="reports">Reports</t:pagelink>
+              </li>
+              <li class="nav-item">
+                <t:pagelink class="nav-link" page="events">Events</t:pagelink>
+              </li>
+            </t:security.authenticated>
+          </ul>
+          <t:security.notauthenticated>
+            <t:pagelink class="btn btn-outline-light login-btn" page="login">Log In</t:pagelink>
+            <t:pagelink class="btn btn-outline-light" page="createaccount">Create Account</t:pagelink>
+          </t:security.notauthenticated>
+          <t:security.authenticated>
+            <t:pagelink class="btn btn-outline-light" page="logout">Log Out</t:pagelink>
+          </t:security.authenticated>
+        </div>
+      </div>
+    </nav>
+    <div class="span12">
+      <t:alerts/>
+    </div>
+    <div>
+      <t:body />
+    </div>
+    <footer class="mt-auto bg-dark text-white text-center p-1">
+        <p>CS 413 -  Fall 2023</p>
+    </footer>  
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<graphs xmlns="http://cayenne.apache.org/schema/10/graph">
+	<graph type="ER" scale="0.8157307210000009">
+		<entity name="SuggestionCategories" x="1057.1" y="238.09" width="123.0" height="66.0"/>
+		<entity name="CallibrationEstimates" x="514.8" y="309.08" width="117.0" height="98.0"/>
+		<entity name="ExerciseCategories" x="870.0" y="93.81" width="107.0" height="66.0"/>
+		<entity name="Tasks" x="111.34" y="200.23" width="94.0" height="194.0"/>
+		<entity name="CallibrationSuggestions" x="807.44" y="279.65" width="131.0" height="82.0"/>
+		<entity name="Events" x="0.0" y="0.0" width="65.0" height="130.0"/>
+		<entity name="Hours" x="0.0" y="0.0" width="72.0" height="98.0"/>
+		<entity name="Roles" x="72.33" y="0.0" width="32.0" height="66.0"/>
+		<entity name="UserAccounts_Roles_JoinTable" x="45.36" y="106.65" width="171.0" height="66.0"/>
+		<entity name="Users" x="372.39" y="32.04" width="79.0" height="98.0"/>
+		<entity name="CallibrationCategory" x="1057.17" y="89.49" width="114.0" height="82.0"/>
+		<entity name="CallibrationExercises" x="683.69" y="69.0" width="115.0" height="114.0"/>
+	</graph>
+	<graph type="CLASS" scale="1.0">
+		<entity name="CallibrationExercise" x="700.68" y="252.7" width="110.0" height="98.0"/>
+		<entity name="Role" x="0.0" y="0.0" width="32.0" height="50.0"/>
+		<entity name="CallibrationSuggestion" x="974.14" y="272.0" width="126.0" height="66.0"/>
+		<entity name="Task" x="146.0" y="339.58" width="92.0" height="162.0"/>
+		<entity name="CallibrationEstimate" x="486.15" y="497.71" width="112.0" height="50.0"/>
+		<entity name="User" x="363.11" y="53.39" width="79.0" height="82.0"/>
+		<entity name="Hours" x="0.0" y="0.0" width="72.0" height="66.0"/>
+		<entity name="Event" x="0.0" y="0.0" width="65.0" height="114.0"/>
+		<entity name="CallibrationCategory" x="779.71" y="54.99" width="114.0" height="66.0"/>
+	</graph>
+</graphs>

@@ -1,0 +1,68 @@
+<html t:type="layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" title="Reports | EstiMate">
+    <link rel="stylesheet" type="text/css" href="css/report.css"></link>
+    <t:security.authenticated>
+        <div class="container my-3">
+            <div class="row align-items-center">
+                <div class="col-12 col-lg-3 order-lg-1 order-1 mb-2 mb-lg-0 text-center text-lg-start enav">
+                    <h3>Reports</h3>
+                </div>
+                <div class="col-12 col-lg-6 order-lg-2 order-2 mb-2 mb-lg-0 text-center">
+                    <t:form t:id="dateForm" class="date-form w-100">
+                        <div class="input-group">
+                            <span class="input-group-text" title="Planned end date">
+                                <i class="fa fa-calendar"></i>
+                            </span>            
+                            <input t:id="dateRange" type="text" class="form-control" placeholder="Showing all dates" readonly="readonly"/>
+                            <input type="submit" class="btn btn-primary" value="Search"/>
+                            <button type="button" class="btn btn-secondary" onclick="resetDateRange()">Show All</button>
+                        </div>
+                    </t:form>
+                </div>
+                <div class="col-12 col-lg-3 order-lg-3 order-3 mb-2 mb-lg-0 text-center text-lg-end">
+                    <!-- third column in nav, leaving empty-->
+                </div>
+            </div>
+        </div>
+        <t:if test="noTasks">
+            <div class="container d-flex justify-content-center align-items-center noTasks">
+                <div class="row">
+                    <div class="col text-center">
+                        <h2>No tasks to display.</h2>
+                    </div>
+                </div>
+            </div>
+        </t:if>
+        <t:unless test="noTasks">
+            <div class="container">
+                <div class="chart-labels">
+                    <label class="chart-label estimated">Orange: Estimated Days Taken</label>
+                    <br></br>
+                    <label class="chart-label actual">Blue: Actual Days Taken</label>
+                </div>
+                <div class="graph">
+                    <div class="chart-container">
+                        <div t:type="loop" t:source="tasks" t:value="task" class="bar-container">
+                            <div class="bar estimated" style="height: ${returnDifferenceEstimated(task)}px;">
+                                <span>${returnDifferenceEstimated(task)}</span>
+                            </div>
+                            <div class="bar actual" style="height: ${returnDifferenceActual(task)}px;">
+                                <span>${returnDifferenceActual(task)}</span>
+                            </div>
+                            <div class="label">${task.getName()}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t:unless>
+        <script src="/js/dateRange.js"></script>
+	</t:security.authenticated>
+	<t:security.notauthenticated>
+		<div class="container d-flex justify-content-center align-items-center loginMessage">
+			<div class="row">
+				<div class="col text-center">
+					<h2>You need to log in to view this.</h2>
+				</div>
+			</div>
+		</div>
+	</t:security.notauthenticated>
+</html>

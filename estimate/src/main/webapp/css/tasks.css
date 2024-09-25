@@ -1,0 +1,10 @@
+.noTasks {
+	min-height: 50vh;
+}
+
+@media (max-width: 992px) {
+  .date-form,
+  .enav {
+    margin-bottom: 21px;
+  }
+}

@@ -1,0 +1,32 @@
+body {
+	background: url("/images/bg.jpg") no-repeat center center fixed;
+	background-size: cover;
+}
+
+.navbar-logo .logo {
+    height: 50px;
+    margin-right: 15px
+}
+
+.nav-link {
+  margin-right: 8px;
+}
+
+.login-btn {
+    margin-right: 10px;
+}
+
+.loginMessage {
+	min-height: 50vh;
+}
+
+main {
+    padding-bottom: 25px;
+}
+
+
+@media (min-width: 768px) {
+    .navbar-logo {
+        padding-right: 1rem;
+    }
+}

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map xmlns="http://cayenne.apache.org/schema/10/modelMap"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://cayenne.apache.org/schema/10/modelMap https://cayenne.apache.org/schema/10/modelMap.xsd"
+	 project-version="10">
+	<property name="defaultPackage" value="edu.ndsu.cs.estimate.cayenne.persistent"/>
+	<db-entity name="CallibrationCategory">
+		<db-attribute name="CategoryID" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="Description" type="VARCHAR" isMandatory="true" length="2048"/>
+		<db-attribute name="Name" type="VARCHAR" isMandatory="true" length="128"/>
+	</db-entity>
+	<db-entity name="CallibrationEstimates">
+		<db-attribute name="EstimateID" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="ExersiseID" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="PercentPrediction" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="UserID" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="CallibrationExercises">
+		<db-attribute name="Descritption" type="VARCHAR" isMandatory="true" length="2048"/>
+		<db-attribute name="ExersiseID" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="Name" type="VARCHAR" isMandatory="true" length="128"/>
+		<db-attribute name="Outcome" type="BOOLEAN"/>
+		<db-attribute name="Outcomereported" type="BOOLEAN"/>
+	</db-entity>
+	<db-entity name="CallibrationSuggestions">
+		<db-attribute name="Description" type="VARCHAR" isMandatory="true" length="2048"/>
+		<db-attribute name="Name" type="VARCHAR" isMandatory="true" length="128"/>
+		<db-attribute name="SuggestionID" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="Events">
+		<db-attribute name="category" type="VARCHAR" isMandatory="true" length="25"/>
+		<db-attribute name="createdDate" type="DATE" isMandatory="true"/>
+		<db-attribute name="description" type="VARCHAR" isMandatory="true" length="500"/>
+		<db-attribute name="eventDate" type="DATE" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="name" type="VARCHAR" isMandatory="true" length="50"/>
+	</db-entity>
+	<db-entity name="ExerciseCategories">
+		<db-attribute name="CategoryID" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="ExersiseID" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="Hours">
+		<db-attribute name="hoursLogged" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="hoursPK" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="taskID" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="timeStamp" type="DATE" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="Roles">
+		<db-attribute name="PK" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="name" type="VARCHAR" length="20"/>
+	</db-entity>
+	<db-entity name="SuggestionCategories">
+		<db-attribute name="CategoryID" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="SuggestionID" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="Tasks">
+		<db-attribute name="ActualEndDate" type="DATE"/>
+		<db-attribute name="Completed" type="BOOLEAN" isMandatory="true"/>
+		<db-attribute name="Dropped" type="BOOLEAN" isMandatory="true"/>
+		<db-attribute name="EstEndDate" type="DATE"/>
+		<db-attribute name="Name" type="VARCHAR" isMandatory="true" length="128"/>
+		<db-attribute name="StartDate" type="DATE" isMandatory="true"/>
+		<db-attribute name="TaskId" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="TimeTaken" type="INTEGER">
+			<info:property xmlns:info="http://cayenne.apache.org/schema/10/info" name="comment" value="In minutes"/>
+		</db-attribute>
+		<db-attribute name="UserId" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="WillNotComplete" type="BOOLEAN" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="UserAccounts_Roles_JoinTable">
+		<db-attribute name="RolesPK" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="UserAccountPK" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="Users">
+		<db-attribute name="PasswordHash" type="CHAR" isMandatory="true" length="128">
+			<info:property xmlns:info="http://cayenne.apache.org/schema/10/info" name="comment" value="using bcrypt"/>
+		</db-attribute>
+		<db-attribute name="PasswordSalt" type="VARCHAR" isMandatory="true" length="32"/>
+		<db-attribute name="UserId" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="UserName" type="VARCHAR" isMandatory="true" length="128"/>
+	</db-entity>
+	<obj-entity name="CallibrationCategory" className="edu.ndsu.cs.estimate.cayenne.persistent.CallibrationCategory" dbEntityName="CallibrationCategory">
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="Description"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="Name"/>
+	</obj-entity>
+	<obj-entity name="CallibrationEstimate" className="edu.ndsu.cs.estimate.cayenne.persistent.CallibrationEstimate" dbEntityName="CallibrationEstimates">
+		<obj-attribute name="percentPrediction" type="int" db-attribute-path="PercentPrediction"/>
+	</obj-entity>
+	<obj-entity name="CallibrationExercise" className="edu.ndsu.cs.estimate.cayenne.persistent.CallibrationExercise" dbEntityName="CallibrationExercises">
+		<obj-attribute name="descritption" type="java.lang.String" db-attribute-path="Descritption"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="Name"/>
+		<obj-attribute name="outcome" type="boolean" db-attribute-path="Outcome"/>
+		<obj-attribute name="outcomeReported" type="boolean" db-attribute-path="Outcomereported"/>
+	</obj-entity>
+	<obj-entity name="CallibrationSuggestion" className="edu.ndsu.cs.estimate.cayenne.persistent.CallibrationSuggestion" dbEntityName="CallibrationSuggestions">
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="Description"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="Name"/>
+	</obj-entity>
+	<obj-entity name="Event" className="edu.ndsu.cs.estimate.cayenne.persistent.Event" dbEntityName="Events">
+		<obj-attribute name="category" type="java.lang.String" db-attribute-path="category"/>
+		<obj-attribute name="createdDate" type="java.util.Date" db-attribute-path="createdDate"/>
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="description"/>
+		<obj-attribute name="eventDate" type="java.util.Date" db-attribute-path="eventDate"/>
+		<obj-attribute name="id" type="int" db-attribute-path="id"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+	</obj-entity>
+	<obj-entity name="Hours" className="edu.ndsu.cs.estimate.cayenne.persistent.Hours" dbEntityName="Hours">
+		<obj-attribute name="hoursLogged" type="int" db-attribute-path="hoursLogged"/>
+		<obj-attribute name="timeStamp" type="java.util.Date" db-attribute-path="timeStamp"/>
+	</obj-entity>
+	<obj-entity name="Role" className="edu.ndsu.cs.estimate.cayenne.persistent.Role" dbEntityName="Roles">
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+	</obj-entity>
+	<obj-entity name="Task" className="edu.ndsu.cs.estimate.cayenne.persistent.Task" dbEntityName="Tasks">
+		<obj-attribute name="actualEndDate" type="java.time.LocalDate" db-attribute-path="ActualEndDate"/>
+		<obj-attribute name="completed" type="boolean" db-attribute-path="Completed"/>
+		<obj-attribute name="dropped" type="boolean" db-attribute-path="Dropped"/>
+		<obj-attribute name="estEndDate" type="java.util.Date" db-attribute-path="EstEndDate"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="Name"/>
+		<obj-attribute name="startDate" type="java.util.Date" db-attribute-path="StartDate"/>
+		<obj-attribute name="timeTaken" type="int" db-attribute-path="TimeTaken"/>
+		<obj-attribute name="willNotComplete" type="boolean" db-attribute-path="WillNotComplete"/>
+	</obj-entity>
+	<obj-entity name="User" className="edu.ndsu.cs.estimate.cayenne.persistent.User" dbEntityName="Users">
+		<obj-attribute name="passwordHash" type="java.lang.String" db-attribute-path="PasswordHash"/>
+		<obj-attribute name="passwordSalt" type="java.lang.String" db-attribute-path="PasswordSalt"/>
+		<obj-attribute name="userName" type="java.lang.String" db-attribute-path="UserName"/>
+	</obj-entity>
+	<db-relationship name="exersises" source="CallibrationCategory" target="ExerciseCategories" toMany="true">
+		<db-attribute-pair source="CategoryID" target="CategoryID"/>
+	</db-relationship>
+	<db-relationship name="suggestions" source="CallibrationCategory" target="SuggestionCategories" toMany="true">
+		<db-attribute-pair source="CategoryID" target="CategoryID"/>
+	</db-relationship>
+	<db-relationship name="Exersise" source="CallibrationEstimates" target="CallibrationExercises">
+		<db-attribute-pair source="ExersiseID" target="ExersiseID"/>
+	</db-relationship>
+	<db-relationship name="User" source="CallibrationEstimates" target="Users">
+		<db-attribute-pair source="UserID" target="UserId"/>
+	</db-relationship>
+	<db-relationship name="categories" source="CallibrationExercises" target="ExerciseCategories" toMany="true">
+		<db-attribute-pair source="ExersiseID" target="ExersiseID"/>
+	</db-relationship>
+	<db-relationship name="estimates" source="CallibrationExercises" target="CallibrationEstimates" toMany="true">
+		<db-attribute-pair source="ExersiseID" target="ExersiseID"/>
+	</db-relationship>
+	<db-relationship name="Categories" source="CallibrationSuggestions" target="SuggestionCategories" toMany="true">
+		<db-attribute-pair source="SuggestionID" target="SuggestionID"/>
+	</db-relationship>
+	<db-relationship name="categories" source="ExerciseCategories" target="CallibrationCategory" toDependentPK="true">
+		<db-attribute-pair source="CategoryID" target="CategoryID"/>
+	</db-relationship>
+	<db-relationship name="exersises" source="ExerciseCategories" target="CallibrationExercises" toDependentPK="true">
+		<db-attribute-pair source="ExersiseID" target="ExersiseID"/>
+	</db-relationship>
+	<db-relationship name="tasks" source="Hours" target="Tasks">
+		<db-attribute-pair source="taskID" target="TaskId"/>
+	</db-relationship>
+	<db-relationship name="Users" source="Roles" target="UserAccounts_Roles_JoinTable" toMany="true">
+		<db-attribute-pair source="PK" target="RolesPK"/>
+	</db-relationship>
+	<db-relationship name="categories" source="SuggestionCategories" target="CallibrationCategory" toDependentPK="true">
+		<db-attribute-pair source="CategoryID" target="CategoryID"/>
+	</db-relationship>
+	<db-relationship name="suggestions" source="SuggestionCategories" target="CallibrationSuggestions" toDependentPK="true">
+		<db-attribute-pair source="SuggestionID" target="SuggestionID"/>
+	</db-relationship>
+	<db-relationship name="hours" source="Tasks" target="Hours" toMany="true">
+		<db-attribute-pair source="TaskId" target="taskID"/>
+	</db-relationship>
+	<db-relationship name="user" source="Tasks" target="Users">
+		<db-attribute-pair source="UserId" target="UserId"/>
+	</db-relationship>
+	<db-relationship name="roles" source="UserAccounts_Roles_JoinTable" target="Roles" toDependentPK="true">
+		<db-attribute-pair source="RolesPK" target="PK"/>
+	</db-relationship>
+	<db-relationship name="users" source="UserAccounts_Roles_JoinTable" target="Users" toDependentPK="true">
+		<db-attribute-pair source="UserAccountPK" target="UserId"/>
+	</db-relationship>
+	<db-relationship name="Roles" source="Users" target="UserAccounts_Roles_JoinTable" toMany="true">
+		<db-attribute-pair source="UserId" target="UserAccountPK"/>
+	</db-relationship>
+	<db-relationship name="estimates" source="Users" target="CallibrationEstimates" toMany="true">
+		<db-attribute-pair source="UserId" target="UserID"/>
+	</db-relationship>
+	<db-relationship name="tasks" source="Users" target="Tasks" toMany="true">
+		<db-attribute-pair source="UserId" target="UserId"/>
+	</db-relationship>
+	<obj-relationship name="exersises" source="CallibrationCategory" target="CallibrationExercise" deleteRule="Deny" db-relationship-path="exersises.exersises"/>
+	<obj-relationship name="suggestions" source="CallibrationCategory" target="CallibrationSuggestion" deleteRule="Deny" db-relationship-path="suggestions.suggestions"/>
+	<obj-relationship name="exersise" source="CallibrationEstimate" target="CallibrationExercise" deleteRule="Nullify" db-relationship-path="Exersise"/>
+	<obj-relationship name="user" source="CallibrationEstimate" target="User" deleteRule="Nullify" db-relationship-path="User"/>
+	<obj-relationship name="categories" source="CallibrationExercise" target="CallibrationCategory" deleteRule="Deny" db-relationship-path="categories.categories"/>
+	<obj-relationship name="estimates" source="CallibrationExercise" target="CallibrationEstimate" deleteRule="Deny" db-relationship-path="estimates"/>
+	<obj-relationship name="categories" source="CallibrationSuggestion" target="CallibrationCategory" deleteRule="Nullify" db-relationship-path="Categories.categories"/>
+	<obj-relationship name="tasks" source="Hours" target="Task" deleteRule="Nullify" db-relationship-path="tasks"/>
+	<obj-relationship name="users" source="Role" target="User" deleteRule="Deny" db-relationship-path="Users.users"/>
+	<obj-relationship name="user" source="Task" target="User" deleteRule="Nullify" db-relationship-path="user"/>
+	<obj-relationship name="estimates" source="User" target="CallibrationEstimate" deleteRule="Deny" db-relationship-path="estimates"/>
+	<obj-relationship name="roles" source="User" target="Role" deleteRule="Deny" db-relationship-path="Roles.roles"/>
+	<obj-relationship name="tasks" source="User" target="Task" deleteRule="Deny" db-relationship-path="tasks"/>
+	<dbImport xmlns="http://cayenne.apache.org/schema/10/dbimport">
+		<tableTypes>
+			<tableType>TABLE</tableType>
+			<tableType>VIEW</tableType>
+		</tableTypes>
+		<forceDataMapCatalog>false</forceDataMapCatalog>
+		<forceDataMapSchema>false</forceDataMapSchema>
+		<namingStrategy>org.apache.cayenne.dbsync.naming.DefaultObjectNameGenerator</namingStrategy>
+		<skipPrimaryKeyLoading>false</skipPrimaryKeyLoading>
+		<skipRelationshipsLoading>false</skipRelationshipsLoading>
+		<useJava7Types>false</useJava7Types>
+		<usePrimitives>true</usePrimitives>
+	</dbImport>
+	<cgen xmlns="http://cayenne.apache.org/schema/10/cgen">
+		<destDir>..\java</destDir>
+		<mode>all</mode>
+		<template>templates/v4_1/subclass.vm</template>
+		<superTemplate>templates/v4_1/superclass.vm</superTemplate>
+		<template>templates/v4_1/subclass.vm</template>
+		<superTemplate>templates/v4_1/superclass.vm</superTemplate>
+		<embeddableTemplate>templates/v4_1/embeddable-subclass.vm</embeddableTemplate>
+		<embeddableSuperTemplate>templates/v4_1/embeddable-superclass.vm</embeddableSuperTemplate>
+		<queryTemplate>templates/v4_1/client-datamap-subclass.vm</queryTemplate>
+		<querySuperTemplate>templates/v4_1/client-datamap-superclass.vm</querySuperTemplate>
+		<outputPattern>*.java</outputPattern>
+		<makePairs>true</makePairs>
+		<usePkgPath>true</usePkgPath>
+		<overwrite>false</overwrite>
+		<createPropertyNames>false</createPropertyNames>
+		<createPKProperties>true</createPKProperties>
+		<client>true</client>
+	</cgen>
+</data-map>

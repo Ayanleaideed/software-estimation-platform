@@ -1,0 +1,9 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" title="EstiMate">
+    <link rel="stylesheet" type="text/css" href="/css/index.css" />
+    <div class="row hero-unit">
+        <h1>${message:greeting}</h1>
+        <t:security.notauthenticated>
+            <h2>Please log in or create an account to get started.</h2>
+        </t:security.notauthenticated>
+    </div>
+</t:layout>

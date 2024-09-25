@@ -1,0 +1,26 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter" title="Estimation | EstiMate">
+	<link rel="stylesheet" type="text/css" href="/css/estimation.css" />
+	<t:security.authenticated> 
+		<t:grid source="category" row="category" include="name">
+		</t:grid>
+		<t:form t:id="suggestionForm" >
+			<t:errors/>
+			<t:label for="name" />
+			<t:textField t:id="name" value="suggestion.name" />
+			<t:label for="description" />
+			<t:textField t:id="description" value="suggestion.description" />
+			<br/>
+			<t:submit value="Submit Suggestion" />
+			<t:pagelink page="estimation" class="btn btn-default">Cancel</t:pagelink>
+		</t:form>
+	</t:security.authenticated>
+	<t:security.notauthenticated>
+		<div class="container d-flex justify-content-center align-items-center loginMessage">
+			<div class="row">
+				<div class="col text-center">
+					<h2>You need to log in to view this.</h2>
+				</div>
+			</div>
+		</div>
+	</t:security.notauthenticated>
+</t:layout>

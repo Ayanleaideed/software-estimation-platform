@@ -1,0 +1,61 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" title="Suggest New Event | EstiMate">
+    <link rel="stylesheet" type="text/css" href="/css/events.css"></link>
+    <t:security.authenticated>
+        <div class="container mt-3">
+            <h2 class="text-center mb-5">Suggest new Event</h2>
+            <t:form t:id="eventForm">
+                <t:errors/>
+
+                <div class="row justify-content-center">
+                    <div class="col-md-6 col-lg-4 mb-3">
+                        <t:label for="name" class="form-label"/>
+                        <t:textField t:id="name" value="name" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-md-6 col-lg-4 mb-3">
+                        <t:label for="category" class="form-label"/>
+                        <t:textField t:id="category" value="category" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-md-6 col-lg-4 mb-3">
+                        <t:label for="description" class="form-label"/>
+                        <t:textField t:id="description" value="description" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-md-6 col-lg-4 mb-3">
+                        <label for="eventDate" class="form-label">Event Date</label>
+                        <div class="input-group" id="eventDatePicker">
+                            <span class="input-group-text" data-td-target="#eventDatePicker" data-td-toggle="datetimepicker">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                            <input t:id="eventDate" type="text" class="form-control datetimepicker-input" readonly="readonly" />
+                        </div>
+                    </div>
+                </div>                
+
+                <div class="row justify-content-center mb-5">
+                    <div class="col-md-6 col-lg-4 mb-3 d-grid gap-2">
+                        <input type="submit" class="btn btn-primary" value="Suggest new Event"/>
+                        <t:pagelink page="events" class="btn btn-secondary">Go back</t:pagelink>
+                    </div>
+                </div>
+            </t:form>
+        </div>
+        <script src="/js/dateInput.js"></script>
+	</t:security.authenticated>
+	<t:security.notauthenticated>
+		<div class="container d-flex justify-content-center align-items-center loginMessage">
+			<div class="row">
+				<div class="col text-center">
+					<h2>You need to log in to view this.</h2>
+				</div>
+			</div>
+		</div>
+	</t:security.notauthenticated>
+</t:layout>

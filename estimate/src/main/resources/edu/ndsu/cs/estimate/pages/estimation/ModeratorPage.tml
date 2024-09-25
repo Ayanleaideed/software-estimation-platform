@@ -1,0 +1,20 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter" title="Estimation | EstiMate">
+	<link rel="stylesheet" type="text/css" href="/css/estimation.css" />
+	<t:security.authenticated>
+	<t:grid source="suggestions" row="suggestion" include="name, description" add="actions">
+		<p:actionsCell>
+				<t:eventlink event="approve" context="suggestion.pk">Approve</t:eventlink> | 
+				<t:eventlink event="deny" context="suggestion.pk">Deny</t:eventlink>
+		</p:actionsCell> 
+	</t:grid>
+	</t:security.authenticated>
+	<t:security.notauthenticated>
+		<div class="container d-flex justify-content-center align-items-center loginMessage">
+			<div class="row">
+				<div class="col text-center">
+					<h2>You need to log in to view this.</h2>
+				</div>
+			</div>
+		</div>
+	</t:security.notauthenticated>
+</t:layout>

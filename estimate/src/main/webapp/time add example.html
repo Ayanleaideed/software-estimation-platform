@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="bootstrap-5.3.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="fontawesome-free-6.4.2-web/css/all.min.css"/>
+    <link rel="stylesheet" href="tempus-dominus/css/tempus-dominus.min.css"/>
+</head>
+<body style="background-color: gray;">
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4 mb-3">
+                <label for="timeStr" class="form-label">Time</label>
+                <div class="input-group date" id="timepicker" data-td-target-input="nearest" data-td-target-toggle="nearest">
+                    <input id="timeStr" type="text" class="form-control datetimepicker-input" data-td-target="#timepicker" data-td-toggle="datetimepicker"/>
+                    <span class="input-group-text" data-td-target="#timepicker" data-td-toggle="datetimepicker">
+                        <i class="fa fa-clock"></i>
+                    </span>
+                </div>                
+            </div>
+        </div>
+    </div>
+
+    <script src="bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="tempus-dominus/popperjs/popper.min.js"></script>
+    <script src="tempus-dominus/js/tempus-dominus.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const timePickerElement = document.getElementById('timepicker');
+            const timeInput = document.getElementById('timeStr'); // Get the input element from html
+
+            if (timePickerElement) {
+                const zero = new Date(new Date().setHours(0, 0, 0, 0));
+                const options = { // See https://getdatepicker.com/6/options/
+                    display: {
+                        components: { //Disable everything except time
+                            calendar: false,
+                            date: false,
+                            month: false,
+                            year: false,
+                            decades: false,
+                            clock: true,
+                            hours: true,
+                            minutes: true,
+                            seconds: false
+                        }
+                    },
+                    defaultDate: zero,
+                    localization: {
+                        format: 'H:mm',
+                        hourCycle: 'h23' // Set to 24-hour mode, see https://getdatepicker.com/6/options/localization.html
+                    },
+                    restrictions: {
+                    minDate: new Date(new Date().setHours(0, 0, 0, 0)),
+                    }
+                };
+
+                const tp = new tempusDominus.TempusDominus(timePickerElement, options);
+                // https://getdatepicker.com/6/namespace/events.html
+                timePickerElement.addEventListener(tempusDominus.Namespace.events.change, (e) => {
+                    if (e.detail.date) {
+                        timeInput.value = e.detail.date.format('H:mm');
+                    }
+                });
+            } else {
+                console.error('Time picker element not found.');
+            }
+        });
+    </script>
+
+</body>
+</html>
+

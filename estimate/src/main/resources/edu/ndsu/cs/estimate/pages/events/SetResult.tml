@@ -1,0 +1,25 @@
+<t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" title="Edit Event | EstiMate">
+    <link rel="stylesheet" type="text/css" href="/css/events.css"></link>
+    <div class="container mt-3">
+        <h2 class="text-center mb-5">Set Result</h2>
+        <t:form t:id="resultForm" class="form-horizontal">
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <t:errors class="alert alert-danger"/>
+
+                    <div class="mb-3">
+                        <label for="resultSlider" class="form-label">Record Outcome (0% - 100%)</label>
+                        <input type="range" class="form-range form-control" min="0" max="100" id="resultSlider" t:id="resultSlider" t:value="result"/>
+                        <div>Current Value: <span id="resultValue">${result}</span></div>                                             
+                    </div>                    
+
+                    <div class="d-grid gap-2">
+                        <input type="submit" class="btn btn-primary" value="Set Result"/>
+                        <t:pagelink page="events/Edit" context="eventId" class="btn btn-secondary">Go Back</t:pagelink>
+                    </div>
+                </div>
+            </div>
+        </t:form>
+    </div>
+    <script src="/js/setResult.js"></script>
+</t:layout>
