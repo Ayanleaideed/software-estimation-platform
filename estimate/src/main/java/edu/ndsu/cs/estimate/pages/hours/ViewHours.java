@@ -13,8 +13,8 @@ import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
-import edu.ndsu.cs.estimate.cayenne.persistent.Hours;
-import edu.ndsu.cs.estimate.cayenne.persistent.Task;
+import edu.ndsu.cs.estimate.services.hours.HoursInterface;
+import edu.ndsu.cs.estimate.services.tasks.TaskInterface;
 import edu.ndsu.cs.estimate.pages.Index;
 import edu.ndsu.cs.estimate.services.hours.HoursDatabaseService;
 import edu.ndsu.cs.estimate.services.tasks.TaskDatabaseService;
@@ -34,13 +34,13 @@ public class ViewHours{
 	
 	@Property
 	@Persist
-	private Task task;
+	private TaskInterface task;
 	
 	@Property
-	private List<? extends Hours> hours;
+	private List<? extends HoursInterface> hours;
 	
 	@Property
-	private Hours hour;
+	private HoursInterface hour;
 	
 	@Property
 	private Integer taskPK;

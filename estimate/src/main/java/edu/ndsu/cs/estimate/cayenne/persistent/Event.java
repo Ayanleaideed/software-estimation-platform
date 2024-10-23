@@ -1,10 +1,12 @@
 package edu.ndsu.cs.estimate.cayenne.persistent;
 
 import edu.ndsu.cs.estimate.cayenne.persistent.auto._Event;
+import edu.ndsu.cs.estimate.entities.interfaces.EventInterface;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Event extends _Event {
+public class Event extends _Event implements EventInterface{
 
     private static final long serialVersionUID = 1L;
     

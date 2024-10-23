@@ -4,18 +4,19 @@ import java.util.Date;
 
 import org.apache.cayenne.ObjectContext;
 
+import edu.ndsu.cs.estimate.services.tasks.TaskInterface;
 import edu.ndsu.cs.estimate.cayenne.persistent.Task;
 
 public class MockHours implements HoursInterface {
 
 	private Integer	PK; 
-	private Task task;
+	private TaskInterface task;
     private Date timestamp;
     private int hoursLogged;
 	
 	private static int nextPK = 1; 
 	
-	private MockHours(int PK, Task task, Date timestamp, int hoursLogged) {
+	private MockHours(int PK, TaskInterface task, Date timestamp, int hoursLogged) {
 		super();
 		this.PK 				= PK; 
 		this.task 				= task;
@@ -27,7 +28,7 @@ public class MockHours implements HoursInterface {
 		this(nextPK++, new Task(), new Date(0), 0);
 	}
 	
-	public MockHours(Task task, Date timestamp, int hoursLogged) {
+	public MockHours(TaskInterface task, Date timestamp, int hoursLogged) {
 		this(nextPK++, task, timestamp, hoursLogged);
 	}
 	
@@ -35,11 +36,11 @@ public class MockHours implements HoursInterface {
 		return PK;
 	} 
 	
-	public Task getTask() {
+	public TaskInterface getTask() {
 		return this.task;
 	}
 	
-	public void setTask(Task task) {
+	public void setTask(TaskInterface task) {
 		this.task = task;
 	}
 	

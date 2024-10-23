@@ -1,8 +1,13 @@
 package edu.ndsu.cs.estimate.services.database.implementations;
 
 import edu.ndsu.cs.estimate.cayenne.persistent.Event;
+import edu.ndsu.cs.estimate.cayenne.persistent.Task;
+import edu.ndsu.cs.estimate.entities.interfaces.EventInterface;
 import edu.ndsu.cs.estimate.services.database.interfaces.CayenneService;
 import edu.ndsu.cs.estimate.services.database.interfaces.EventDatabaseService;
+import edu.ndsu.cs.estimate.services.tasks.TaskInterface;
+
+import org.apache.cayenne.Cayenne;
 import org.apache.cayenne.ObjectContext;
 import org.apache.cayenne.query.ColumnSelect;
 import org.apache.cayenne.query.ObjectSelect;
@@ -24,26 +29,26 @@ public class CayenneEventDatabaseService implements EventDatabaseService {
     }
 
     @Override
-    public List<Event> findAllEvents() {
+    public List<? extends EventInterface> findAllEvents() {
         ObjectContext context = cayenneService.newContext();
         return ObjectSelect.query(Event.class).select(context);
     }
 
     @Override
-    public Event findEventById(int eventId) {
+    public EventInterface findEventById(int eventId) {
         ObjectContext context = cayenneService.newContext();
         return SelectById.query(Event.class, eventId).selectOne(context);
     }
     
     @Override
-    public List<Event> findEventsInRange(Date start, Date end, String category) {
+    public List<? extends EventInterface> findEventsInRange(Date start, Date end, String category) {
         ObjectContext context = cayenneService.newContext();
 
         Property<Date> eventDateProperty = Event.EVENT_DATE;
         Property<String> eventNameProperty = Event.NAME;
         Property<String> eventCategoryProperty = Event.CATEGORY;
         
-        ObjectSelect<Event> query = ObjectSelect.query(Event.class)
+        ObjectSelect<? extends EventInterface> query = ObjectSelect.query(Event.class)
             .where(eventDateProperty.between(start, end))
             .orderBy(eventDateProperty.asc(), eventNameProperty.asc());
         
@@ -59,7 +64,7 @@ public class CayenneEventDatabaseService implements EventDatabaseService {
         ObjectContext context = cayenneService.newContext();
         Property<Date> eventDateProperty = Event.EVENT_DATE;
         
-        List<Event> events = ObjectSelect.query(Event.class)
+        List<? extends EventInterface> events = ObjectSelect.query(Event.class)
                 .where(eventDateProperty.between(start, end))
                 .select(context);
 
@@ -68,7 +73,7 @@ public class CayenneEventDatabaseService implements EventDatabaseService {
         }
 
         Set<String> categorySet = new HashSet<>();
-        for (Event event : events) {
+        for (EventInterface event : events) {
             categorySet.add(event.getCategory());
         }
 
@@ -90,18 +95,10 @@ public class CayenneEventDatabaseService implements EventDatabaseService {
     }
 
     @Override
-    public Event updateEvent(int eventId, String name, String description, String category, Date eventDate) {
-        ObjectContext context = cayenneService.newContext();
-        Event event = SelectById.query(Event.class, eventId).selectOne(context);
-        if (event != null) {
-            event.setName(name);
-            event.setDescription(description);
-            event.setCategory(category);
-            event.setEventDate(eventDate); 
-            context.commitChanges();
-        }
-        return event;
-    }
+	public void updateEvent(EventInterface event) {
+		// Typecast to access the context for the Cayenne object to commit changes made using it
+		((Event)event).getObjectContext().commitChanges();
+	}
 
     @Override
     public void deleteEvent(int eventId) {
@@ -123,4 +120,15 @@ public class CayenneEventDatabaseService implements EventDatabaseService {
         }
         return event;
     }
+    
+    @Override
+	public EventInterface getNewEvent() {
+		return cayenneService.newContext().newObject(Event.class); 
+	}
+    
+    @Override
+	public EventInterface getEvent(int PK) {
+		return Cayenne.objectForPK(cayenneService.newContext(), Event.class, PK);
+	}
+
 }

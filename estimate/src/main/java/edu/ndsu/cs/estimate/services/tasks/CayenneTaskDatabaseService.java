@@ -11,6 +11,7 @@ import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionAttribute;
 
+import edu.ndsu.cs.estimate.services.tasks.TaskInterface;
 import edu.ndsu.cs.estimate.cayenne.persistent.Task;
 import edu.ndsu.cs.estimate.cayenne.persistent.User;
 import edu.ndsu.cs.estimate.entities.interfaces.UserAccount;
@@ -32,17 +33,13 @@ public class CayenneTaskDatabaseService implements TaskDatabaseService{
 	}
 	
 	@Override
-	public List<? extends Task> listAllTasks(Date start, Date end, UserAccount user) {
-		return ObjectSelect.query(Task.class)
-				.where(Task.COMPLETED.eq(false).andExp(Task.DROPPED.eq(false).andExp(Task.WILL_NOT_COMPLETE.eq(false)).andExp(Task.EST_END_DATE.between(start, end).andExp(Task.USER.eq((User)user)))))
-				.select(cayenneService.newContext());
+	public List<? extends TaskInterface> listAllTasks(Date start, Date end, UserAccount user) {
+		return ObjectSelect.query(Task.class).where(Task.START_DATE.between(start, end).orExp(Task.EST_END_DATE.between(start, end)).andExp(Task.COMPLETED.eq(false).andExp(Task.DROPPED.eq(false))).andExp(Task.WILL_NOT_COMPLETE.eq(false))).select(cayenneService.newContext());
 	}
 
 	@Override
-	public List<? extends Task> listCompleted(User user){
-		return ObjectSelect.query(Task.class)
-				.where(Task.COMPLETED.eq(true).andExp(Task.DROPPED.eq(false)).andExp(Task.WILL_NOT_COMPLETE.eq(false)))
-				.select(cayenneService.newContext());
+	public List<? extends TaskInterface> listCompleted(User user){
+		return ObjectSelect.query(Task.class).where(Task.COMPLETED.eq(true).andExp(Task.DROPPED.eq(false)).andExp(Task.WILL_NOT_COMPLETE.eq(false))).select(cayenneService.newContext());
 	}
 	
 	//checks if a submitted task name is unique, and if the name is submitted, it's valid
@@ -99,12 +96,12 @@ public class CayenneTaskDatabaseService implements TaskDatabaseService{
 	}
 
 	@Override
-	public Task getTask(int PK) {
+	public TaskInterface getTask(int PK) {
 		return Cayenne.objectForPK(cayenneService.newContext(), Task.class, PK);
 	}
 
 	@Override
-	public Task getNewTask() {
+	public TaskInterface getNewTask() {
 		return cayenneService.newContext().newObject(Task.class); 
 	}
 
@@ -117,7 +114,7 @@ public class CayenneTaskDatabaseService implements TaskDatabaseService{
 	}
 
 	@Override
-	public void updateTask(Task task) {
+	public void updateTask(TaskInterface task) {
 		// Typecast to access the context for the Cayenne object to commit changes made using it
 		((Task)task).getObjectContext().commitChanges();
 		

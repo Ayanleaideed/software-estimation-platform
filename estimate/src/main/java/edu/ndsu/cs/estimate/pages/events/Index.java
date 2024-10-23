@@ -1,6 +1,6 @@
 package edu.ndsu.cs.estimate.pages.events;
 
-import edu.ndsu.cs.estimate.cayenne.persistent.Event;
+import edu.ndsu.cs.estimate.entities.interfaces.EventInterface;
 import edu.ndsu.cs.estimate.services.database.interfaces.EventDatabaseService;
 
 import org.apache.tapestry5.annotations.Property;
@@ -31,13 +31,13 @@ public class Index {
     private EventDatabaseService db;
 
     @Property
-    private List<Event> events;
+    private List<? extends EventInterface> events;
     
     @Property
     private boolean noEvents;
     
     @Property
-    private Event currentEvent;
+    private EventInterface currentEvent;
 
     @Property
     @Persist
@@ -45,22 +45,13 @@ public class Index {
 
     @InjectComponent
     private Form dateForm;
-
-    @Component(id = "dateRange", parameters = {"value=dateRange"})
-    private TextField dateRangeField;
     
     @Property
     private List<String> categories = new ArrayList<>();
-    
-    @Component(id = "category", parameters = {"value=category", "model=categoryModel", "blankOption=never"})
-    private Select categorySelect;
 
     @Persist
     @Property
     private String category;
-    
-    @Component(id = "hiddenCategory", parameters = {"value=hiddenCategory"})
-    private TextField hiddenCategoryField;
 
     @Persist
     @Property
@@ -142,14 +133,16 @@ public class Index {
         }
     }
 
-    @OnEvent(value = "submit", component = "dateForm")
     void onSuccessFromDateForm() {
         System.err.println("read category: " + hiddenCategory);
         category = hiddenCategory;
+        getEvents();
     }
     
     @OnEvent(component = "delete", value = "action")
     void onDeleteFromDelete(int eventId) {
         db.deleteEvent(eventId);
+        getEvents();
     }
+
 }

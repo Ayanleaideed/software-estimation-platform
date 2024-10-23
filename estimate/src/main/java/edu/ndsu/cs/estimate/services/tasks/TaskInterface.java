@@ -59,6 +59,10 @@ public interface TaskInterface {
 			errors.add("Name must be included.");
 		} else if(getName().length() > 25) {
 			errors.add("Name cannot contain more than 25 characters."); 
+		} else if(getEstEndDate() == null) {
+			errors.add("Estimated end date must be included and in the format MM/dd/yyyy.");
+		} else if(getStartDate() == null) {
+			errors.add("Start date must be included and in the format MM/dd/yyyy.");
 		} else if(getEstEndDate().before(getStartDate())) {
 			errors.add("Estimated end date must be after start date.");
 		} else if(getTimeTaken() > 999999999999L) {
