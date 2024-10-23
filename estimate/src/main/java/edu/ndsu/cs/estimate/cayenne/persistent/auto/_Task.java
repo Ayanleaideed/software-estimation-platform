@@ -25,7 +25,7 @@ public abstract class _Task extends BaseDataObject {
     public static final Property<Integer> TASK_ID_PK_PROPERTY = Property.create(ExpressionFactory.dbPathExp("TaskId"), Integer.class);
     public static final String TASK_ID_PK_COLUMN = "TaskId";
 
-    public static final Property<LocalDate> ACTUAL_END_DATE = Property.create("actualEndDate", LocalDate.class);
+    public static final Property<Date> ACTUAL_END_DATE = Property.create("actualEndDate", Date.class);
     public static final Property<Boolean> COMPLETED = Property.create("completed", Boolean.class);
     public static final Property<Boolean> DROPPED = Property.create("dropped", Boolean.class);
     public static final Property<Date> EST_END_DATE = Property.create("estEndDate", Date.class);

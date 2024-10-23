@@ -1,13 +1,13 @@
 ----------------------------------------------------------------
-Wed Sep 25 07:27:51 CDT 2024:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0192-2926-f205-0000254879b8 
-on database directory memory:/Users/araderma/Downloads/estimate-main/estimate/testdb with class loader WebAppClassLoader{Tapestry 5 Quickstart Project}@1b0033c5 
-Loaded from file:/Users/araderma/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
+Wed Oct 23 16:31:05 CDT 2024:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0192-bb4a-5d09-0000546347d0 
+on database directory memory:C:\Users\yolky\OneDrive\Documents\Homework\Fall 2024\CSCI 413\Group Project\Repository\estimate\estimate\testdb with class loader WebAppClassLoader{Tapestry 5 Quickstart Project}@707b3023 
+Loaded from file:/C:/Users/yolky/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
 java.vendor=Azul Systems, Inc.
-java.runtime.version=11.0.13+8-LTS
-user.dir=/Users/araderma/Downloads/estimate-main/estimate
-os.name=Mac OS X
-os.arch=aarch64
-os.version=14.4.1
+java.runtime.version=17.0.12+7-LTS
+user.dir=C:\Users\yolky\OneDrive\Documents\Homework\Fall 2024\CSCI 413\Group Project\Repository\estimate\estimate
+os.name=Windows 11
+os.arch=amd64
+os.version=10.0
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''

@@ -15,7 +15,7 @@ import org.apache.tapestry5.corelib.components.TextField;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.tynamo.security.services.SecurityService;
 
-import edu.ndsu.cs.estimate.cayenne.persistent.Task;
+import edu.ndsu.cs.estimate.services.tasks.TaskInterface;
 import edu.ndsu.cs.estimate.entities.interfaces.UserAccount;
 import edu.ndsu.cs.estimate.services.database.interfaces.UserAccountDatabaseService;
 import edu.ndsu.cs.estimate.services.tasks.CayenneTaskFactory;
@@ -37,9 +37,6 @@ public class Index {
 
     @InjectComponent
     private Form dateForm;
-
-    @Component(id = "dateRange", parameters = {"value=dateRange"})
-    private TextField dateRangeField;
     
 	@Persist
 	@Property
@@ -50,10 +47,10 @@ public class Index {
 
     @Persist
     @Property
-    private List<? extends Task> tasks;
+    private List<? extends TaskInterface> tasks;
 
     @Property
-    private Task task;
+    private TaskInterface task;
 
     @InjectComponent
     private Form addHourForm;
@@ -123,7 +120,7 @@ public class Index {
         dateFormat.setLenient(false);
         Date start = new Date(0); // 1/1/1970
         // 0 ms after 1/1/1970
-        Date end = new Date(2145916800000L); // 1/1/2038
+       Date end = new Date(2145916800000L); // 1/1/2038
         // 2145916800000 ms after 1/1/1970, L for long input, instead of int
 
         if (dateRange != null && !dateRange.isEmpty()) {
@@ -166,6 +163,11 @@ public class Index {
     void onSuccessFromDateForm() {
     	getTasks(); //Update displayed tasks from range
     }
+    
+    void resetDateRange() {
+    	dateRange = "";
+    	getTasks();
+    }
 
 	
 	void onDelete(int PK) {
@@ -174,7 +176,7 @@ public class Index {
 	}
 	
 	void onSubmitFromAddHourForm(int pk) {
-		Task tempTask = taskDBS.getTask(pk);
+		TaskInterface tempTask = taskDBS.getTask(pk);
 		int temp = tempTask.getTimeTaken() + this.hours;
 		tempTask.setTimeTaken(temp);
 		taskDBS.updateTask(tempTask);
@@ -182,7 +184,7 @@ public class Index {
 	}
 	
 	void onSubmitFromAdd1HourForm(int pk) {
-		Task tempTask = taskDBS.getTask(pk);
+		TaskInterface tempTask = taskDBS.getTask(pk);
 		int temp = tempTask.getTimeTaken() + (int)1;
 		tempTask.setTimeTaken(temp);
 		taskDBS.updateTask(tempTask);
@@ -190,7 +192,7 @@ public class Index {
 	}
 	
 	void onSubmitFromAdd2HourForm(int pk) {
-		Task tempTask = taskDBS.getTask(pk);
+		TaskInterface tempTask = taskDBS.getTask(pk);
 		int temp = tempTask.getTimeTaken() + (int)2;
 		tempTask.setTimeTaken(temp);
 		taskDBS.updateTask(tempTask);
@@ -198,7 +200,7 @@ public class Index {
 	}
 	
 	void onSubmitFromAdd3HourForm(int pk) {
-		Task tempTask = taskDBS.getTask(pk);
+		TaskInterface tempTask = taskDBS.getTask(pk);
 		int temp = tempTask.getTimeTaken() + (int)3;
 		tempTask.setTimeTaken(temp);
 		taskDBS.updateTask(tempTask);
@@ -206,7 +208,7 @@ public class Index {
 	}
 	
 	void onSubmitFromAdd5HourForm(int pk) {
-		Task tempTask = taskDBS.getTask(pk);
+		TaskInterface tempTask = taskDBS.getTask(pk);
 		int temp = tempTask.getTimeTaken() + (int)5;
 		tempTask.setTimeTaken(temp);
 		taskDBS.updateTask(tempTask);
@@ -214,7 +216,7 @@ public class Index {
 	}
 	
 	void onSubmitFromAdd10HourForm(int pk) {
-		Task tempTask = taskDBS.getTask(pk);
+		TaskInterface tempTask = taskDBS.getTask(pk);
 		int temp = tempTask.getTimeTaken() + (int)10;
 		tempTask.setTimeTaken(temp);
 		taskDBS.updateTask(tempTask);
@@ -232,14 +234,14 @@ public class Index {
 	
 	@OnEvent(component="complete")
 	Object onClickCloseComplete(int pk) {
-			Task tempTask = taskDBS.getTask(pk);
+			TaskInterface tempTask = taskDBS.getTask(pk);
 			tempTask.setCompleted(true);
 			taskDBS.updateTask(tempTask);
 		return Index.class;
 	}
 	@OnEvent(component="drop")
 	Object onClickCloseDropped(int pk) {
-			Task tempTask = taskDBS.getTask(pk);
+			TaskInterface tempTask = taskDBS.getTask(pk);
 			tempTask.setDropped(true);
 			taskDBS.updateTask(tempTask);
 		return Index.class;
@@ -247,7 +249,7 @@ public class Index {
 	
 	@OnEvent(component="willNotComplete")
 	Object onClickCloseWillNotComplete(int pk) {
-			Task tempTask = taskDBS.getTask(pk);
+			TaskInterface tempTask = taskDBS.getTask(pk);
 			tempTask.setWillNotComplete(true);
 			taskDBS.updateTask(tempTask);
 		return Index.class;

@@ -11,9 +11,11 @@ import org.apache.cayenne.query.SelectQuery;
 //import org.apache.tapestry5.annotations.Property;
 //import org.apache.tapestry5.annotations.SessionAttribute;
 
+import edu.ndsu.cs.estimate.services.hours.HoursInterface;
+import edu.ndsu.cs.estimate.services.tasks.TaskInterface;
+import edu.ndsu.cs.estimate.services.database.interfaces.CayenneService;
 import edu.ndsu.cs.estimate.cayenne.persistent.Hours;
 import edu.ndsu.cs.estimate.cayenne.persistent.Task;
-import edu.ndsu.cs.estimate.services.database.interfaces.CayenneService;
 
 
 
@@ -21,7 +23,7 @@ public class CayenneHoursDatabaseService implements HoursDatabaseService{
 
 	private CayenneService cayenneService;
 	
-	private Map<Integer, Hours> hoursMap;
+	private Map<Integer, HoursInterface> hoursMap;
 	
 	
 	public CayenneHoursDatabaseService(CayenneService cayenneService) {
@@ -33,24 +35,24 @@ public class CayenneHoursDatabaseService implements HoursDatabaseService{
 	}
 
 	@Override
-	public List<? extends Hours> listAllHoursByTask(Task newTask) {
-		return ObjectSelect.query(Hours.class)
-				.where(Hours.TASKS.eq(newTask))
+	public List<? extends HoursInterface> listAllHoursByTask(TaskInterface newTask) {
+		return ObjectSelect.query(HoursInterface.class)
+				.where(Hours.TASKS.eq((Task) newTask))
 				.select(cayenneService.newContext());
 	}
 
 	@Override
-	public Hours getHours(int PK) {
-		Hours hours = hoursMap.get(PK);
+	public HoursInterface getHours(int PK) {
+		HoursInterface hours = hoursMap.get(PK);
 		if (hours != null) {
-			hours = Cayenne.objectForPK(cayenneService.newContext(), Hours.class, PK);
+			hours = Cayenne.objectForPK(cayenneService.newContext(), HoursInterface.class, PK);
 		}
 		return hours;
 	}
 
 	@Override
-	public Hours getNewHours() {
-		return cayenneService.newContext().newObject(Hours.class);
+	public HoursInterface getNewHours() {
+		return cayenneService.newContext().newObject(HoursInterface.class);
 	}
 
 	@Override
@@ -63,7 +65,7 @@ public class CayenneHoursDatabaseService implements HoursDatabaseService{
 	}
 
 	@Override
-	public void updateHours(Hours hours) {
+	public void updateHours(HoursInterface hours) {
 //		((Hours)hours).getObjectContext().commitChanges();
 		hoursMap.put(hours.getPK(), hours);
 	}

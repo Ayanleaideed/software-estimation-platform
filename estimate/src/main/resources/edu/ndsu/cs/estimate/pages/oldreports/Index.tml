@@ -8,11 +8,8 @@
                 </div>
                 <div class="col-12 col-lg-6 order-lg-2 order-2 mb-2 mb-lg-0 text-center">
                     <t:form t:id="dateForm" class="date-form w-100">
-                        <div class="input-group">
-                            <span class="input-group-text" title="Planned end date">
-                                <i class="fa fa-calendar"></i>
-                            </span>            
-                            <input t:id="dateRange" type="text" class="form-control" placeholder="Showing all dates" readonly="readonly"/>
+                        <div class="input-group">           
+                            <t:textField t:id="dateInput" value="dateRange" placeholder="Showing all dates" />
                             <input type="submit" class="btn btn-primary" value="Search"/>
                             <button type="button" class="btn btn-secondary" onclick="resetDateRange()">Show All</button>
                         </div>
