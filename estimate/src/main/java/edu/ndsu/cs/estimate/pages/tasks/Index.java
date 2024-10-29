@@ -72,7 +72,7 @@ public class Index {
 
     @Inject
     private SecurityService securityService;
-
+ 
     @Inject
     private UserAccountDatabaseService userAccountDatabaseService;
 
@@ -88,7 +88,10 @@ public class Index {
     @Property
     private Boolean makeExamples = null;
 
-
+    @SessionAttribute
+    @Property
+    private String selectedStatus = null;
+    
     @SetupRender
     void setupRender() {
         if (noTasks == null) {
@@ -96,6 +99,9 @@ public class Index {
         }
         if (makeExamples == null) {
             makeExamples = false;
+        }
+        if (selectedStatus == null) {
+            selectedStatus = "In Progress"; // Default status to query for 
         }
         if (securityService.getSubject().getPrincipal() == null ) {
         	return;  //User needs to log in
@@ -112,16 +118,14 @@ public class Index {
         
         String principal = securityService.getSubject().getPrincipal().toString();
         userAccount = userAccountDatabaseService.getUserAccount(principal);
-        getTasks();
+        getTasks(selectedStatus);
     }
 
-    private void getTasks() {
+    private void getTasks(String status) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         dateFormat.setLenient(false);
-        Date start = new Date(0); // 1/1/1970
-        // 0 ms after 1/1/1970
-       Date end = new Date(2145916800000L); // 1/1/2038
-        // 2145916800000 ms after 1/1/1970, L for long input, instead of int
+        Date start = new Date(0);                   // 1/1/1970
+        Date end = new Date(2145916800000L);        // 1/1/2038
 
         if (dateRange != null && !dateRange.isEmpty()) {
             String[] dates = dateRange.split(" - ");
@@ -135,13 +139,46 @@ public class Index {
             }
         }
         if (makeExamples) makeExampleTasks();
-        tasks = taskDBS.listAllTasks(start, end, userAccount);
+        tasks = taskDBS.listAllTasks(start, end, userAccount, selectedStatus);
         noTasks = tasks.isEmpty();
         return;
     }
     
-    
+    @OnEvent(component = "filterAll")
+    Object onFilterStatusAll() {
+        selectedStatus = "All";
+        getTasks(selectedStatus);
+        return Index.class;
+    }
 
+    @OnEvent(component = "filterInProgress")
+    Object onFilterStatusInProgress() {
+        selectedStatus = "In Progress";
+        getTasks(selectedStatus);
+        return Index.class;
+    }
+
+    @OnEvent(component = "filterCompleted")
+    Object onFilterStatusCompleted() {
+        selectedStatus = "Completed";
+        getTasks(selectedStatus);
+        return Index.class;
+    }
+
+    @OnEvent(component = "filterDropped")
+    Object onFilterStatusDropped() {
+        selectedStatus = "Dropped";
+        getTasks(selectedStatus);
+        return Index.class;
+    }
+    
+    @OnEvent(component = "filterWillNotComplete")
+    Object onFilterStatusWillNotComplete() {
+        selectedStatus = "Will Not Complete";
+        getTasks(selectedStatus);
+        return Index.class;
+    }
+    
     void onValidateFromDateForm() {
         if (dateRange != null && !dateRange.isEmpty()) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
@@ -161,18 +198,18 @@ public class Index {
     }
 
     void onSuccessFromDateForm() {
-    	getTasks(); //Update displayed tasks from range
+    	getTasks(selectedStatus); //Update displayed tasks from range
     }
     
     void resetDateRange() {
     	dateRange = "";
-    	getTasks();
+    	getTasks(selectedStatus);
     }
 
 	
 	void onDelete(int PK) {
 		taskDBS.deleteTask(PK);
-		getTasks(); //Update displayed tasks
+		getTasks(selectedStatus); //Update displayed tasks
 	}
 	
 	void onSubmitFromAddHourForm(int pk) {
@@ -180,7 +217,7 @@ public class Index {
 		int temp = tempTask.getTimeTaken() + this.hours;
 		tempTask.setTimeTaken(temp);
 		taskDBS.updateTask(tempTask);
-		getTasks(); //Update displayed tasks
+		getTasks(selectedStatus); //Update displayed tasks
 	}
 	
 	void onSubmitFromAdd1HourForm(int pk) {
@@ -188,7 +225,7 @@ public class Index {
 		int temp = tempTask.getTimeTaken() + (int)1;
 		tempTask.setTimeTaken(temp);
 		taskDBS.updateTask(tempTask);
-		getTasks(); //Update displayed tasks
+		getTasks(selectedStatus); //Update displayed tasks
 	}
 	
 	void onSubmitFromAdd2HourForm(int pk) {
@@ -196,7 +233,7 @@ public class Index {
 		int temp = tempTask.getTimeTaken() + (int)2;
 		tempTask.setTimeTaken(temp);
 		taskDBS.updateTask(tempTask);
-		getTasks(); //Update displayed tasks
+		getTasks(selectedStatus); //Update displayed tasks
 	}
 	
 	void onSubmitFromAdd3HourForm(int pk) {
@@ -204,7 +241,7 @@ public class Index {
 		int temp = tempTask.getTimeTaken() + (int)3;
 		tempTask.setTimeTaken(temp);
 		taskDBS.updateTask(tempTask);
-		getTasks(); //Update displayed tasks
+		getTasks(selectedStatus); //Update displayed tasks
 	}
 	
 	void onSubmitFromAdd5HourForm(int pk) {
@@ -212,7 +249,7 @@ public class Index {
 		int temp = tempTask.getTimeTaken() + (int)5;
 		tempTask.setTimeTaken(temp);
 		taskDBS.updateTask(tempTask);
-		getTasks(); //Update displayed tasks
+		getTasks(selectedStatus); //Update displayed tasks
 	}
 	
 	void onSubmitFromAdd10HourForm(int pk) {
@@ -220,7 +257,7 @@ public class Index {
 		int temp = tempTask.getTimeTaken() + (int)10;
 		tempTask.setTimeTaken(temp);
 		taskDBS.updateTask(tempTask);
-		getTasks(); //Update displayed tasks
+		getTasks(selectedStatus); //Update displayed tasks
 	}
 	
 	void makeExampleTasks() {
@@ -228,30 +265,33 @@ public class Index {
         for (int i = 0; i < 5; i++) {
             CayenneTaskFactory.generateInstance(taskDBS.getCayenneService().newContext(), userAccount);
         }
-        getTasks(); //Update displayed tasks after adding
+        getTasks(selectedStatus); //Update displayed tasks after adding
         System.err.println("Amount of tasks now " + tasks.size());
 	}
 	
 	@OnEvent(component="complete")
 	Object onClickCloseComplete(int pk) {
-			TaskInterface tempTask = taskDBS.getTask(pk);
-			tempTask.setCompleted(true);
-			taskDBS.updateTask(tempTask);
+        TaskInterface tempTask = taskDBS.getTask(pk);
+        tempTask.setCompleted(true);
+        taskDBS.updateTask(tempTask);
+        getTasks(selectedStatus);
 		return Index.class;
 	}
 	@OnEvent(component="drop")
 	Object onClickCloseDropped(int pk) {
-			TaskInterface tempTask = taskDBS.getTask(pk);
-			tempTask.setDropped(true);
-			taskDBS.updateTask(tempTask);
+        TaskInterface tempTask = taskDBS.getTask(pk);
+        tempTask.setDropped(true);
+        taskDBS.updateTask(tempTask);
+        getTasks(selectedStatus);
 		return Index.class;
 	}
 	
 	@OnEvent(component="willNotComplete")
 	Object onClickCloseWillNotComplete(int pk) {
-			TaskInterface tempTask = taskDBS.getTask(pk);
-			tempTask.setWillNotComplete(true);
-			taskDBS.updateTask(tempTask);
+        TaskInterface tempTask = taskDBS.getTask(pk);
+        tempTask.setWillNotComplete(true);
+        taskDBS.updateTask(tempTask);
+        getTasks(selectedStatus);
 		return Index.class;
 	}
 }

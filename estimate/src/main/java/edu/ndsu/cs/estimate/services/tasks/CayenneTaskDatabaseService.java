@@ -7,11 +7,7 @@ import java.util.List;
 import org.apache.cayenne.Cayenne;
 import org.apache.cayenne.ObjectContext;
 import org.apache.cayenne.query.ObjectSelect;
-import org.apache.tapestry5.annotations.Persist;
-import org.apache.tapestry5.annotations.Property;
-import org.apache.tapestry5.annotations.SessionAttribute;
 
-import edu.ndsu.cs.estimate.services.tasks.TaskInterface;
 import edu.ndsu.cs.estimate.cayenne.persistent.Task;
 import edu.ndsu.cs.estimate.cayenne.persistent.User;
 import edu.ndsu.cs.estimate.entities.interfaces.UserAccount;
@@ -33,8 +29,25 @@ public class CayenneTaskDatabaseService implements TaskDatabaseService{
 	}
 	
 	@Override
-	public List<? extends TaskInterface> listAllTasks(Date start, Date end, UserAccount user) {
-		return ObjectSelect.query(Task.class).where(Task.START_DATE.between(start, end).orExp(Task.EST_END_DATE.between(start, end)).andExp(Task.COMPLETED.eq(false).andExp(Task.DROPPED.eq(false))).andExp(Task.WILL_NOT_COMPLETE.eq(false))).select(cayenneService.newContext());
+	public List<? extends TaskInterface> listAllTasks(Date start, Date end, UserAccount user, String status) {
+		ObjectSelect<Task> query = ObjectSelect.query(Task.class)
+				.where(Task.START_DATE.between(start, end)
+						.orExp(Task.EST_END_DATE.between(start, end)));
+
+		// Add status-specific conditions based on the value of `status`
+		if ("Completed".equals(status)) {
+			query = query.and(Task.COMPLETED.eq(true));
+		} else if ("Dropped".equals(status)) {
+			query = query.and(Task.DROPPED.eq(true));
+		} else if ("Will Not Complete".equals(status)) {
+			query = query.and(Task.WILL_NOT_COMPLETE.eq(true));
+		} else if ("In Progress".equals(status)) {
+			query = query.and(Task.COMPLETED.eq(false))
+						.and(Task.DROPPED.eq(false))
+						.and(Task.WILL_NOT_COMPLETE.eq(false));
+		}
+
+		return query.select(cayenneService.newContext());
 	}
 
 	@Override
@@ -119,6 +132,5 @@ public class CayenneTaskDatabaseService implements TaskDatabaseService{
 		((Task)task).getObjectContext().commitChanges();
 		
 	}
-
 }
 
