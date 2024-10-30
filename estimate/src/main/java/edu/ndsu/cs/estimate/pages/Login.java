@@ -35,6 +35,13 @@ public class Login {
         if (currentUser == null) {
             throw new IllegalStateException("Subject can’t be null");
         }
+        
+        // Adding password length validation (minimum 10 characters)
+//        if (password.length() < 10) {
+//            loginForm.recordError("Password must be at least 10 characters long.");
+//            return null; // Stay on the login page if validation fails by just returning null 
+//        }
+//        
 
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
         token.setRememberMe(rememberMe);
