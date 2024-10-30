@@ -27,10 +27,7 @@
                             <t:pagelink page="tasks" class="btn btn-secondary">Return To Tasks List</t:pagelink>
                         </div>
                     </div>
-                    
-                    
                 </div>
-
                     <t:if test="noHours">
                         <div class="row justify-content-center">
                             <div class="col-md-6 col-lg-4 mb-3">
@@ -39,26 +36,26 @@
                         </div>
                     </t:if>
 					<t:unless test="noHours">
-						<t:grid source="hours" row="hour" include="timestamp, hoursLogged" add="actions" >
-							<p:timestampCell>${hour.getTimestamp()}</p:timestampCell>
-							<p:hoursLogged>${hour.getHoursLogged()}</p:hoursLogged>
-							<p:actionsCell>
-								<t:pagelink page="hours/ViewHours" context="hour.pk">View</t:pagelink> |
-								<t:security.hasRole role="manager">
-									<t:pagelink page="hours/EditHours" context="hour.pk">Edit</t:pagelink> |
-								</t:security.hasRole>
-								<t:security.hasAnyRoles roles="manager, admin">
-									<t:eventlink event="delete" context="hour.pk" 
-											t:mixins="Confirm" Confirm.message="Delete Product?">Delete</t:eventlink>
-								</t:security.hasAnyRoles>
-							</p:actionsCell>
-						</t:grid>
-					</t:unless>
-					<div class="row justify-content-center mb-3">
-						<div class="col-md-6 col-lg-4 d-grid gap-2">
-							<t:pagelink page="hours/AddHours" class="btn btn-success">Add Hours</t:pagelink>
-						</div>
-					</div>
+                        <t:grid source="hours" row="hour" include="timestamp, hoursLogged" add="actions" class="table table-bordered text-center">
+                            <p:timestampCell>
+                                ${hour.getTimestamp()}
+                            </p:timestampCell>
+                            <p:hoursLoggedCell>
+                                ${hour.getHoursLogged()}
+                            </p:hoursLoggedCell>
+                            <p:actionsCell>
+                                <t:pagelink page="hours/EditHours" context="hour.pk" class="btn btn-warning btn-md">Edit</t:pagelink>
+                                &nbsp;
+                                <t:eventlink event="delete" context="hour.pk" 
+                                            t:mixins="Confirm" Confirm.message="Are you sure you want to delete this entry?" class="btn btn-danger btn-md">Delete</t:eventlink>
+                            </p:actionsCell>
+                            <p:empty>
+                                <tr>
+                                    <td colspan="3" class="text-center">There are no hours logged. You can <t:pagelink page="hours/AddHours">add some</t:pagelink>.</td>
+                                </tr>
+                            </p:empty>
+                        </t:grid>
+                    </t:unless>
                 </t:form>
             </t:if>
             <t:if test="!task">

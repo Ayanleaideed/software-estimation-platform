@@ -86,31 +86,33 @@
                                         <button class="btn btn-secondary mb-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             Log Hours
                                         </button>
-                                        <ul class="dropdown-menu">
-                                            <li>
-                                                Custom Log Hours:
-                                                <t:form t:id="addHourForm" context="task.PK">
-                                                    <t:textfield t:id="hours" />
-                                                    <t:submit value="Add Hours" />
-                                                </t:form>
+                                        <ul class="dropdown-menu text-center" style="min-width: 300px;">
+                                            <li class="d-flex flex-column align-items-center">
+                                                <div class="d-flex align-items-center">
+                                                    <span class="me-2">Hours:</span>
+                                                    <t:form t:id="addHourForm" context="task.PK" class="d-flex">
+                                                        <t:textfield t:id="hours" class="form-control me-2 text-center" style="width: 100px;" placeholder="Enter hours"/>
+                                                        <t:submit value="Add Hours" class="btn btn-primary"/>
+                                                    </t:form>
+                                                </div>
                                             </li>
-                                            <li>
-                                                Hours Quick Add:
-                                                <div class="d-flex">
-                                                    <t:form t:id="add1HourForm" context="task.PK">
-                                                        <input type="submit" value="+1" />
-                                                        </t:form>
-                                                        <t:form t:id="add2HourForm" context="task.PK">
-                                                        <input type="submit" value="+2" />
-                                                        </t:form>
-                                                        <t:form t:id="add3HourForm" context="task.PK">
-                                                        <input type="submit" value="+3" />
-                                                        </t:form>
-                                                    <t:form t:id="add5HourForm" context="task.PK">
-                                                        <input type="submit" value="+5" />
-                                                        </t:form>
+                                            <li class="d-flex flex-column align-items-center border-top mt-2">
+                                                <span class="mb-2">Hours Quick Add:</span>
+                                                <div class="d-flex justify-content-center">
+                                                    <t:form t:id="add1HourForm" context="task.PK" class="me-1">
+                                                        <input type="submit" value="+1" class="btn btn-outline-secondary btn-sm" />
+                                                    </t:form>
+                                                    <t:form t:id="add2HourForm" context="task.PK" class="me-1">
+                                                        <input type="submit" value="+2" class="btn btn-outline-secondary btn-sm" />
+                                                    </t:form>
+                                                    <t:form t:id="add3HourForm" context="task.PK" class="me-1">
+                                                        <input type="submit" value="+3" class="btn btn-outline-secondary btn-sm" />
+                                                    </t:form>
+                                                    <t:form t:id="add5HourForm" context="task.PK" class="me-1">
+                                                        <input type="submit" value="+5" class="btn btn-outline-secondary btn-sm" />
+                                                    </t:form>
                                                     <t:form t:id="add10HourForm" context="task.PK">
-                                                        <input type="submit" value="+10" />
+                                                        <input type="submit" value="+10" class="btn btn-outline-secondary btn-sm" />
                                                     </t:form>
                                                 </div>
                                             </li>

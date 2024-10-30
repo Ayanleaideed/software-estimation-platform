@@ -3,7 +3,6 @@ package edu.ndsu.cs.estimate.pages.tasks;
 import org.apache.tapestry5.alerts.AlertManager;
 import org.apache.tapestry5.alerts.Duration;
 import org.apache.tapestry5.alerts.Severity;
-import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.InjectComponent;
 import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.Persist;
@@ -11,13 +10,14 @@ import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionAttribute;
 import org.apache.tapestry5.annotations.SetupRender;
 import org.apache.tapestry5.corelib.components.Form;
-import org.apache.tapestry5.corelib.components.TextField;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.tynamo.security.services.SecurityService;
 
 import edu.ndsu.cs.estimate.services.tasks.TaskInterface;
 import edu.ndsu.cs.estimate.entities.interfaces.UserAccount;
 import edu.ndsu.cs.estimate.services.database.interfaces.UserAccountDatabaseService;
+import edu.ndsu.cs.estimate.services.hours.HoursDatabaseService;
+import edu.ndsu.cs.estimate.services.hours.HoursInterface;
 import edu.ndsu.cs.estimate.services.tasks.CayenneTaskFactory;
 import edu.ndsu.cs.estimate.services.tasks.TaskDatabaseService;
 
@@ -44,6 +44,9 @@ public class Index {
 	
     @Inject
     private TaskDatabaseService taskDBS;
+
+    @Inject 
+    private HoursDatabaseService hoursDBS;
 
     @Persist
     @Property
@@ -213,51 +216,153 @@ public class Index {
 	}
 	
 	void onSubmitFromAddHourForm(int pk) {
-		TaskInterface tempTask = taskDBS.getTask(pk);
-		int temp = tempTask.getTimeTaken() + this.hours;
-		tempTask.setTimeTaken(temp);
-		taskDBS.updateTask(tempTask);
-		getTasks(selectedStatus); //Update displayed tasks
+		// Retrieve and persist the task to ensure it's fully managed
+        TaskInterface tempTask = taskDBS.getTask(pk);
+    
+        // Ensure the task has a valid primary key by committing it if not already done
+        if (tempTask.getPK() == null) {
+            taskDBS.updateTask(tempTask);  // Commit task to the database to ensure PK is set
+        }
+    
+        // Now create a new Hours entry and associate it with tempTask
+        HoursInterface newHour = hoursDBS.getNewHours(tempTask); // Pass tempTask to ensure context consistency
+        newHour.setHoursLogged(this.hours);
+        newHour.setTimestamp(new Date());
+        newHour.setTask(tempTask);  // Link Hours to Task
+    
+        // Commit the new hour entry and update task's total time taken
+        hoursDBS.updateHours(newHour);
+        int updatedTimeTaken = tempTask.getTimeTaken() + this.hours;
+        tempTask.setTimeTaken(updatedTimeTaken);
+        taskDBS.updateTask(tempTask);  // Commit updated task with incremented hours
+    
+        // Refresh displayed tasks
+        getTasks(selectedStatus);
 	}
 	
-	void onSubmitFromAdd1HourForm(int pk) {
-		TaskInterface tempTask = taskDBS.getTask(pk);
-		int temp = tempTask.getTimeTaken() + (int)1;
-		tempTask.setTimeTaken(temp);
-		taskDBS.updateTask(tempTask);
-		getTasks(selectedStatus); //Update displayed tasks
-	}
+    void onSubmitFromAdd1HourForm(int pk) {
+        // Retrieve and persist the task to ensure it's fully managed
+        TaskInterface tempTask = taskDBS.getTask(pk);
+    
+        // Ensure the task has a valid primary key by committing it if not already done
+        if (tempTask.getPK() == null) {
+            taskDBS.updateTask(tempTask);  // Commit task to the database to ensure PK is set
+        }
+    
+        // Now create a new Hours entry and associate it with tempTask
+        HoursInterface newHour = hoursDBS.getNewHours(tempTask); // Pass tempTask to ensure context consistency
+        newHour.setHoursLogged(1);
+        newHour.setTimestamp(new Date());
+        newHour.setTask(tempTask);  // Link Hours to Task
+    
+        // Commit the new hour entry and update task's total time taken
+        hoursDBS.updateHours(newHour);
+        int updatedTimeTaken = tempTask.getTimeTaken() + 1;
+        tempTask.setTimeTaken(updatedTimeTaken);
+        taskDBS.updateTask(tempTask);  // Commit updated task with incremented hours
+    
+        // Refresh displayed tasks
+        getTasks(selectedStatus);
+    }
 	
 	void onSubmitFromAdd2HourForm(int pk) {
-		TaskInterface tempTask = taskDBS.getTask(pk);
-		int temp = tempTask.getTimeTaken() + (int)2;
-		tempTask.setTimeTaken(temp);
-		taskDBS.updateTask(tempTask);
-		getTasks(selectedStatus); //Update displayed tasks
+		// Retrieve and persist the task to ensure it's fully managed
+        TaskInterface tempTask = taskDBS.getTask(pk);
+    
+        // Ensure the task has a valid primary key by committing it if not already done
+        if (tempTask.getPK() == null) {
+            taskDBS.updateTask(tempTask);  // Commit task to the database to ensure PK is set
+        }
+    
+        // Now create a new Hours entry and associate it with tempTask
+        HoursInterface newHour = hoursDBS.getNewHours(tempTask); // Pass tempTask to ensure context consistency
+        newHour.setHoursLogged(2);
+        newHour.setTimestamp(new Date());
+        newHour.setTask(tempTask);  // Link Hours to Task
+    
+        // Commit the new hour entry and update task's total time taken
+        hoursDBS.updateHours(newHour);
+        int updatedTimeTaken = tempTask.getTimeTaken() + 2;
+        tempTask.setTimeTaken(updatedTimeTaken);
+        taskDBS.updateTask(tempTask);  // Commit updated task with incremented hours
+    
+        // Refresh displayed tasks
+        getTasks(selectedStatus);
 	}
 	
 	void onSubmitFromAdd3HourForm(int pk) {
-		TaskInterface tempTask = taskDBS.getTask(pk);
-		int temp = tempTask.getTimeTaken() + (int)3;
-		tempTask.setTimeTaken(temp);
-		taskDBS.updateTask(tempTask);
-		getTasks(selectedStatus); //Update displayed tasks
+		// Retrieve and persist the task to ensure it's fully managed
+        TaskInterface tempTask = taskDBS.getTask(pk);
+    
+        // Ensure the task has a valid primary key by committing it if not already done
+        if (tempTask.getPK() == null) {
+            taskDBS.updateTask(tempTask);  // Commit task to the database to ensure PK is set
+        }
+    
+        // Now create a new Hours entry and associate it with tempTask
+        HoursInterface newHour = hoursDBS.getNewHours(tempTask); // Pass tempTask to ensure context consistency
+        newHour.setHoursLogged(3);
+        newHour.setTimestamp(new Date());
+        newHour.setTask(tempTask);  // Link Hours to Task
+    
+        // Commit the new hour entry and update task's total time taken
+        hoursDBS.updateHours(newHour);
+        int updatedTimeTaken = tempTask.getTimeTaken() + 3;
+        tempTask.setTimeTaken(updatedTimeTaken);
+        taskDBS.updateTask(tempTask);  // Commit updated task with incremented hours
+    
+        // Refresh displayed tasks
+        getTasks(selectedStatus);
 	}
 	
 	void onSubmitFromAdd5HourForm(int pk) {
-		TaskInterface tempTask = taskDBS.getTask(pk);
-		int temp = tempTask.getTimeTaken() + (int)5;
-		tempTask.setTimeTaken(temp);
-		taskDBS.updateTask(tempTask);
-		getTasks(selectedStatus); //Update displayed tasks
+		// Retrieve and persist the task to ensure it's fully managed
+        TaskInterface tempTask = taskDBS.getTask(pk);
+    
+        // Ensure the task has a valid primary key by committing it if not already done
+        if (tempTask.getPK() == null) {
+            taskDBS.updateTask(tempTask);  // Commit task to the database to ensure PK is set
+        }
+    
+        // Now create a new Hours entry and associate it with tempTask
+        HoursInterface newHour = hoursDBS.getNewHours(tempTask); // Pass tempTask to ensure context consistency
+        newHour.setHoursLogged(5);
+        newHour.setTimestamp(new Date());
+        newHour.setTask(tempTask);  // Link Hours to Task
+    
+        // Commit the new hour entry and update task's total time taken
+        hoursDBS.updateHours(newHour);
+        int updatedTimeTaken = tempTask.getTimeTaken() + 5;
+        tempTask.setTimeTaken(updatedTimeTaken);
+        taskDBS.updateTask(tempTask);  // Commit updated task with incremented hours
+    
+        // Refresh displayed tasks
+        getTasks(selectedStatus);
 	}
 	
 	void onSubmitFromAdd10HourForm(int pk) {
-		TaskInterface tempTask = taskDBS.getTask(pk);
-		int temp = tempTask.getTimeTaken() + (int)10;
-		tempTask.setTimeTaken(temp);
-		taskDBS.updateTask(tempTask);
-		getTasks(selectedStatus); //Update displayed tasks
+		// Retrieve and persist the task to ensure it's fully managed
+        TaskInterface tempTask = taskDBS.getTask(pk);
+    
+        // Ensure the task has a valid primary key by committing it if not already done
+        if (tempTask.getPK() == null) {
+            taskDBS.updateTask(tempTask);  // Commit task to the database to ensure PK is set
+        }
+    
+        // Now create a new Hours entry and associate it with tempTask
+        HoursInterface newHour = hoursDBS.getNewHours(tempTask); // Pass tempTask to ensure context consistency
+        newHour.setHoursLogged(10);
+        newHour.setTimestamp(new Date());
+        newHour.setTask(tempTask);  // Link Hours to Task
+    
+        // Commit the new hour entry and update task's total time taken
+        hoursDBS.updateHours(newHour);
+        int updatedTimeTaken = tempTask.getTimeTaken() + 10;
+        tempTask.setTimeTaken(updatedTimeTaken);
+        taskDBS.updateTask(tempTask);  // Commit updated task with incremented hours
+    
+        // Refresh displayed tasks
+        getTasks(selectedStatus);
 	}
 	
 	void makeExampleTasks() {

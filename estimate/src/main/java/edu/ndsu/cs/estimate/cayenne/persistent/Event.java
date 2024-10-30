@@ -9,6 +9,7 @@ import java.util.Date;
 public class Event extends _Event implements EventInterface{
 
     private static final long serialVersionUID = 1L;
+    private int result;
     
     public Integer getPK()
     {
@@ -29,5 +30,13 @@ public class Event extends _Event implements EventInterface{
         }
     }
 
+    @Override
+    public int getResult() {
+        return this.result;
+    }
 
+    @Override
+    public void setResult(int result) {
+        this.result = result;
+    }
 }

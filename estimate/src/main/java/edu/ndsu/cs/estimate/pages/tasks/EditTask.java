@@ -56,16 +56,19 @@ public class EditTask {
     
 
     void setupRender() {
-    	if(taskPK != null) {
-			task = taskDatabase.getTask(taskPK);
-		}
-    	
-        //if (task != null) {
-        //   hours = hoursDatabase.listAllHoursByTask(task);
-        //    noHours = hours.isEmpty();
-        //} else {
-        //    noHours = true;
-        //}
+        if (taskPK != null) {
+            task = taskDatabase.getTask(taskPK);
+            if (task != null) {
+                hours = hoursDatabase.listAllHoursByTask(task);
+                noHours = hours.isEmpty();
+                System.out.println("Hours fetched: " + hours.size());  // Check if any hours are retrieved
+                hours.forEach(hour -> System.out.println("Hour: " + hour.getTimestamp() + ", Logged: " + hour.getHoursLogged()));
+            } else {
+                noHours = true;
+            }
+        } else {
+            noHours = true;
+        }
     }
     
     void onActivate(Integer taskPK) {

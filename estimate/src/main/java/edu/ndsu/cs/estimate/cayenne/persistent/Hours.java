@@ -33,27 +33,22 @@ public class Hours extends _Hours implements HoursInterface{
     }
 
 	@Override
-	public Date getTimestamp() {
-		return this.timeStamp;
-	}
+    public Date getTimestamp() {
+        return getTimeStamp(); 
+    }
 
-	@Override
-	public void setTimestamp(Date timeStamp) {
-		this.timeStamp = timeStamp;	
-	}
-	
-	@Override
-	public TaskInterface getTask() {
-		return (TaskInterface) this.tasks;
-	}
-	
-	@Override
-	public void setTask(TaskInterface task) {
-		this.tasks = task;	
-	}
+    @Override
+    public void setTimestamp(Date timeStamp) {
+        setTimeStamp(timeStamp); 
+    }
 
-	
+    @Override
+    public TaskInterface getTask() {
+        return (TaskInterface) getTasks();
+    }
 
-	
-
+    @Override
+    public void setTask(TaskInterface task) {
+        setTasks((Task) task);
+    }
 }
