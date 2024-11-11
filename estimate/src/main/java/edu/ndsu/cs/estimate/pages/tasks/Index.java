@@ -27,28 +27,31 @@ import java.util.Date;
 import java.util.List;
 
 public class Index {
-	
-	@Inject
+
+    @Inject
     private AlertManager alertManager;
 
     @Property
     @Persist
-    private String dateRange;
+    private String startDate; // Start date for filtering
+
+    @Property
+    @Persist
+    private String finishDate; // Finish date for filtering
 
     @InjectComponent
     private Form dateForm;
-    
-	@Persist
-	@Property
-	private int hours;
-	
+
+    @Persist
+    @Property
+    private int hours;
+
     @Inject
     private TaskDatabaseService taskDBS;
 
-    @Inject 
+    @Inject
     private HoursDatabaseService hoursDBS;
 
-    @Persist
     @Property
     private List<? extends TaskInterface> tasks;
 
@@ -57,44 +60,44 @@ public class Index {
 
     @InjectComponent
     private Form addHourForm;
-    
+
     @InjectComponent
     private Form add1HourForm;
-    
+
     @InjectComponent
     private Form add2HourForm;
-    
+
     @InjectComponent
     private Form add3HourForm;
-    
+
     @InjectComponent
     private Form add5HourForm;
-    
+
     @InjectComponent
     private Form add10HourForm;
 
     @Inject
     private SecurityService securityService;
- 
+
     @Inject
     private UserAccountDatabaseService userAccountDatabaseService;
 
     @Property
     @Persist
     private UserAccount userAccount;
-    
+
     @SessionAttribute
     @Property
     private Boolean noTasks = null;
-     
+
     @SessionAttribute
     @Property
-    private Boolean makeExamples = null;
+    private Boolean makeExamples = false;
 
     @SessionAttribute
     @Property
     private String selectedStatus = null;
-    
+
     @SetupRender
     void setupRender() {
         if (noTasks == null) {
@@ -107,18 +110,18 @@ public class Index {
             selectedStatus = "In Progress"; // Default status to query for 
         }
         if (securityService.getSubject().getPrincipal() == null ) {
-        	return;  //User needs to log in
+            return;  // User needs to log in
         }
-        //alerts if tasks are due within the next week
+        // Alerts if tasks are due within the next week
         List<String> alerts = taskDBS.getDeadlineNotifications();
         if (alerts.size() > 0) {
-        	String alertString = "";
-    		for(String alert : alerts) {
-    			alertString += alert + "\n";
-    		}
+            String alertString = "";
+            for(String alert : alerts) {
+                alertString += alert + "\n";
+            }
             alertManager.alert(Duration.SINGLE, Severity.INFO, alertString);
-        } 
-        
+        }
+
         String principal = securityService.getSubject().getPrincipal().toString();
         userAccount = userAccountDatabaseService.getUserAccount(principal);
         getTasks(selectedStatus);
@@ -127,26 +130,34 @@ public class Index {
     private void getTasks(String status) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         dateFormat.setLenient(false);
-        Date start = new Date(0);                   // 1/1/1970
-        Date end = new Date(2145916800000L);        // 1/1/2038
+        Date start = new Date(0);  // Default to 1/1/1970 if no start date
+        Date end = new Date(2145916800000L);  // Default to 1/1/2038 if no finish date
 
-        if (dateRange != null && !dateRange.isEmpty()) {
-            String[] dates = dateRange.split(" - ");
+        // Parse the startDate if provided
+        if (startDate != null && !startDate.isEmpty()) {
             try {
-                start = dateFormat.parse(dates[0]);
-                // If there is an end date, parse it; otherwise, use the start date for both
-                end = (dates.length == 2) ? dateFormat.parse(dates[1]) : start;
+                start = dateFormat.parse(startDate);
             } catch (ParseException e) {
-                dateForm.recordError("The date range format is invalid.");
+                dateForm.recordError("The start date format is invalid. Please use MM/dd/yyyy.");
                 return;
             }
         }
+
+        // Parse the finishDate if provided
+        if (finishDate != null && !finishDate.isEmpty()) {
+            try {
+                end = dateFormat.parse(finishDate);
+            } catch (ParseException e) {
+                dateForm.recordError("The finish date format is invalid. Please use MM/dd/yyyy.");
+                return;
+            }
+        }
+
         if (makeExamples) makeExampleTasks();
         tasks = taskDBS.listAllTasks(start, end, userAccount, selectedStatus);
         noTasks = tasks.isEmpty();
-        return;
     }
-    
+
     @OnEvent(component = "filterAll")
     Object onFilterStatusAll() {
         selectedStatus = "All";
@@ -174,229 +185,217 @@ public class Index {
         getTasks(selectedStatus);
         return Index.class;
     }
-    
+
     @OnEvent(component = "filterWillNotComplete")
     Object onFilterStatusWillNotComplete() {
         selectedStatus = "Will Not Complete";
         getTasks(selectedStatus);
         return Index.class;
     }
-    
+
     void onValidateFromDateForm() {
-        if (dateRange != null && !dateRange.isEmpty()) {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-            dateFormat.setLenient(false);
-            String[] dates = dateRange.split(" - ");
-            if (dates.length == 2) {
-                try {
-                    dateFormat.parse(dates[0]);
-                    dateFormat.parse(dates[1]);
-                } catch (ParseException e) {
-                    dateForm.recordError("The date range format is invalid. Please use MM/dd/yyyy - MM/dd/yyyy format.");
-                }
-            } else {
-                dateForm.recordError("The date range format is invalid. Please use MM/dd/yyyy - MM/dd/yyyy format.");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        dateFormat.setLenient(false);
+
+        // Validate the startDate
+        if (startDate != null && !startDate.isEmpty()) {
+            try {
+                dateFormat.parse(startDate);
+            } catch (ParseException e) {
+                dateForm.recordError("The start date format is invalid. Please use MM/dd/yyyy.");
+            }
+        }
+
+        // Validate the finishDate
+        if (finishDate != null && !finishDate.isEmpty()) {
+            try {
+                dateFormat.parse(finishDate);
+            } catch (ParseException e) {
+                dateForm.recordError("The finish date format is invalid. Please use MM/dd/yyyy.");
             }
         }
     }
 
     void onSuccessFromDateForm() {
-    	getTasks(selectedStatus); //Update displayed tasks from range
-    }
-    
-    void resetDateRange() {
-    	dateRange = "";
-    	getTasks(selectedStatus);
+        getTasks(selectedStatus); // Update displayed tasks with the selected date range
     }
 
-	
-	void onDelete(int PK) {
-		taskDBS.deleteTask(PK);
-		getTasks(selectedStatus); //Update displayed tasks
-	}
-	
-	void onSubmitFromAddHourForm(int pk) {
-		// Retrieve and persist the task to ensure it's fully managed
+    void resetDateRange() {
+        startDate = "";
+        finishDate = "";
+        getTasks(selectedStatus); // Update displayed tasks to show all tasks
+    }
+
+    void onDelete(int PK) {
+        taskDBS.deleteTask(PK);
+        getTasks(selectedStatus); // Update displayed tasks
+    }
+
+    void onSubmitFromAddHourForm(int pk) {
         TaskInterface tempTask = taskDBS.getTask(pk);
-    
-        // Ensure the task has a valid primary key by committing it if not already done
+
         if (tempTask.getPK() == null) {
             taskDBS.updateTask(tempTask);  // Commit task to the database to ensure PK is set
         }
-    
-        // Now create a new Hours entry and associate it with tempTask
+
         HoursInterface newHour = hoursDBS.getNewHours(tempTask); // Pass tempTask to ensure context consistency
         newHour.setHoursLogged(this.hours);
         newHour.setTimestamp(new Date());
         newHour.setTask(tempTask);  // Link Hours to Task
-    
-        // Commit the new hour entry and update task's total time taken
+
         hoursDBS.updateHours(newHour);
         int updatedTimeTaken = tempTask.getTimeTaken() + this.hours;
         tempTask.setTimeTaken(updatedTimeTaken);
         taskDBS.updateTask(tempTask);  // Commit updated task with incremented hours
-    
-        // Refresh displayed tasks
+
         getTasks(selectedStatus);
-	}
-	
+    }
+
     void onSubmitFromAdd1HourForm(int pk) {
-        // Retrieve and persist the task to ensure it's fully managed
         TaskInterface tempTask = taskDBS.getTask(pk);
-    
-        // Ensure the task has a valid primary key by committing it if not already done
+
         if (tempTask.getPK() == null) {
             taskDBS.updateTask(tempTask);  // Commit task to the database to ensure PK is set
         }
-    
-        // Now create a new Hours entry and associate it with tempTask
+
         HoursInterface newHour = hoursDBS.getNewHours(tempTask); // Pass tempTask to ensure context consistency
         newHour.setHoursLogged(1);
         newHour.setTimestamp(new Date());
         newHour.setTask(tempTask);  // Link Hours to Task
-    
-        // Commit the new hour entry and update task's total time taken
+
         hoursDBS.updateHours(newHour);
         int updatedTimeTaken = tempTask.getTimeTaken() + 1;
         tempTask.setTimeTaken(updatedTimeTaken);
         taskDBS.updateTask(tempTask);  // Commit updated task with incremented hours
-    
-        // Refresh displayed tasks
+
         getTasks(selectedStatus);
     }
-	
-	void onSubmitFromAdd2HourForm(int pk) {
-		// Retrieve and persist the task to ensure it's fully managed
+
+    void onSubmitFromAdd2HourForm(int pk) {
         TaskInterface tempTask = taskDBS.getTask(pk);
-    
-        // Ensure the task has a valid primary key by committing it if not already done
+
         if (tempTask.getPK() == null) {
             taskDBS.updateTask(tempTask);  // Commit task to the database to ensure PK is set
         }
-    
-        // Now create a new Hours entry and associate it with tempTask
+
         HoursInterface newHour = hoursDBS.getNewHours(tempTask); // Pass tempTask to ensure context consistency
         newHour.setHoursLogged(2);
         newHour.setTimestamp(new Date());
         newHour.setTask(tempTask);  // Link Hours to Task
-    
-        // Commit the new hour entry and update task's total time taken
+
         hoursDBS.updateHours(newHour);
         int updatedTimeTaken = tempTask.getTimeTaken() + 2;
         tempTask.setTimeTaken(updatedTimeTaken);
         taskDBS.updateTask(tempTask);  // Commit updated task with incremented hours
-    
-        // Refresh displayed tasks
+
         getTasks(selectedStatus);
-	}
-	
-	void onSubmitFromAdd3HourForm(int pk) {
-		// Retrieve and persist the task to ensure it's fully managed
+    }
+
+    void onSubmitFromAdd3HourForm(int pk) {
         TaskInterface tempTask = taskDBS.getTask(pk);
-    
-        // Ensure the task has a valid primary key by committing it if not already done
+
         if (tempTask.getPK() == null) {
             taskDBS.updateTask(tempTask);  // Commit task to the database to ensure PK is set
         }
-    
-        // Now create a new Hours entry and associate it with tempTask
+
         HoursInterface newHour = hoursDBS.getNewHours(tempTask); // Pass tempTask to ensure context consistency
         newHour.setHoursLogged(3);
         newHour.setTimestamp(new Date());
         newHour.setTask(tempTask);  // Link Hours to Task
-    
-        // Commit the new hour entry and update task's total time taken
+
         hoursDBS.updateHours(newHour);
         int updatedTimeTaken = tempTask.getTimeTaken() + 3;
         tempTask.setTimeTaken(updatedTimeTaken);
         taskDBS.updateTask(tempTask);  // Commit updated task with incremented hours
-    
-        // Refresh displayed tasks
+
         getTasks(selectedStatus);
-	}
-	
-	void onSubmitFromAdd5HourForm(int pk) {
-		// Retrieve and persist the task to ensure it's fully managed
+    }
+
+    void onSubmitFromAdd5HourForm(int pk) {
         TaskInterface tempTask = taskDBS.getTask(pk);
-    
-        // Ensure the task has a valid primary key by committing it if not already done
+
         if (tempTask.getPK() == null) {
             taskDBS.updateTask(tempTask);  // Commit task to the database to ensure PK is set
         }
-    
-        // Now create a new Hours entry and associate it with tempTask
+
         HoursInterface newHour = hoursDBS.getNewHours(tempTask); // Pass tempTask to ensure context consistency
         newHour.setHoursLogged(5);
         newHour.setTimestamp(new Date());
         newHour.setTask(tempTask);  // Link Hours to Task
-    
-        // Commit the new hour entry and update task's total time taken
+
         hoursDBS.updateHours(newHour);
         int updatedTimeTaken = tempTask.getTimeTaken() + 5;
         tempTask.setTimeTaken(updatedTimeTaken);
         taskDBS.updateTask(tempTask);  // Commit updated task with incremented hours
-    
-        // Refresh displayed tasks
+
         getTasks(selectedStatus);
-	}
-	
-	void onSubmitFromAdd10HourForm(int pk) {
-		// Retrieve and persist the task to ensure it's fully managed
+    }
+
+    void onSubmitFromAdd10HourForm(int pk) {
         TaskInterface tempTask = taskDBS.getTask(pk);
-    
-        // Ensure the task has a valid primary key by committing it if not already done
+
         if (tempTask.getPK() == null) {
             taskDBS.updateTask(tempTask);  // Commit task to the database to ensure PK is set
         }
-    
-        // Now create a new Hours entry and associate it with tempTask
+
         HoursInterface newHour = hoursDBS.getNewHours(tempTask); // Pass tempTask to ensure context consistency
         newHour.setHoursLogged(10);
         newHour.setTimestamp(new Date());
         newHour.setTask(tempTask);  // Link Hours to Task
-    
-        // Commit the new hour entry and update task's total time taken
+
         hoursDBS.updateHours(newHour);
         int updatedTimeTaken = tempTask.getTimeTaken() + 10;
         tempTask.setTimeTaken(updatedTimeTaken);
         taskDBS.updateTask(tempTask);  // Commit updated task with incremented hours
-    
-        // Refresh displayed tasks
+
         getTasks(selectedStatus);
-	}
-	
-	void makeExampleTasks() {
-		makeExamples = false;
+    }
+
+    void makeExampleTasks() {
+        makeExamples = false;
         for (int i = 0; i < 5; i++) {
             CayenneTaskFactory.generateInstance(taskDBS.getCayenneService().newContext(), userAccount);
         }
-        getTasks(selectedStatus); //Update displayed tasks after adding
+        getTasks(selectedStatus); // Update displayed tasks after adding
         System.err.println("Amount of tasks now " + tasks.size());
-	}
-	
-	@OnEvent(component="complete")
-	Object onClickCloseComplete(int pk) {
+    }
+
+    @OnEvent(component = "complete")
+    Object onClickCloseComplete(int pk) {
         TaskInterface tempTask = taskDBS.getTask(pk);
         tempTask.setCompleted(true);
+        tempTask.setDropped(false);
+        tempTask.setWillNotComplete(false);
         taskDBS.updateTask(tempTask);
+
+        // Re-fetch tasks to ensure updated status
         getTasks(selectedStatus);
-		return Index.class;
-	}
-	@OnEvent(component="drop")
-	Object onClickCloseDropped(int pk) {
+        return Index.class;
+    }
+
+    @OnEvent(component = "drop")
+    Object onClickCloseDropped(int pk) {
         TaskInterface tempTask = taskDBS.getTask(pk);
+        tempTask.setCompleted(false);
         tempTask.setDropped(true);
+        tempTask.setWillNotComplete(false);
         taskDBS.updateTask(tempTask);
+
+        // Re-fetch tasks to ensure updated status
         getTasks(selectedStatus);
-		return Index.class;
-	}
-	
-	@OnEvent(component="willNotComplete")
-	Object onClickCloseWillNotComplete(int pk) {
+        return Index.class;
+    }
+
+    @OnEvent(component = "willNotComplete")
+    Object onClickCloseWillNotComplete(int pk) {
         TaskInterface tempTask = taskDBS.getTask(pk);
+        tempTask.setCompleted(false);
+        tempTask.setDropped(false);
         tempTask.setWillNotComplete(true);
         taskDBS.updateTask(tempTask);
+
+        // Re-fetch tasks to ensure updated status
         getTasks(selectedStatus);
-		return Index.class;
-	}
+        return Index.class;
+    }
 }

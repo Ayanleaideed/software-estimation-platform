@@ -38,7 +38,7 @@ public interface TaskInterface {
 
     public UserAccount     	getUser();
 	public void   			setUser(UserAccount user); 
-	
+
 	public void setObjectContext(ObjectContext obj);
     public ObjectContext getObjectContext();
 
@@ -68,10 +68,6 @@ public interface TaskInterface {
 
 	// Method to get the status of a task
 	public default String getStatus() {
-		System.out.println("Completed: " + getCompleted());
-		System.out.println("Dropped: " + getDropped());
-		System.out.println("Will Not Complete: " + getWillNotComplete());
-		
 		if (getCompleted()) {
 			return "Completed";
 		} else if (getDropped()) {
@@ -79,7 +75,7 @@ public interface TaskInterface {
 		} else if (getWillNotComplete()) {
 			return "Will Not Complete";
 		} else {
-			return "RIP";
+			return "In Progress";
 		}
 	}
 }

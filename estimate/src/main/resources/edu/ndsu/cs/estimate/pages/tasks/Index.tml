@@ -2,13 +2,7 @@
     <link rel="stylesheet" type="text/css" href="/css/tasks.css" />
     <t:security.authenticated>
         <div class="container my-3">
-            <div class="row align-items-center">
-                <!-- Title Section -->
-                <div class="col-12 col-lg-2 order-lg-1 mb-2 mb-lg-0 text-center text-lg-start enav">
-                    <h3>My Tasks</h3>
-                </div>
-
-                <!-- Task Status Section -->
+            <div class="row align-items-center">                <!-- Task Status Section -->
                 <div class="col-12 col-lg-2 order-lg-2 mb-2 mb-lg-0 text-center">
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="taskStatusDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -45,10 +39,15 @@
                 </div>
 
                 <!-- Date Range Form Section -->
-                <div class="col-12 col-lg-5 order-lg-3 mb-2 mb-lg-0 text-center">
+                <div class="col-12 col-lg-7 order-lg-3 mb-2 mb-lg-0 text-center">
                     <t:form t:id="dateForm" class="date-form w-100">
                         <div class="input-group">
-                            <t:textField t:id="dateInput" value="dateRange" class="form-control" placeholder="Showing all dates" />
+                            <!-- Start Date Input -->
+                            <t:textField t:id="startDateInput" value="startDate" class="form-control date-input" placeholder="Start Date (MM/dd/yyyy)" style="width: 30%;" />
+                            
+                            <!-- Finish Date Input -->
+                            <t:textField t:id="finishDateInput" value="finishDate" class="form-control date-input" placeholder="Finish Date (MM/dd/yyyy)" style="width: 30%;" />
+                            
                             <input type="submit" class="btn btn-primary" value="Search" />
                             <button type="button" class="btn btn-secondary" onclick="resetDateRange()">Show All</button>
                         </div>
@@ -117,16 +116,16 @@
                                                 </div>
                                             </li>
                                         </ul>
-                                        <button class="btn btn-danger mb-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">Close Task</button>
+                                        <button class="btn btn-success mb-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">Update Status</button>
                                         <ul class="dropdown-menu">
-                                            <li>
-                                                <t:actionlink t:id="complete" aria-expanded="false" context="task.PK">End Task as Completed</t:actionlink>
+                                            <li class="d-flex justify-content-center">
+                                                <t:actionlink t:id="complete" aria-expanded="false" context="task.PK" class="btn btn-secondary mb-1">Completed</t:actionlink>
                                             </li>
-                                            <li>
-                                                <t:actionlink t:id="drop" aria-expanded="false" context="task.PK">End Task as Dropped</t:actionlink>
+                                            <li class="d-flex justify-content-center">
+                                                <t:actionlink t:id="drop" aria-expanded="false" context="task.PK" class="btn btn-secondary mb-1">Dropped</t:actionlink>
                                             </li>
-                                            <li>
-                                                <t:actionlink t:id="willNotComplete" aria-expanded="false" context="task.PK">End Task as Will Not Complete</t:actionlink>
+                                            <li class="d-flex justify-content-center">
+                                                <t:actionlink t:id="willNotComplete" aria-expanded="false" context="task.PK" class="btn btn-secondary">Will Not Complete</t:actionlink>
                                             </li>
                                         </ul>
                                     </div>

@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 import org.apache.cayenne.Cayenne;
 import org.apache.cayenne.query.ObjectSelect;
-import edu.ndsu.cs.estimate.services.hours.HoursInterface;
 import edu.ndsu.cs.estimate.services.tasks.TaskInterface;
 import edu.ndsu.cs.estimate.services.database.interfaces.CayenneService;
 import edu.ndsu.cs.estimate.cayenne.persistent.Hours;

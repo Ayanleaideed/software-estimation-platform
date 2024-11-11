@@ -128,9 +128,9 @@ public class CayenneTaskDatabaseService implements TaskDatabaseService{
 
 	@Override
 	public void updateTask(TaskInterface task) {
-		// Typecast to access the context for the Cayenne object to commit changes made using it
-		((Task)task).getObjectContext().commitChanges();
-		
+		// Get the Cayenne ObjectContext and commit changes
+		var context = ((Task) task).getObjectContext();
+		context.commitChanges();
 	}
 }
 
