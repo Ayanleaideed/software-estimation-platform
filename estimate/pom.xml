@@ -9,7 +9,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <tapestry-version>5.8.3</tapestry-version>
-        <cayenne-version>4.1</cayenne-version>
+        <cayenne-version>4.1.1</cayenne-version>
         <tynamo-version>0.9.0</tynamo-version>
         <derby-version>10.14.2.0</derby-version>
         <jackson-version>2.13.1</jackson-version>

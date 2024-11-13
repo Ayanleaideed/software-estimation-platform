@@ -5,14 +5,8 @@ import java.util.List;
 
 import org.apache.cayenne.ObjectContext;
 
-import edu.ndsu.cs.estimate.cayenne.persistent.Task;
-
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import edu.ndsu.cs.estimate.services.tasks.TaskInterface;
 
 public interface HoursInterface {
 	
@@ -24,8 +18,8 @@ public interface HoursInterface {
     public int		getHoursLogged();
     public void		setHoursLogged(int hoursLogged);
     
-    public Task		getTask();
-    public void		setTask(Task task);
+    public TaskInterface	getTask();
+    public void				setTask(TaskInterface task);
 	
 	public void setObjectContext(ObjectContext obj);
     public ObjectContext getObjectContext();

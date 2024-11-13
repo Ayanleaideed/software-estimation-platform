@@ -10,7 +10,7 @@ import java.time.ZoneId;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
-import edu.ndsu.cs.estimate.cayenne.persistent.Task;
+import edu.ndsu.cs.estimate.services.tasks.TaskInterface;
 import edu.ndsu.cs.estimate.cayenne.persistent.User;
 import edu.ndsu.cs.estimate.services.tasks.TaskDatabaseService;
 
@@ -22,9 +22,9 @@ public class EstimateTask {
     TaskDatabaseService taskDatabase;
 
     @Property
-	private List<? extends Task> tasks;
+	private List<? extends TaskInterface> tasks;
 
-    private List<? extends Task> getUsersTasks(User user){
+    private List<? extends TaskInterface> getUsersTasks(User user){
         return taskDatabase.listCompleted(user);
     }
 
@@ -37,8 +37,8 @@ public class EstimateTask {
         return (double) TimeUnit.DAYS.convert(Math.abs(endDate.getTime() - startDate.getTime()), TimeUnit.MILLISECONDS);
     } 
 
-    private double[][] getData(List<? extends Task> Tasks){
-        Iterator<? extends Task> iterator = Tasks.iterator();
+    private double[][] getData(List<? extends TaskInterface> Tasks){
+        Iterator<? extends TaskInterface> iterator = Tasks.iterator();
 
         double[][] data = new double [Tasks.size()][2];
         int i = 0;

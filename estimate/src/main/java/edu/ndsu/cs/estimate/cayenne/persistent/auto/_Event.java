@@ -27,7 +27,6 @@ public abstract class _Event extends BaseDataObject {
     public static final Property<Date> EVENT_DATE = Property.create("eventDate", Date.class);
     public static final Property<Integer> ID = Property.create("id", Integer.class);
     public static final Property<String> NAME = Property.create("name", String.class);
-    public static final Property<Integer> RESULT = Property.create("result", Integer.class);
 
     protected String category;
     protected Date createdDate;
@@ -35,7 +34,6 @@ public abstract class _Event extends BaseDataObject {
     protected Date eventDate;
     protected int id;
     protected String name;
-    protected Integer result;
 
 
     public void setCategory(String category) {
@@ -98,19 +96,6 @@ public abstract class _Event extends BaseDataObject {
         return this.name;
     }
 
-    public void setResult(int result) {
-        beforePropertyWrite("result", this.result, result);
-        this.result = result;
-    }
-
-    public int getResult() {
-        beforePropertyRead("result");
-        if(this.result == null) {
-            return 0;
-        }
-        return this.result;
-    }
-
     @Override
     public Object readPropertyDirectly(String propName) {
         if(propName == null) {
@@ -130,8 +115,6 @@ public abstract class _Event extends BaseDataObject {
                 return this.id;
             case "name":
                 return this.name;
-            case "result":
-                return this.result;
             default:
                 return super.readPropertyDirectly(propName);
         }
@@ -162,9 +145,6 @@ public abstract class _Event extends BaseDataObject {
             case "name":
                 this.name = (String)val;
                 break;
-            case "result":
-                this.result = (Integer)val;
-                break;
             default:
                 super.writePropertyDirectly(propName, val);
         }
@@ -187,7 +167,6 @@ public abstract class _Event extends BaseDataObject {
         out.writeObject(this.eventDate);
         out.writeInt(this.id);
         out.writeObject(this.name);
-        out.writeObject(this.result);
     }
 
     @Override
@@ -199,7 +178,6 @@ public abstract class _Event extends BaseDataObject {
         this.eventDate = (Date)in.readObject();
         this.id = in.readInt();
         this.name = (String)in.readObject();
-        this.result = (Integer)in.readObject();
     }
 
 }

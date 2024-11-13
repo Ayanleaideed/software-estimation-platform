@@ -7,9 +7,6 @@ import java.util.List;
 import org.apache.cayenne.Cayenne;
 import org.apache.cayenne.ObjectContext;
 import org.apache.cayenne.query.ObjectSelect;
-import org.apache.tapestry5.annotations.Persist;
-import org.apache.tapestry5.annotations.Property;
-import org.apache.tapestry5.annotations.SessionAttribute;
 
 import edu.ndsu.cs.estimate.cayenne.persistent.Task;
 import edu.ndsu.cs.estimate.cayenne.persistent.User;
@@ -32,17 +29,30 @@ public class CayenneTaskDatabaseService implements TaskDatabaseService{
 	}
 	
 	@Override
-	public List<? extends Task> listAllTasks(Date start, Date end, UserAccount user) {
-		return ObjectSelect.query(Task.class)
-				.where(Task.COMPLETED.eq(false).andExp(Task.DROPPED.eq(false).andExp(Task.WILL_NOT_COMPLETE.eq(false)).andExp(Task.EST_END_DATE.between(start, end).andExp(Task.USER.eq((User)user)))))
-				.select(cayenneService.newContext());
+	public List<? extends TaskInterface> listAllTasks(Date start, Date end, UserAccount user, String status) {
+		ObjectSelect<Task> query = ObjectSelect.query(Task.class)
+				.where(Task.START_DATE.between(start, end)
+						.orExp(Task.EST_END_DATE.between(start, end)));
+
+		// Add status-specific conditions based on the value of `status`
+		if ("Completed".equals(status)) {
+			query = query.and(Task.COMPLETED.eq(true));
+		} else if ("Dropped".equals(status)) {
+			query = query.and(Task.DROPPED.eq(true));
+		} else if ("Will Not Complete".equals(status)) {
+			query = query.and(Task.WILL_NOT_COMPLETE.eq(true));
+		} else if ("In Progress".equals(status)) {
+			query = query.and(Task.COMPLETED.eq(false))
+						.and(Task.DROPPED.eq(false))
+						.and(Task.WILL_NOT_COMPLETE.eq(false));
+		}
+
+		return query.select(cayenneService.newContext());
 	}
 
 	@Override
-	public List<? extends Task> listCompleted(User user){
-		return ObjectSelect.query(Task.class)
-				.where(Task.COMPLETED.eq(true).andExp(Task.DROPPED.eq(false)).andExp(Task.WILL_NOT_COMPLETE.eq(false)))
-				.select(cayenneService.newContext());
+	public List<? extends TaskInterface> listCompleted(User user){
+		return ObjectSelect.query(Task.class).where(Task.COMPLETED.eq(true).andExp(Task.DROPPED.eq(false)).andExp(Task.WILL_NOT_COMPLETE.eq(false))).select(cayenneService.newContext());
 	}
 	
 	//checks if a submitted task name is unique, and if the name is submitted, it's valid
@@ -99,12 +109,12 @@ public class CayenneTaskDatabaseService implements TaskDatabaseService{
 	}
 
 	@Override
-	public Task getTask(int PK) {
+	public TaskInterface getTask(int PK) {
 		return Cayenne.objectForPK(cayenneService.newContext(), Task.class, PK);
 	}
 
 	@Override
-	public Task getNewTask() {
+	public TaskInterface getNewTask() {
 		return cayenneService.newContext().newObject(Task.class); 
 	}
 
@@ -117,11 +127,10 @@ public class CayenneTaskDatabaseService implements TaskDatabaseService{
 	}
 
 	@Override
-	public void updateTask(Task task) {
-		// Typecast to access the context for the Cayenne object to commit changes made using it
-		((Task)task).getObjectContext().commitChanges();
-		
+	public void updateTask(TaskInterface task) {
+		// Get the Cayenne ObjectContext and commit changes
+		var context = ((Task) task).getObjectContext();
+		context.commitChanges();
 	}
-
 }
 

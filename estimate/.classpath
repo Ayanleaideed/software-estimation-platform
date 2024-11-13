@@ -1,29 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="edu/ndsu/cs/estimate/spring/*" kind="src" output="target/classes" path="src/main/java">
+	<classpathentry kind="src" output="build/resources/testUnitTapestry" path="src/testUnitTapestry/resources">
 		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="optional" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="resource" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" output="build/classes/java/testUnitTapestry" path="src/testUnitTapestry/java">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="optional" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" output="build/resources/testIntegrationTapestry" path="src/testIntegrationTapestry/resources">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="optional" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="resource" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" output="build/classes/java/testIntegrationTapestry" path="src/testIntegrationTapestry/java">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="optional" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry excluding="**" kind="src" output="target/test-classes" path="src/test/resources">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="optional" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="resource" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
 			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
 		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
 			<attribute name="optional" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+			<attribute name="resource" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
+	<classpathentry excluding="edu/ndsu/cs/estimate/spring/*" kind="src" output="target/classes" path="src/main/java">
 		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
 			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry excluding="**" kind="src" output="target/test-classes" path="src/test/resources">
+	<classpathentry kind="src" output="build/classes/java/testUnitTapestry" path="build/generated/sources/annotationProcessor/java/testUnitTapestry">
 		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
 			<attribute name="test" value="true"/>
 			<attribute name="optional" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" output="build/classes/java/testIntegrationTapestry" path="build/generated/sources/annotationProcessor/java/testIntegrationTapestry">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="optional" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" output="build/classes/java/test" path="build/generated/sources/annotationProcessor/java/test">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="optional" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" output="build/classes/java/main" path="build/generated/sources/annotationProcessor/java/main">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11">
@@ -31,9 +94,1224 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-http/4.7.2/abbd8425647646228f2242aca80c68bd8c0229ba/selenium-http-4.7.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-http/4.7.2/bdc8a4083e3bb102e182e2980c345706240eb53b/selenium-http-4.7.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.2/25ea2e8b0c338a877313bd4672d3fe056ea78f0d/jsr305-3.0.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.2/b19b5927c2c25b6c70f093767041e641ae0b1b35/jsr305-3.0.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/jakarta.xml.soap/jakarta.xml.soap-api/1.4.1/60a9a1d2e2d4e5f92ec42bcb713ca97d8fbb97de/jakarta.xml.soap-api-1.4.1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/jakarta.xml.soap/jakarta.xml.soap-api/1.4.1/ff2578ac2ad9666001037a3f98b49e22eb2386c0/jakarta.xml.soap-api-1.4.1-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tapestry/tapestry-ioc/5.8.3/e90939e3692ef672beb3406f77f5e487f11aa2da/tapestry-ioc-5.8.3.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tapestry/tapestry-ioc/5.8.3/5cd15ef3ce4fa5d6f3e2e62fb53bd087b278426c/tapestry-ioc-5.8.3-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.glassfish/jakarta.json/2.0.0/125d78b8067c0659dfc4ba4d34da086210739f74/jakarta.json-2.0.0-module.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.glassfish/jakarta.json/2.0.0/39e1b26f67fcd52d04307ebd1f92c9413163b49e/jakarta.json-2.0.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.reactivestreams/reactive-streams/1.0.3/d9fb7a7926ffa635b3dcaa5049fb2bfa25b3e7d0/reactive-streams-1.0.3.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.reactivestreams/reactive-streams/1.0.3/e6ffdff8c438d959376c91d94b319457354a84c5/reactive-streams-1.0.3-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.sun.xml.ws/jaxws-rt/2.3.2/f0ee79b20528a73d8f53757f17d9eb302ac58b80/jaxws-rt-2.3.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.sun.xml.ws/jaxws-rt/2.3.2/c7aa1df03b94166b50bdf226342a10ce748319ea/jaxws-rt-2.3.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.30/b5a4b6d16ab13e34a88fae84c35cd5d68cac922c/slf4j-api-1.7.30.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.30/71a1fdefa224da50f1db6306ce609981e20186c9/slf4j-api-1.7.30-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-kqueue/4.1.84.Final/8950de7476fb190b0493ab4fda2b37d1c0bd19af/netty-transport-native-kqueue-4.1.84.Final-osx-x86_64.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-kqueue/4.1.84.Final/39c0081abe1cb13449222b2208721484f964b2d1/netty-transport-native-kqueue-4.1.84.Final-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-api/1.19.0/95233814c9eb16486525e8e895a6ed326f3cb5f4/opentelemetry-api-1.19.0.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-api/1.19.0/ef306316f03f38b508317d69f630dcb376237ed6/opentelemetry-api-1.19.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-unix-common/4.1.84.Final/e51601ddb88ee646a97ff04db38d45c22c29aee8/netty-transport-native-unix-common-4.1.84.Final.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-unix-common/4.1.84.Final/989aa2352eba7ccdabfccfbab0bb55b4ca04fda8/netty-transport-native-unix-common-4.1.84.Final-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.3/42a25dc3219429f0e5d060061f71acb49bf010a0/hamcrest-core-1.3.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.3/1dc37250fbc78e23a65a67fbbaf71d2e9cbc3c0b/hamcrest-core-1.3-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.mozilla/rhino/1.7.7.2/a7c4a9ba8b6922374580d71060ef71eafa994256/rhino-1.7.7.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.mozilla/rhino/1.7.7.2/263073fb1e879bfa9a521d3245c063b799bc83d1/rhino-1.7.7.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tapestry/commons/5.8.3/f0c8d7de57e8ab2248a48697da2baed0d99954f0/commons-5.8.3.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tapestry/commons/5.8.3/d207a9bb0e9dc6a44d235292d6dca12fb3d20735/commons-5.8.3-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-api-logs/1.19.0-alpha/ed7f8c511cca3fe6e50d77f9cf740dd02483faef/opentelemetry-api-logs-1.19.0-alpha.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-api-logs/1.19.0-alpha/77156fb9123d73d69858467a975b65d34211c8c6/opentelemetry-api-logs-1.19.0-alpha-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tapestry/tapestry-webresources/5.8.3/c1593ed2b6b88825c59dc36861af168997d9bea6/tapestry-webresources-5.8.3.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tapestry/tapestry-webresources/5.8.3/a59bd09274f2b1f6cf0d84ea71a5c4c8f6b55281/tapestry-webresources-5.8.3-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/4.7.2/365876084923b747be7a91c92784d95312f660a8/selenium-api-4.7.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/4.7.2/c9c595fe86b48c4beaf92173775c980e1928f09/selenium-api-4.7.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-handler/4.1.84.Final/69cd93e2c321f04fc0a18eb5af519565373d0873/netty-handler-4.1.84.Final.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-handler/4.1.84.Final/4512cc37de21fbf35fe2f56648a67daf5b15112a/netty-handler-4.1.84.Final-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-chrome-driver/4.7.2/6e5d1201883cc7101fcf4b213ed26b8830b35aa/selenium-chrome-driver-4.7.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-chrome-driver/4.7.2/eb720971d7722995e8d9f2726fc7fa819ec28962/selenium-chrome-driver-4.7.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/javax.xml.ws/jaxws-api/2.3.1/15e46dba25b1f767a3f517721badf6cce8dbb13d/jaxws-api-2.3.1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/javax.xml.ws/jaxws-api/2.3.1/d2fda2ca501322d07d2613ffb8f4a96e35af3a62/jaxws-api-2.3.1-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.13.1/698b2d2b15d9a1b7aae025f1d9f576842285e7f6/jackson-databind-2.13.1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.13.1/3a556489e4a16b4837fd640c46a858c8402a1eb/jackson-databind-2.13.1-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.sun.activation/jakarta.activation/1.2.2/74548703f9851017ce2f556066659438019e7eb5/jakarta.activation-1.2.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.sun.activation/jakarta.activation/1.2.2/fa3c25fb842cbe9eaa126a007475297f8bf35abe/jakarta.activation-1.2.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.sun.xml.stream.buffer/streambuffer/1.5.7/83ffbbb9e844d6d3a508dfe53e3fb8ba26a65b93/streambuffer-1.5.7.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.sun.xml.stream.buffer/streambuffer/1.5.7/12917d7ac922ff63c429a5482578fc75e8172040/streambuffer-1.5.7-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/commons-beanutils/commons-beanutils/1.8.3/686ef3410bcf4ab8ce7fd0b899e832aaba5facf7/commons-beanutils-1.8.3.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/commons-beanutils/commons-beanutils/1.8.3/170d03db4cb48be2f8f35ce3243d62c4b2204e2e/commons-beanutils-1.8.3-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-devtools-v108/4.7.2/c950d31ce99b2d9e8ff12bc52e6bdef1c2f8b94e/selenium-devtools-v108-4.7.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-devtools-v108/4.7.2/929536d817abe4c17ee9e4c8533e8db4a8f9e3f0/selenium-devtools-v108-4.7.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-epoll/4.1.84.Final/3b4ae5fcbec8d667d8688c17d625be245b2f657e/netty-transport-native-epoll-4.1.84.Final.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-epoll/4.1.84.Final/ed57745cc8a6710f8f21d391d21bdcb8fc4226d0/netty-transport-native-epoll-4.1.84.Final-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-devtools-v104/4.5.0/5546687ad601b37c5a3937ca7c37d5b9a1ff57d1/selenium-devtools-v104-4.5.0.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-devtools-v104/4.5.0/2e7e6479381df85be1ed580ccdf3a366edd53c91/selenium-devtools-v104-4.5.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/jakarta.xml.ws/jakarta.xml.ws-api/2.3.2/3b2f351331db8cb1590c0077d380d2514d98d0e2/jakarta.xml.ws-api-2.3.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/jakarta.xml.ws/jakarta.xml.ws-api/2.3.2/3df6248275f56eae8f80737d551cd49a5686327f/jakarta.xml.ws-api-2.3.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-devtools-v106/4.7.2/ed982ef38a708d8073fb64f981be3b22b9b46501/selenium-devtools-v106-4.7.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-devtools-v106/4.7.2/cd3d7c1dd0aeb3402de247f5538dc3066d18b94f/selenium-devtools-v106-4.7.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.j2objc/j2objc-annotations/1.3/ba035118bc8bac37d7eff77700720999acd9986d/j2objc-annotations-1.3.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.j2objc/j2objc-annotations/1.3/d26c56180205cbb50447c3eca98ecb617cf9f58b/j2objc-annotations-1.3-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-kqueue/4.1.84.Final/68a1b38fbd166d670437f97f910cb549d7e5c7a4/netty-transport-native-kqueue-4.1.84.Final.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-kqueue/4.1.84.Final/39c0081abe1cb13449222b2208721484f964b2d1/netty-transport-native-kqueue-4.1.84.Final-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-resolver/4.1.84.Final/b6f808e331cf843d2a7ff62042cf9b5343e2ff25/netty-resolver-4.1.84.Final.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-resolver/4.1.84.Final/b1eeabeafad71d04c89d87123eae293cd6b55cbc/netty-resolver-4.1.84.Final-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.codehaus.woodstox/stax2-api/4.1/b6e20f3760016b70358e9227be904ecb26a50530/stax2-api-4.1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.codehaus.woodstox/stax2-api/4.1/9cecba7586a12e93a43101fe84c662e39c54b156/stax2-api-4.1-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.4/5fe28b9518e58819180a43a850fbc0dd24b7c050/commons-lang3-3.4.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.4/b49dafc9cfef24c356827f322e773e7c26725dd2/commons-lang3-3.4-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.asynchttpclient/async-http-client-netty-utils/2.12.3/ad99d8622931ed31367d0fef7fa17eb62e033fb3/async-http-client-netty-utils-2.12.3.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.asynchttpclient/async-http-client-netty-utils/2.12.3/62b1d8d814d5286a807fe4528b0cb7fd09640594/async-http-client-netty-utils-2.12.3-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-json/4.7.2/93e49c4b7bb7f0c732a9363f79c836c4f3eb9182/selenium-json-4.7.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-json/4.7.2/afb3ab78d178b541c5f640be32cecd57aa3d6164/selenium-json-4.7.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/javax.xml.soap/javax.xml.soap-api/1.4.0/667ef2eee594ca7e05a1cbe0b37a428f7b57778f/javax.xml.soap-api-1.4.0.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/javax.xml.soap/javax.xml.soap-api/1.4.0/e98dcd4b25ebe7202fd0a5bf798f9c3ca231997c/javax.xml.soap-api-1.4.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-leg-rc/4.5.0/3aa9162b6736f83e807da71b6e962f87dbf9b153/selenium-leg-rc-4.5.0.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-leg-rc/4.5.0/257bdd164c01379813c3622e3065701562592271/selenium-leg-rc-4.5.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.jvnet.staxex/stax-ex/1.8.1/78011e483a21102fb4858f3e8f269a677e50aa23/stax-ex-1.8.1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.jvnet.staxex/stax-ex/1.8.1/9a46c7d2b4baa07f67f062da02d31fe84f3d26ea/stax-ex-1.8.1-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-common/1.19.0/72b3793dd29065e43a7b426f9b34ed6d23483f52/opentelemetry-sdk-common-1.19.0.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-common/1.19.0/40a21ce517aae325a9874c8b69b3c5144caf24a/opentelemetry-sdk-common-1.19.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.7/751f548c85fa49f330cecbb1875893f971b33c4e/gson-2.7.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.7/bbb63ca253b483da8ee53a50374593923e3de2e2/gson-2.7-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.checkerframework/checker-qual/3.12.0/d5692f0526415fcc6de94bb5bfbd3afd9dd3b3e5/checker-qual-3.12.0.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.checkerframework/checker-qual/3.12.0/10dacb8b36398debceca36cd0db5f3316967f80e/checker-qual-3.12.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec/4.1.84.Final/4f60f56c4cd17db114f01dc64aa465a2905240f5/netty-codec-4.1.84.Final.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec/4.1.84.Final/d1735d05c5f6df0a6ccde2457bd3ad261675d447/netty-codec-4.1.84.Final-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-devtools-v85/4.7.2/61699040ac59856fd94b036215ef9e2a9412e0e9/selenium-devtools-v85-4.7.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-devtools-v85/4.7.2/92926466c3952aa7f7a8d8736c6fd6ef085b1cbc/selenium-devtools-v85-4.7.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.elemental2/elemental2-core/1.0.0-RC1/7e6e9ec8574d2ff6503f3f774c43695d0276f8f4/elemental2-core-1.0.0-RC1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.elemental2/elemental2-core/1.0.0-RC1/ef652e73169db73599f6bc6bcf38fd81f933f70b/elemental2-core-1.0.0-RC1-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tapestry/tapestry-http/5.8.3/9badbb4813cc306542ff35b6eebe4ad9b854f6a2/tapestry-http-5.8.3.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tapestry/tapestry-http/5.8.3/99fc339672b4fce88bc3bae08988d229b7d222d3/tapestry-http-5.8.3-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-trace/1.19.0/3683370ef425efe9cf794f3d57016f687e7ca5df/opentelemetry-sdk-trace-1.19.0.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-trace/1.19.0/e5e105a364f738c71c388a85a179e026c093492d/opentelemetry-sdk-trace-1.19.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.glassfish.jaxb/txw2/2.3.2/ce5be7da2e442c25ec14c766cb60cb802741727b/txw2-2.3.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.glassfish.jaxb/txw2/2.3.2/294dff1d7635508067320ded761b73bf3729b2ff/txw2-2.3.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-api/2.17.2/f42d6afa111b4dec5d2aea0fe2197240749a4ea6/log4j-api-2.17.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-api/2.17.2/91a89f75de4f567c38dc7ec9f83f2a1afd2c2915/log4j-api-2.17.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport/4.1.84.Final/acd9947d0a951b1f7021c7adc393df936b1ecbf0/netty-transport-4.1.84.Final.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport/4.1.84.Final/bf20d540cdf715d1b32252c6e73235892a25896b/netty-transport-4.1.84.Final-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.typesafe.netty/netty-reactive-streams/2.0.4/f77c8eaa7d5e2f2160b6d21ba385cf726f164b2/netty-reactive-streams-2.0.4.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.typesafe.netty/netty-reactive-streams/2.0.4/dea768fe806e1352d7b3c05fa94b6391f7468238/netty-reactive-streams-2.0.4-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.json/json/20090211/c183aa3a2a6250293808bba12262c8920ce5a51c/json-20090211.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.protobuf/protobuf-java/3.11.1/1752390841a56e112b01990c9b523e6978abb24f/protobuf-java-3.11.1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.protobuf/protobuf-java/3.11.1/790213fca2554a533dad59ad22fa9da498f419f3/protobuf-java-3.11.1-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.auto.service/auto-service/1.0.1/c9779f7372192a96c957a3df1faeeabd07881085/auto-service-1.0.1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.auto.service/auto-service/1.0.1/373f2b2c234b3d46bfe49a112cfe053b2c3b1beb/auto-service-1.0.1-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.javascript/closure-compiler-unshaded/v20200504/e5f85b044c126a0a8cbc2cf48bf2ce7282b22ade/closure-compiler-unshaded-v20200504.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.javascript/closure-compiler-unshaded/v20200504/4f12b351700632f0bbe60cca1454aa9b8b4e0d35/closure-compiler-unshaded-v20200504-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-edge-driver/4.7.2/512658cfa5c4cf7c356b532228a54b91e9a15de5/selenium-edge-driver-4.7.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-edge-driver/4.7.2/4c07adfb949a30e975ef1e041c36ecb9e5e2ca90/selenium-edge-driver-4.7.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.13.1/1cbcbe4623113e6af92ccaa89884a345270f1a87/jackson-annotations-2.13.1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.13.1/7d167558a509af98d1ce5610ba142735a6990faa/jackson-annotations-2.13.1-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/javax.activation/javax.activation-api/1.2.0/85262acf3ca9816f9537ca47d5adeabaead7cb16/javax.activation-api-1.2.0.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/javax.activation/javax.activation-api/1.2.0/1b4c6e77d35adab19794746d8ea753df30d77dca/javax.activation-api-1.2.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.auto/auto-common/1.2/ca270191fd7d2a7297da7c8f29184206df10c67d/auto-common-1.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.auto/auto-common/1.2/4fe76e8a3f5aaafa743d23bac4347803ecda3d70/auto-common-1.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-manager/4.7.2/5497955cbab409d77b9ef93e9ba824f811a6a4ed/selenium-manager-4.7.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-manager/4.7.2/9dfa664771bf101d4987d3fe5b40e61007d9ea91/selenium-manager-4.7.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.glassfish.pfl/pfl-dynamic/4.0.1/c5be0e4414e3844b2528e18d8e537a8b9ab2a361/pfl-dynamic-4.0.1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.glassfish.pfl/pfl-dynamic/4.0.1/800192b10ec86e88e47dc9f24c6d249b55e1b9dc/pfl-dynamic-4.0.1-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-devtools-v105/4.5.0/fbb1a11cba76ab3f86e7088cf06a8f8db43891c2/selenium-devtools-v105-4.5.0.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-devtools-v105/4.5.0/e61966c64a0ae6903078ce6e6bd3b6f061fba8d6/selenium-devtools-v105-4.5.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.fasterxml.woodstox/woodstox-core/5.1.0/bd416e84cbd20cb5f2cf13c30b023e814a4d6107/woodstox-core-5.1.0.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.fasterxml.woodstox/woodstox-core/5.1.0/6fe8d7ea5d0f78ecb550d748657d8b8211af6639/woodstox-core-5.1.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.35/517f3a0687490b72d0e56d815e05608a541af802/slf4j-api-1.7.35.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.35/4ec55d81a425f9d0f6eccd7638fbf55aaca6e767/slf4j-api-1.7.35-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-grid/4.5.0/f44dd7ab948cc95140b996b249396454051f01c1/selenium-grid-4.5.0.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-grid/4.5.0/fc9e1e1d289cc402916324aeff963640107b6dcc/selenium-grid-4.5.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tapestry/tapestry-func/5.8.3/d292bb06c9c5bbfaf628c7de8bf8c90bf973f5d5/tapestry-func-5.8.3.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tapestry/tapestry-func/5.8.3/b9a73348a3d500b2766cba1925e19dc5799fb3fe/tapestry-func-5.8.3-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.graphql-java/java-dataloader/3.2.0/f45c53595cab4c23e35526cc122e2bd159a50516/java-dataloader-3.2.0.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.graphql-java/java-dataloader/3.2.0/145d17ab0f15be016f6ec1e12f1309aca504be36/java-dataloader-3.2.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-classes-epoll/4.1.84.Final/ef84f856ed42c6ab8b5c89a7cf90b8ba4574c198/netty-transport-classes-epoll-4.1.84.Final.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-classes-epoll/4.1.84.Final/743d00b5e401d972f1f8166c347d6612767a387b/netty-transport-classes-epoll-4.1.84.Final-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.jvnet.mimepull/mimepull/1.9.11/d1cd7921d4c6c77938cefbb16d4f646c74278718/mimepull-1.9.11.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.jvnet.mimepull/mimepull/1.9.11/848143ca80c64ea9545744df880c5eb2fc7dfbc9/mimepull-1.9.11-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-core/2.17.2/fa43ba4467f5300b16d1e0742934149bfc5ac564/log4j-core-2.17.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-core/2.17.2/88b2d34add2e0370c6a6d03ac7b3609b143e46bd/log4j-core-2.17.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-epoll/4.1.84.Final/5757eea869b675e6acf135dada2c2623700a2596/netty-transport-native-epoll-4.1.84.Final-linux-x86_64.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-epoll/4.1.84.Final/ed57745cc8a6710f8f21d391d21bdcb8fc4226d0/netty-transport-native-epoll-4.1.84.Final-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tapestry/plastic/5.8.3/c5ef2aca030ed5101537fe25dd723c2762978721/plastic-5.8.3.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tapestry/plastic/5.8.3/a10f20ebee53d8382bf4373796b42ebacaff1129/plastic-5.8.3-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.re2j/re2j/1.3/dc7de2b32fa8cc569ab44fb849abadbbc6983b91/re2j-1.3.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.re2j/re2j/1.3/ee658b762c168cda3fd1e8140fbf2b14ae6f39a4/re2j-1.3-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-slf4j-impl/2.17.2/183f7c95fc981f3e97d008b363341343508848e/log4j-slf4j-impl-2.17.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-slf4j-impl/2.17.2/74a61478bcc5401ad43eb5ed422d4e987343cbd7/log4j-slf4j-impl-2.17.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-common/4.1.84.Final/90c84ec7f1108ae164810cf46694a5ec7ce738fc/netty-common-4.1.84.Final.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-common/4.1.84.Final/17a3d953a9bf3e9b4746f453e260e06874d63d6a/netty-common-4.1.84.Final-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-java/4.7.2/18cef0adbc08d152da07b234a04f6e8240ce215f/selenium-java-4.7.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-java/4.7.2/1ecb37e0b737a743a5e8860df99f402f508fd2f6/selenium-java-4.7.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/junit/junit/4.13.2/8ac9e16d933b6fb43bc7f576336b8f4d7eb5ba12/junit-4.13.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/junit/junit/4.13.2/33987872a811fe4d4001ed494b07854822257f42/junit-4.13.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.yaml/snakeyaml/1.28/7cae037c3014350c923776548e71c9feb7a69259/snakeyaml-1.28.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.yaml/snakeyaml/1.28/1df44bcfb045ca926511dae52d4857b8b3721d31/snakeyaml-1.28-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-safari-driver/4.7.2/d4abcc95ad9bf79c28f847d37c726aa976457c23/selenium-safari-driver-4.7.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-safari-driver/4.7.2/de1451032156c575de83fc2a804a538b2d3b0404/selenium-safari-driver-4.7.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.javascript/closure-compiler-externs/v20200504/9a53bc88211546bed5093497ef36803beb05cf24/closure-compiler-externs-v20200504.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/a00123f261762a7c5e0ec916a2c7c8298d29c400/javax.inject-1-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.glassfish.gmbal/gmbal/4.0.0/38e088859faea7433643e1db9d8b5829668b515c/gmbal-4.0.0.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.glassfish.gmbal/gmbal/4.0.0/f8a94110ae6c13965c52af119b0c8f3d040ddcfd/gmbal-4.0.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tapestry/beanmodel/5.8.3/680596eb5d3d41b17f6e63168de0c6916b86ec8b/beanmodel-5.8.3.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tapestry/beanmodel/5.8.3/b0f5a84a5cc045356f058994ab45e74c475758ab/beanmodel-5.8.3-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-exporter-logging/1.19.0/43b1d975e120466eb45652c25dbd7bf5ad677c06/opentelemetry-exporter-logging-1.19.0.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-exporter-logging/1.19.0/151b4b27f6af171ecfec496155076a2d9249222c/opentelemetry-exporter-logging-1.19.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.11.0/a2503f302b11ebde7ebc3df41daebe0e4eea3689/commons-io-2.11.0.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.11.0/2ef0187124bbfc7aed3038d4ffdd2241e8992937/commons-io-2.11.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-firefox-driver/4.7.2/4a6dc57ae803a6ab27d15fd19d3f4d5f3846e3e9/selenium-firefox-driver-4.7.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-firefox-driver/4.7.2/e3bcb16a5bbcb5440c132583fbafcae80b7129ef/selenium-firefox-driver-4.7.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.sun.xml.messaging.saaj/saaj-impl/1.5.1/e76b10e4f99630d0e5ecc6a5326eaf6654b5fff1/saaj-impl-1.5.1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.sun.xml.messaging.saaj/saaj-impl/1.5.1/1b800dbd5e889c906732d268d37169480b906d69/saaj-impl-1.5.1-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_annotations/2.11.0/c5a0ace696d3f8b1c1d8cc036d8c03cc0cbe6b69/error_prone_annotations-2.11.0.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_annotations/2.11.0/d060e42b6aa896a3abe2ec612e1cf8cc307f8a49/error_prone_annotations-2.11.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.beust/jcommander/1.82/a7c5fef184d238065de38f81bbc6ee50cca2e21/jcommander-1.82.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.beust/jcommander/1.82/5cf95a2e18d79d404fd81263db36862287e736cc/jcommander-1.82-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-ie-driver/4.7.2/76a86eefde2d6f1a1c25e3a59d79c90dd6d9c44d/selenium-ie-driver-4.7.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-ie-driver/4.7.2/38a96ce46d46faf3c3fab3a069fd9e8b2128b1c4/selenium-ie-driver-4.7.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/1.19.0/750c827b83ae244390ed5599e361a94bf6a8c20a/opentelemetry-sdk-extension-autoconfigure-spi-1.19.0.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/1.19.0/397433c28b7273a8f70beae98dd0b1ef821cad/opentelemetry-sdk-extension-autoconfigure-spi-1.19.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec-socks/4.1.60.Final/6f4573281df659265bd709fd10471c3e00ef6c70/netty-codec-socks-4.1.60.Final.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec-socks/4.1.60.Final/501e67ec2706879f5530743d94c4651f507fff5b/netty-codec-socks-4.1.60.Final-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-metrics/1.19.0/7a588f89f003fdf19e2a50bfd977c2a9075d4c98/opentelemetry-sdk-metrics-1.19.0.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-metrics/1.19.0/a8487898bcc0cc52f82d80903b211db8787474f/opentelemetry-sdk-metrics-1.19.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-remote-driver/4.7.2/9ae88ceea5d1667ef7712f2293b0da008d9ac6ca/selenium-remote-driver-4.7.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-remote-driver/4.7.2/970196ff1f1980d844c8509fe2517a3b3d876619/selenium-remote-driver-4.7.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-context/1.19.0/ae42d505048d264b08a3ad1bfa2aff532f244f54/opentelemetry-context-1.19.0.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-context/1.19.0/e5a672d24eb4e2dfddc4c711b940118a8ad6faf7/opentelemetry-context-1.19.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.sun.xml.ws/policy/2.7.6/a2af3d0a0947143a705ed82393fcf3944f024bcc/policy-2.7.6.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.sun.xml.ws/policy/2.7.6/cb82174642c8f2d7529def8335c3771f71faa4f3/policy-2.7.6-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.auto.service/auto-service-annotations/1.0.1/ac86dacc0eb9285ea9d42eee6aad8629ca3a7432/auto-service-annotations-1.0.1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.auto.service/auto-service-annotations/1.0.1/81d155712ad79e1914732d23cd255d88143676aa/auto-service-annotations-1.0.1-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/dev.failsafe/failsafe/3.3.0/c0bc601c7116fa42a410763e7cfef32b596b94bc/failsafe-3.3.0.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/dev.failsafe/failsafe/3.3.0/bd87dc9adc43a9042755e4e1e424dd41e24fa06c/failsafe-3.3.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml/2.13.1/fa89741b057f4f2094e2f115e6cf898626989fe2/jackson-dataformat-yaml-2.13.1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml/2.13.1/804218de6e90e4bf2e844a2475585afa87078de6/jackson-dataformat-yaml-2.13.1-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/jakarta.jws/jakarta.jws-api/1.1.1/2fb6fbd7c39ab09565ad25af1ba7d5c3d43162c4/jakarta.jws-api-1.1.1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/jakarta.jws/jakarta.jws-api/1.1.1/93c617e163558ea639c3230cd7dcdc0a074baa09/jakarta.jws-api-1.1.1-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.glassfish.pfl/pfl-asm/4.0.1/c6f99a7c30e74f9c8907c47c38fe89cf5f041861/pfl-asm-4.0.1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.glassfish.pfl/pfl-asm/4.0.1/e6c1ea73ae9d4b70fca3e2afffeb084ac313bd29/pfl-asm-4.0.1-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure/1.19.0-alpha/be91893255e90e0214dea41e830ad94d063f3e3a/opentelemetry-sdk-extension-autoconfigure-1.19.0-alpha.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure/1.19.0-alpha/e27b1fc06f04bf9203ee76b4a484e9bcc94a15d1/opentelemetry-sdk-extension-autoconfigure-1.19.0-alpha-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-devtools-v107/4.7.2/977775ed2a6f1a096dd45f230bf025b139516cf8/selenium-devtools-v107-4.7.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-devtools-v107/4.7.2/8d952b6bfe9ea39d27ea57846010a88488e99343/selenium-devtools-v107-4.7.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-chromium-driver/4.7.2/86c4af8b375c81a1f751b649aab263fbfb67f002/selenium-chromium-driver-4.7.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-chromium-driver/4.7.2/79a4afd209b2a27abaab33860a6d438d57fc716f/selenium-chromium-driver-4.7.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.guava/failureaccess/1.0.1/1dcf1de382a0bf95a3d8b0849546c88bac1292c9/failureaccess-1.0.1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.guava/failureaccess/1.0.1/1d064e61aad6c51cc77f9b59dc2cccc78e792f5a/failureaccess-1.0.1-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-exec/1.3/8dfb9facd0830a27b1b5f29f84593f0aeee7773b/commons-exec-1.3.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-exec/1.3/efd2543e352e55ce5a685eed6db8af028b737905/commons-exec-1.3-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.asynchttpclient/async-http-client/2.12.3/6dfc91814cc8b3bc3327246d0e5df36911b9a623/async-http-client-2.12.3.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.asynchttpclient/async-http-client/2.12.3/4c66b91161f9f66499509ca4aa3631da17e2f4a6/async-http-client-2.12.3-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-exporter-common/1.19.0/868d4bbf56a7b7acc2a2f9bbd7de57872103d9d0/opentelemetry-exporter-common-1.19.0.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-exporter-common/1.19.0/73c09f5b59a89dae7d8e31a6a1291b8cdf287745/opentelemetry-exporter-common-1.19.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/javax.annotation/javax.annotation-api/1.3.2/934c04d3cfef185a8008e7bf34331b79730a9d43/javax.annotation-api-1.3.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/javax.annotation/javax.annotation-api/1.3.2/65dfd2c47380bf72ec62a5b8c4ceb78a4eda1a53/javax.annotation-api-1.3.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.ous/jtoml/2.0.0/2085505b2b173e14b2a7702edd703ce185fd6206/jtoml-2.0.0.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.ous/jtoml/2.0.0/559938eedcd66eef8a655550a940b13807eee645/jtoml-2.0.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.10/4b95f4897fa13f2cd904aee711aeafc0c5295cd8/commons-codec-1.10.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.10/11fb3d88ae7e3b757d70237064210ceb954a5a04/commons-codec-1.10-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/jakarta.json.bind/jakarta.json.bind-api/2.0.0/25c23c19981bb61fbe3d4c5ffae2a8fa0327ed6e/jakarta.json.bind-api-2.0.0.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/jakarta.json.bind/jakarta.json.bind-api/2.0.0/fe0ee81ea9b35a73e5d2a8bc9ff3cae0c71969a0/jakarta.json.bind-api-2.0.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/javax.servlet/javax.servlet-api/4.0.1/a27082684a2ff0bf397666c3943496c44541d1ca/javax.servlet-api-4.0.1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/javax.servlet/javax.servlet-api/4.0.1/49a9da44db6e6b5f44ce15ddfcfe2b6666151b25/javax.servlet-api-4.0.1-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/eu.neilalexander/jnacl/1.0.0/82e9034fb81a33cb9d7e0c4cd241a2ba84802ae2/jnacl-1.0.0.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/eu.neilalexander/jnacl/1.0.0/79c84417c0c36273b5c6b30ab05a0494dc81c473/jnacl-1.0.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.glassfish.jaxb/jaxb-runtime/2.3.2/5528bc882ea499a09d720b42af11785c4fc6be2a/jaxb-runtime-2.3.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.glassfish.jaxb/jaxb-runtime/2.3.2/9c2033de9f6f23ca45b77496e1d260875c93c532/jaxb-runtime-2.3.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tapestry/tapestry-json/5.8.3/146b1551b4b16db03471d5e50a34f64be93b5f1d/tapestry-json-5.8.3.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tapestry/tapestry-json/5.8.3/96814942cae7d7227d93fa087aa0f9e2058a9ccb/tapestry-json-5.8.3-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.jsinterop/jsinterop-annotations/1.0.2/abd7319f53d018e11108a88f599bd16492448dd2/jsinterop-annotations-1.0.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.jsinterop/jsinterop-annotations/1.0.2/33716f8aef043f2f02b78ab4a1acda6cd90a7602/jsinterop-annotations-1.0.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.graphql-java/graphql-java/19.1/c6c6ece440197c606426f4793cb0111746fb91a0/graphql-java-19.1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.graphql-java/graphql-java/19.1/d61d40b944d5f180f599f27ef073d56a92d2dfbb/graphql-java-19.1-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-semconv/1.19.0-alpha/82f96bb99718c204a7775de298aabde2f6bffd2e/opentelemetry-semconv-1.19.0-alpha.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-semconv/1.19.0-alpha/70634af044a4fd5fcc2affc15e932158420ce0bf/opentelemetry-semconv-1.19.0-alpha-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse/yasson/2.0.4/6230dd69828b0bbe9932038c8248afcf7f3b1d8c/yasson-2.0.4.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse/yasson/2.0.4/f2c33aa1080cc7f0203d5fea235ea7a4a82dde2a/yasson-2.0.4-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.sun.xml.fastinfoset/FastInfoset/1.2.16/4eb6a0adad553bf759ffe86927df6f3b848c8bea/FastInfoset-1.2.16.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.sun.xml.fastinfoset/FastInfoset/1.2.16/cf4f90b0099ac1fe58e4dad1edecd27025672724/FastInfoset-1.2.16-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-classes-kqueue/4.1.84.Final/8b0f24ef191a0472d3ed72c1923683b4e07000f9/netty-transport-classes-kqueue-4.1.84.Final.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-classes-kqueue/4.1.84.Final/9db469ef9901e49482865babc497434971169a62/netty-transport-classes-kqueue-4.1.84.Final-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tapestry/tapestry-core/5.8.3/d2c25255d05b5b0586ffdcbe2dc3aa89974a5584/tapestry-core-5.8.3.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tapestry/tapestry-core/5.8.3/3412eee0ae4e38a4ce3d5c382813c0500cfd8e61/tapestry-core-5.8.3-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.antlr/antlr-runtime/3.5.2/cd9cd41361c155f3af0f653009dcecb08d8b4afd/antlr-runtime-3.5.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.antlr/antlr-runtime/3.5.2/5214ea45dd20d3a2e4caa6f1ad2248ad107e0daf/antlr-runtime-3.5.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy/1.12.18/875a9c3f29d2f6f499dfd60d76e97a343f9b1233/byte-buddy-1.12.18.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy/1.12.18/f11ab5e3b584076fad2ddf723e09b0ea0d8f34ac/byte-buddy-1.12.18-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.jsinterop/base/1.0.0/5d2a5cda3092004832cb67cfe7a100a2ef8411f8/base-1.0.0.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.jsinterop/base/1.0.0/58e36efe6c0dfd49fe5941ecff5c4105969d0c21/base-1.0.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.1.1/5043bfebc3db072ed80fbd362e7caf00e885d8ae/commons-logging-1.1.1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.1.1/f3f156cbff0e0fb0d64bfce31a352cce4a33bc19/commons-logging-1.1.1-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/args4j/args4j/2.0.26/1ebb18ebb3b379a74207d5af4ea7c8338ebd78b/args4j-2.0.26.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/args4j/args4j/2.0.26/d2e0db40c787ddf30cec389633b4e7d15df02efe/args4j-2.0.26-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/jakarta.annotation/jakarta.annotation-api/1.3.4/a858ec3f0ebd2b8d855c1ddded2cde9b381b0517/jakarta.annotation-api-1.3.4.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/jakarta.annotation/jakarta.annotation-api/1.3.4/66d2547b0bb966feea13a648c745fbf3a44bb7c3/jakarta.annotation-api-1.3.4-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-buffer/4.1.84.Final/a6b8cf57cfffc28d8e33f8175788a99401f576d9/netty-buffer-4.1.84.Final.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-buffer/4.1.84.Final/4f92d327d0e8c850d30768dd3de285a4a36d5aba/netty-buffer-4.1.84.Final-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/jakarta.json/jakarta.json-api/2.0.0/8612c1355bb31b31f829c81917fe30dea06fc726/jakarta.json-api-2.0.0.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/jakarta.json/jakarta.json-api/2.0.0/d75614279cb96d17a89a1d4a93709e8784f6aa80/jakarta.json-api-2.0.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.glassfish.ha/ha-api/3.1.12/59fbeca6cc196da8159e4957eabe49f23d1e691a/ha-api-3.1.12.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.glassfish.ha/ha-api/3.1.12/c538ccf05ff54767bc624841fcd1f03bf729751d/ha-api-3.1.12-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.glassfish.pfl/pfl-basic/4.0.1/1e04260fd4afde6dea9b10fd118cb6df91851c2c/pfl-basic-4.0.1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.glassfish.pfl/pfl-basic/4.0.1/f33358667e55b2888cac495d2095579a59a74e88/pfl-basic-4.0.1-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.13.1/51ae921a2ed1e06ca8876f12f32f265e83c0b2b8/jackson-core-2.13.1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.13.1/2d0c5c66616d6a57ad6282078249df816b3b2ed2/jackson-core-2.13.1-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-support/4.7.2/dd89a3b0298a3aedc541f48407428d7db9b6ff0f/selenium-support-4.7.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-support/4.7.2/fb1d3f130c04762657b8b3525bd680fe8b3ccd98/selenium-support-4.7.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/31.1-jre/60458f877d055d0c9114d9e1a2efb737b4bc282c/guava-31.1-jre.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/31.1-jre/c388a68bc2b17a314dfa7c769d858ada0fc32dcf/guava-31.1-jre-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.zeromq/jeromq/0.5.2/54cfd030abe0aa2eb26d307a27551b7279e7576f/jeromq-0.5.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.zeromq/jeromq/0.5.2/7f088101b211572d0aafcc7a2ee99cfcee42ea81/jeromq-0.5.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec-http/4.1.84.Final/78628e78087d3da6c3d2b22aa67798d3f3adcd68/netty-codec-http-4.1.84.Final.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec-http/4.1.84.Final/e1f1ac095bac02b8c7f1a12df4bb67d65a0e3a17/netty-codec-http-4.1.84.Final-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.sun.istack/istack-commons-runtime/3.0.8/d6a97364045aa6b99bf2d3c566a3f98599c2d296/istack-commons-runtime-3.0.8.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.sun.istack/istack-commons-runtime/3.0.8/3ca86990732cc05853c591cc454c98ba8ac3e06/istack-commons-runtime-3.0.8-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-handler-proxy/4.1.60.Final/2352f12826400e5db64b36fd951508ce9a61c196/netty-handler-proxy-4.1.60.Final.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.netty/netty-handler-proxy/4.1.60.Final/c37cf8be1593b9088f62944725d6d933541ca5ff/netty-handler-proxy-4.1.60.Final-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.antlr/antlr/3.5.2/c4a65c950bfc3e7d04309c515b2177c00baf7764/antlr-3.5.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.antlr/antlr/3.5.2/92c9bde32f0b1092507701b2b302af84534eb9b8/antlr-3.5.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/jakarta.xml.bind/jakarta.xml.bind-api/2.3.2/8d49996a4338670764d7ca4b85a1c4ccf7fe665d/jakarta.xml.bind-api-2.3.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/jakarta.xml.bind/jakarta.xml.bind-api/2.3.2/8f7b9baa75556d2c03371c7e4b45b484683c7d28/jakarta.xml.bind-api-2.3.2-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.glassfish.pfl/pfl-tf-tools/4.0.1/44acf9f297cf2c16ee06a752277ad0794f9ee8cb/pfl-tf-tools-4.0.1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.glassfish.pfl/pfl-tf-tools/4.0.1/1653cd5b1c35aa96107961dd011429a837ff2377/pfl-tf-tools-4.0.1-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.glassfish.external/management-api/3.2.1/2702916249edcf7dedf0f9af8ca00a90777590c8/management-api-3.2.1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.glassfish.external/management-api/3.2.1/4d743ee64c9778573f4fbaf5bccdfdf32db66e6d/management-api-3.2.1-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-logs/1.19.0-alpha/95e901fa9a6beb67ff83e353843556f490fec719/opentelemetry-sdk-logs-1.19.0-alpha.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk-logs/1.19.0-alpha/70ad2c0a82489d32b5a687001fd7949d3fa8edf2/opentelemetry-sdk-logs-1.19.0-alpha-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.glassfish.pfl/pfl-tf/4.0.1/ae991af56aa977414630dcb30d3bca9aae2afb2f/pfl-tf-4.0.1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.glassfish.pfl/pfl-tf/4.0.1/637507a58ae30b721c6e7ea85bd39e2f89743683/pfl-tf-4.0.1-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.antlr/ST4/4.0.8/a1c55e974f8a94d78e2348fa6ff63f4fa1fae64/ST4-4.0.8.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.antlr/ST4/4.0.8/6f23134f1c98dfce77f85defda31bfbce3e2a4ac/ST4-4.0.8-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/b421526c5f297295adef1c886e5246c39d4ac629/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/jakarta.activation/jakarta.activation-api/1.2.1/562a587face36ec7eff2db7f2fc95425c6602bc1/jakarta.activation-api-1.2.1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/jakarta.activation/jakarta.activation-api/1.2.1/6fe481428613e57af220e17b9ebf3475fb27efb8/jakarta.activation-api-1.2.1-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tapestry/tapestry5-annotations/5.8.3/f14634bb25e0ef5f4729a32062f4e3058955f45b/tapestry5-annotations-5.8.3.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tapestry/tapestry5-annotations/5.8.3/d00fab2c79238d36b307921b453f098b5477363/tapestry5-annotations-5.8.3-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk/1.19.0/a21c5b15550287f9d4782b18d82d944504fbe47e/opentelemetry-sdk-1.19.0.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.opentelemetry/opentelemetry-sdk/1.19.0/51837ecf3b5afa17ddf5d8bd7dfb4d429b1150a7/opentelemetry-sdk-1.19.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.github.sommeri/less4j/1.12.0/a3e498e7277bed699d29cc59b9a8e14c5f45d844/less4j-1.12.0.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.github.sommeri/less4j/1.12.0/2dc157cea87f01fb633a7472bb35094b4b6efbd7/less4j-1.12.0-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/javax.xml.bind/jaxb-api/2.3.1/8531ad5ac454cc2deb9d4d32c40c4d7451939b5d/jaxb-api-2.3.1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/javax.xml.bind/jaxb-api/2.3.1/e47264d065cecbc572ba99856fcc7da19a470ae3/jaxb-api-2.3.1-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.glassfish.pfl/pfl-basic-tools/4.0.1/189b7b97c0a0026d69ff8e184a0d0591a96c2b06/pfl-basic-tools-4.0.1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.glassfish.pfl/pfl-basic-tools/4.0.1/3e9d46359bae2ba945d8769cd7791f3bf532943/pfl-basic-tools-4.0.1-sources.jar">
+		<attributes>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-jasper/7.0.70/3fe2a764da96982cd8b0cd419ea361ea674676cb/tomcat-jasper-7.0.70.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-jasper/7.0.70/7849e3e6af41bb46f04e188fba9295230834a433/tomcat-jasper-7.0.70-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/jna/5.8.0/3551d8d827e54858214107541d3aff9c615cb615/jna-5.8.0.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/jna/5.8.0/2401f953c4234333699632298c8119bcf5ea9194/jna-5.8.0-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-compress/1.21/4ec95b60d4e86b5c95a0e919cb172a0af98011ef/commons-compress-1.21.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-compress/1.21/b3e0a269baa0d05b02f9b4447be463d25da8c097/commons-compress-1.21-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-api/7.0.70/e97250df92dbd6eac47c1dcd3590c24ba3022c16/tomcat-api-7.0.70.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-api/7.0.70/1e80d0c716f7b481ac897bc7c3c43b004ac2027e/tomcat-api-7.0.70-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/commons-cli/commons-cli/1.2/2bf96b7aa8b611c177d329452af1dc933e14501c/commons-cli-1.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/commons-cli/commons-cli/1.2/6c5459816530a1962ac18cd315cc775b1b384329/commons-cli-1.2-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-dbcp/7.0.70/64596618a13de8afe103328c7f199bc57c00132a/tomcat-dbcp-7.0.70.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-dbcp/7.0.70/21b93cf7779975366e6ed0295728fdb41a28494b/tomcat-dbcp-7.0.70-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.orbit/javax.mail.glassfish/1.4.1.v201005082020/b707c39fc080529c4a9ffc1df4eac58421133aaf/javax.mail.glassfish-1.4.1.v201005082020.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.orbit/javax.mail.glassfish/1.4.1.v201005082020/b12c43ddc708b244291f62c55a440dc272a947ff/javax.mail.glassfish-1.4.1.v201005082020-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-engine/5.8.2/c598b4328d2f397194d11df3b1648d68d7d990e3/junit-jupiter-engine-5.8.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-engine/5.8.2/ea87fe3d752e24397f71f347872e79a89c61a704/junit-jupiter-engine-5.8.2-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.opentest4j/opentest4j/1.2.0/28c11eb91f9b6d8e200631d46e20a7f407f2a046/opentest4j-1.2.0.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.opentest4j/opentest4j/1.2.0/41d55b3c2254de9837b4ec8923cbd371b8a7eab5/opentest4j-1.2.0-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.github.bonigarcia/webdrivermanager/5.3.1/13d2088b5718f603ee407ac2421b2cfbfbd42263/webdrivermanager-5.3.1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/io.github.bonigarcia/webdrivermanager/5.3.1/f8efd7d9dd52d43cc227113017b295abc0c709f7/webdrivermanager-5.3.1-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-http/8.1.19.v20160209/f08c189eab9a45810644ec35440f1a0c8aa0c4e0/jetty-http-8.1.19.v20160209.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-http/8.1.19.v20160209/62d7ffebc67536ca033748c8fac3422fb03a265/jetty-http-8.1.19.v20160209-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-servlet/8.1.19.v20160209/6872c3fc289de8f26a43b101741b33af36590cb4/jetty-servlet-8.1.19.v20160209.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-servlet/8.1.19.v20160209/4e3d60799468768674eda81d9a466ba2c3e22aee/jetty-servlet-8.1.19.v20160209-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-engine/1.8.2/b737de09f19864bd136805c84df7999a142fec29/junit-platform-engine-1.8.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-engine/1.8.2/ef25ff956479198a71a7d1b23e11f27fb09393b6/junit-platform-engine-1.8.2-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-plus/8.1.19.v20160209/ebc76e975b56206a53374422afc7b77f02cc34ca/jetty-plus-8.1.19.v20160209.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-plus/8.1.19.v20160209/50adb68a4d9f55e5a46a0b5a3964de83c8f8729a/jetty-plus-8.1.19.v20160209-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.testng/testng/6.14.3/d24515dc253e77e54b73df97e1fb2eb7faf34fdd/testng-6.14.3.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.testng/testng/6.14.3/bfd2538501a129a142fe8366169c48b91609dc0b/testng-6.14.3-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-jasper-el/7.0.70/73804d87f56fd31d7fbc84fe218dee79699664fc/tomcat-jasper-el-7.0.70.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-jasper-el/7.0.70/ef10ff8ca28446cc29ac0760146d71285168d861/tomcat-jasper-el-7.0.70-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-xml/8.1.19.v20160209/1ced67558fc09e7b8b7de06e8d64fd2e999c7515/jetty-xml-8.1.19.v20160209.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-xml/8.1.19.v20160209/ed97fefd016a3f671c16f0503591081d857f09b6/jetty-xml-8.1.19.v20160209-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-util/8.1.19.v20160209/c88071e72998e6355d719d35ff001d9c327a971a/jetty-util-8.1.19.v20160209.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-util/8.1.19.v20160209/c96554cd16d68540112788c6dec5490f7420bb4b/jetty-util-8.1.19.v20160209-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.slf4j/jcl-over-slf4j/1.7.30/cd92524ea19d27e5b94ecd251e1af729cffdfe15/jcl-over-slf4j-1.7.30.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.slf4j/jcl-over-slf4j/1.7.30/f2442e369a190089a2774920b5e73a4d4c1ef793/jcl-over-slf4j-1.7.30-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.easymock/easymock/3.3.1/a497d7f00c9af78b72b6d8f24762d9210309148a/easymock-3.3.1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.easymock/easymock/3.3.1/c12cd9074f40555a2e4f9960e32a17db18f2ec0a/easymock-3.3.1-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.orbit/javax.transaction/1.1.1.v201105210645/68e61aa115bbff4e1e2ae4b16feb27d9f805eb6/javax.transaction-1.1.1.v201105210645.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.orbit/javax.transaction/1.1.1.v201105210645/2e00625b8dd34693188882f421b736efece2b8e/javax.transaction-1.1.1.v201105210645-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-webapp/8.1.19.v20160209/467c63929edb7734ff7c7c12c4d12b369530fa78/jetty-webapp-8.1.19.v20160209.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-webapp/8.1.19.v20160209/b33a9935882100b864f788de4f4b374b5470eb7f/jetty-webapp-8.1.19.v20160209-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-juli/7.0.70/510e91e8aba63b24271d5a985d94762398d7dbfc/tomcat-juli-7.0.70.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-juli/7.0.70/ddede07c787abc54a17325b3678597f2965ecfde/tomcat-juli-7.0.70-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.github.docker-java/docker-java-core/3.2.13/5a3af141f152d36aad519c7b3915251111592b60/docker-java-core-3.2.13.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.github.docker-java/docker-java-core/3.2.13/2f30dc2b158ee049f55a7be67e0d360261c6c902/docker-java-core-3.2.13-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tapestry/tapestry-runner/5.8.3/1fd5f4238b6d9dc079f3f8e31d9d6f62acd3d29b/tapestry-runner-5.8.3.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tapestry/tapestry-runner/5.8.3/31b0e36a697b2d8995a630f81c5b07aa09858175/tapestry-runner-5.8.3-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tapestry/tapestry-test/5.8.3/3264f44a1e80fb745ce8a40edc598d22e77b656d/tapestry-test-5.8.3.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tapestry/tapestry-test/5.8.3/818c2fc28881a880d52354eb8da50e251d560db/tapestry-test-5.8.3-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-catalina/7.0.70/65985c1181f54861178dff7fd0d1aee25309fd49/tomcat-catalina-7.0.70.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-catalina/7.0.70/d500221caeed6f0570fa5050b6c83f7691106194/tomcat-catalina-7.0.70-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents.client5/httpclient5/5.1.3/13c984b7b881afcff3a7f0bb95878724a48a4b66/httpclient5-5.1.3.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents.client5/httpclient5/5.1.3/8fec06124157f4adf8fe9ffdc75620e3b5d318d2/httpclient5-5.1.3-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-servlet-api/7.0.70/b04f307878c836a43aae84e2f1ef99952347ed24/tomcat-servlet-api-7.0.70.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-servlet-api/7.0.70/25fe0e836cf79a740044aac396d27838665308eb/tomcat-servlet-api-7.0.70-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents.core5/httpcore5/5.1.3/d1638d1e5f2793f187d4144c702a93524ba6fd3b/httpcore5-5.1.3.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents.core5/httpcore5/5.1.3/75409375b1747c21e6484a6f1f103580ad097110/httpcore5-5.1.3-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-annotations-api/7.0.70/6b4c2af248d1c45865f1398a91f881480faa65bf/tomcat-annotations-api-7.0.70.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-annotations-api/7.0.70/b5a5498d7dac7487873dff6ce0eae6ed5313530f/tomcat-annotations-api-7.0.70-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/cglib/cglib/3.1/1f1cb6c7a7479e0c7fd7987109e503914bebe84a/cglib-3.1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/cglib/cglib/3.1/e651cbd93cb1c2155afdea6675c50e567f7ce91e/cglib-3.1-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter/5.8.2/5a817b1e63f1217e5c586090c45e681281f097ad/junit-jupiter-5.8.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter/5.8.2/5fd01c33132462aab3905cb74bd1097a713ab91a/junit-jupiter-5.8.2-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/4.2/4b2c12b92dd045aeabf5b2aeeb3220bf010da9d4/asm-4.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/4.2/10735cd06b779a5f172fba69ea6f7b9cdc61a4d/asm-4.2-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.github.docker-java/docker-java/3.2.13/d1f8b31f74db0b3cc3f684bb76da940b4e2b65e5/docker-java-3.2.13.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.github.docker-java/docker-java/3.2.13/6c89bbcd76fe8fbcd74a4cc18c244e7b15531b55/docker-java-3.2.13-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-api/5.8.2/4c21029217adf07e4c0d0c5e192b6bf610c94bdc/junit-jupiter-api-5.8.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-api/5.8.2/429d353563c5fb35a3d47076bedbf75161e976c2/junit-jupiter-api-5.8.2-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.15/49d94806b6e3dc933dacbd8acb0fdbab8ebd1e5d/commons-codec-1.15.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.15/843bc57fd042051e994846da8167bb7ca677a6d/commons-codec-1.15-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-util/7.0.70/adb3724b7c3f0207f21c7a6b1c61182a3d585c2b/tomcat-util-7.0.70.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-util/7.0.70/ddccced5454c4a3ed8f7f53c13e14017f75164a8/tomcat-util-7.0.70-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.brotli/dec/0.1.2/c26a897ae0d524809eef1c786cc6183b4ddcc3b/dec-0.1.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.brotli/dec/0.1.2/c04c22a0f5a84e985bd04d2129638e590c1e5edc/dec-0.1.2-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents.core5/httpcore5-h2/5.1.3/4664b59b09f5ee008e37a963bbb92f4068e91696/httpcore5-h2-5.1.3.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents.core5/httpcore5-h2/5.1.3/7c926d1c5a7d0d42453f2c1cf886787235e99e98/httpcore5-h2-5.1.3-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/5.0.3/dcc2193db20e19e1feca8b1240dbbc4e190824fa/asm-5.0.3.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/5.0.3/f0f24f6666c1a15c7e202e91610476bd4ce59368/asm-5.0.3-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-jndi/8.1.19.v20160209/b88bb8fcb6b3ef73da81750dfbe25875268d9502/jetty-jndi-8.1.19.v20160209.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-jndi/8.1.19.v20160209/2c2dc9af9f9802674e1963c0f0d4ef1cfa5e6d95/jetty-jndi-8.1.19.v20160209-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.objenesis/objenesis/2.1/87c0ea803b69252868d09308b4618f766f135a96/objenesis-2.1.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.objenesis/objenesis/2.1/611a57d836e2c320d59f9851d4ad587f3c8472e/objenesis-2.1-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-params/5.8.2/ddeafe92fc263f895bfb73ffeca7fd56e23c2cce/junit-jupiter-params-5.8.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-params/5.8.2/26d07692b618b8da29479febec7d55e18107ee48/junit-jupiter-params-5.8.2-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.bouncycastle/bcprov-jdk15on/1.64/1467dac1b787b5ad2a18201c0c281df69882259e/bcprov-jdk15on-1.64.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.bouncycastle/bcprov-jdk15on/1.64/2881bfaf2c15e9e64b62c2a143db90db7a0d6035/bcprov-jdk15on-1.64-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-server/8.1.19.v20160209/e4100696c994e26148fd0b62c8a866a606be1540/jetty-server-8.1.19.v20160209.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-server/8.1.19.v20160209/7697af7d17d0bf8318856cf360a60a44207932cc/jetty-server-8.1.19.v20160209-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tapestry/tapestry-test-constants/5.8.3/584e3b18f2d2b7e64f3f22e25996a33c9a6ebe0c/tapestry-test-constants-5.8.3.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tapestry/tapestry-test-constants/5.8.3/a5507f440aeb69de03c6ed45a83a7140543d4e98/tapestry-test-constants-5.8.3-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.github.docker-java/docker-java-transport/3.2.13/e9d308d1822181a9d48c99739f5eca014ec89199/docker-java-transport-3.2.13.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.github.docker-java/docker-java-transport/3.2.13/4fd8dc88ce1f7ce1667c55bcd23ed4a2d850486e/docker-java-transport-3.2.13-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.10/dd9b193aef96e973d5a11ab13cd17430c2e4306b/gson-2.10.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.10/6ed5748c6f0860e81e09d4d2582fe914cfa41d1e/gson-2.10-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-commons/1.8.2/32c8b8617c1342376fd5af2053da6410d8866861/junit-platform-commons-1.8.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-commons/1.8.2/386b61876dd33d0ef0381189d3c1db9455d99659/junit-platform-commons-1.8.2-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apiguardian/apiguardian-api/1.1.2/a231e0d844d2721b0fa1b238006d15c6ded6842a/apiguardian-api-1.1.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apiguardian/apiguardian-api/1.1.2/e0787a997746ac32639e0bf3cb27af8dce8a3428/apiguardian-api-1.1.2-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-continuation/8.1.19.v20160209/1db9672530a813b8c775a51197dd308c152adbca/jetty-continuation-8.1.19.v20160209.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-continuation/8.1.19.v20160209/91672dfbb67892c73bdb757f6dd12a599106e178/jetty-continuation-8.1.19.v20160209-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.orbit/javax.activation/1.1.0.v201105071233/b394a9fbf664ca835452b3ced452710bcf79fd81/javax.activation-1.1.0.v201105071233.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.orbit/javax.activation/1.1.0.v201105071233/350bd9b2a184ff0b1981809a299d9a663c2e9895/javax.activation-1.1.0.v201105071233-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.github.docker-java/docker-java-api/3.2.13/5817ef8f770cb7e740d590090bf352df9491f3c1/docker-java-api-3.2.13.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.github.docker-java/docker-java-api/3.2.13/a9276a150f5b4328c297377867edec741c88d31a/docker-java-api-3.2.13-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-coyote/7.0.70/8ac8eb430e57c8e28e88f922a8ce361fe24ad891/tomcat-coyote-7.0.70.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-coyote/7.0.70/637568e1ae19b1bfe14431bdbfc71813b255aaac/tomcat-coyote-7.0.70-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.github.docker-java/docker-java-transport-httpclient5/3.2.13/921d8f5a7f272e5eb113d5643e51cb0f02053259/docker-java-transport-httpclient5-3.2.13.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.github.docker-java/docker-java-transport-httpclient5/3.2.13/41bcaa58a63f2d46feb2b065bc629ca7cff341b9/docker-java-transport-httpclient5-3.2.13-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-el-api/7.0.70/be43a3e11259b4ab4471ddddca14e05ba360cd91/tomcat-el-api-7.0.70.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-el-api/7.0.70/3c3c51b9ac2e7a4a0ca11816f37d4b4ca1c940f4/tomcat-el-api-7.0.70-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-io/8.1.19.v20160209/c35e77e419169b4c8ad5fa3429865f2c8541e972/jetty-io-8.1.19.v20160209.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-io/8.1.19.v20160209/f8fe50914e020d6263661bf990553a28edf00086/jetty-io-8.1.19.v20160209-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-jsp-api/7.0.70/7b2f063e8d2163d588885d7edcd3a6d2bce3981a/tomcat-jsp-api-7.0.70.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-jsp-api/7.0.70/a5c57d80ad084def10a5baa716e94be74b1e7c81/tomcat-jsp-api-7.0.70-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache-extras.beanshell/bsh/2.0b6/fb418f9b33a0b951e9a2978b4b6ee93b2707e72f/bsh-2.0b6.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache-extras.beanshell/bsh/2.0b6/76a65f674e8f2df409934824c49ca338987c63ae/bsh-2.0b6-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tapestry/tapestry-test-data/5.8.3/f7491c4af595a215dbd1ac96f867d2e3906735dc/tapestry-test-data-5.8.3.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.tapestry/tapestry-test-data/5.8.3/7c5f3a6fbad92ccf7151a7b8dd91ca0567a0b840/tapestry-test-data-5.8.3-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/2.0.3/deef7fc81f00bd5e6205bb097be1040b4094f007/slf4j-api-2.0.3.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/2.0.3/6ba8526502af8ff682286a8c7104162be97913db/slf4j-api-2.0.3-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-security/8.1.19.v20160209/e9b6bd78d0256f0d689b397eb45ee55a6ab44189/jetty-security-8.1.19.v20160209.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-security/8.1.19.v20160209/f5163361e8f624900ec69b2687e0c0b7e75fc4/jetty-security-8.1.19.v20160209-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.orbit/javax.servlet/3.0.0.v201112011016/aaaa85845fb5c59da00193f06b8e5278d8bf3f8/javax.servlet-3.0.0.v201112011016.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.orbit/javax.servlet/3.0.0.v201112011016/15c914135cf30177b83c321250c458396289cd37/javax.servlet-3.0.0.v201112011016-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jdt.core.compiler/ecj/4.4.2/71d67f5bab9465ec844596ef844f40902ae25392/ecj-4.4.2.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.eclipse.jdt.core.compiler/ecj/4.4.2/903e8c2cb521cc91636eccae66b8594435516ff5/ecj-4.4.2-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.bouncycastle/bcpkix-jdk15on/1.64/3dac163e20110817d850d17e0444852a6d7d0bd7/bcpkix-jdk15on-1.64.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.bouncycastle/bcpkix-jdk15on/1.64/5c87199786c06e1a53adf16b1998386bad52da89/bcpkix-jdk15on-1.64-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.12.0/c6842c86792ff03b9f1d1fe2aab8dc23aa6c6f0e/commons-lang3-3.12.0.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.12.0/198b882fdc2c72c89c63401d946f6ba46c3acea3/commons-lang3-3.12.0-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.10.3/f63b3b1da563767d04d2e4d3fc1ae0cdeffebe7/jackson-annotations-2.10.3.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.10.3/a52bf9c42cb6a029577d0d701785a07554675713/jackson-annotations-2.10.3-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.10.3/f7ee7b55c7d292ac72fbaa7648c089f069c938d2/jackson-core-2.10.3.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.10.3/5b24f64c1a3351a550651b072887ac56a0af120c/jackson-core-2.10.3-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.10.3/aae92628b5447fa25af79871ca98668da6edd439/jackson-databind-2.10.3.jar" sourcepath="C:/Users/yolky/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.10.3/db734f2f42a95d2668b9f9de58d25cfc064e6e4a/jackson-databind-2.10.3-sources.jar">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="gradle.buildServer" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path=".apt_generated">
+		<attributes>
+			<attribute name="optional" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" output="build/resources/testUnitTapestry" path=".apt_generated_tests">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" output="target/test-classes" path="target/generated-test-sources/test-annotations">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="test" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="ignore_optional_problems" value="true"/>
+			<attribute name="m2e-apt" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="target/generated-sources/annotations">
+		<attributes>
+			<attribute name="optional" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>

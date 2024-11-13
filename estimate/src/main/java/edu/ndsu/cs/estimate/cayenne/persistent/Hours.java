@@ -4,6 +4,7 @@ import java.util.Date;
 
 import edu.ndsu.cs.estimate.cayenne.persistent.auto._Hours;
 import edu.ndsu.cs.estimate.services.hours.HoursInterface;
+import edu.ndsu.cs.estimate.services.tasks.TaskInterface;
 
 public class Hours extends _Hours implements HoursInterface{
 
@@ -32,27 +33,22 @@ public class Hours extends _Hours implements HoursInterface{
     }
 
 	@Override
-	public Date getTimestamp() {
-		return this.timeStamp;
-	}
+    public Date getTimestamp() {
+        return getTimeStamp(); 
+    }
 
-	@Override
-	public void setTimestamp(Date timeStamp) {
-		this.timeStamp = timeStamp;	
-	}
-	
-	@Override
-	public Task getTask() {
-		return (Task) this.tasks;
-	}
-	
-	@Override
-	public void setTask(Task task) {
-		this.tasks = task;	
-	}
+    @Override
+    public void setTimestamp(Date timeStamp) {
+        setTimeStamp(timeStamp); 
+    }
 
-	
+    @Override
+    public TaskInterface getTask() {
+        return (TaskInterface) getTasks();
+    }
 
-	
-
+    @Override
+    public void setTask(TaskInterface task) {
+        setTasks((Task) task);
+    }
 }

@@ -6,8 +6,7 @@ import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.beanmodel.services.BeanModelSource;
 import org.apache.tapestry5.commons.Messages;*/
 import org.apache.tapestry5.ioc.annotations.Inject;
-
-import edu.ndsu.cs.estimate.cayenne.persistent.Task;
+import edu.ndsu.cs.estimate.services.tasks.TaskInterface;
 import edu.ndsu.cs.estimate.services.tasks.TaskDatabaseService;
 
 
@@ -25,7 +24,7 @@ public class ViewTasks {
 	
 	
 	@Property
-	private Task task; 
+	private TaskInterface task; 
 	
 	@Property
 	private Integer taskPK;

@@ -1,5 +1,6 @@
 <t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" title="Edit Event | EstiMate">
     <link rel="stylesheet" type="text/css" href="/css/events.css"></link>
+    <link rel="stylesheet" type="text/css" href="/css/datepicker.css" /> 
     <t:security.authenticated>
         <div class="container mt-3">
             <h2 class="text-center mb-5">Edit Event</h2>
@@ -30,25 +31,19 @@
                 <div class="row justify-content-center">
                     <div class="col-md-6 col-lg-4 mb-3">
                         <label for="eventDate" class="form-label">Event Date</label>
-                        <div class="input-group" id="eventDatePicker">
-                            <span class="input-group-text" data-td-target="#eventDatePicker" data-td-toggle="datetimepicker">
-                                <i class="fa fa-calendar"></i>
-                            </span>
-                            <input t:id="eventDate" type="text" t:value="eventDateString" class="form-control datetimepicker-input" readonly="readonly" />
-                        </div>
+                        <t:dateField t:id="eventDate" value="event.eventDate" class="form-control"/>
                     </div>
                 </div>
 
                 <div class="row justify-content-center mb-5">
                     <div class="col-md-6 col-lg-4 mb-3 d-grid gap-2">
-                        <input type="submit" class="btn btn-primary" value="Update Event"/>
-                        <t:pagelink page="events/SetResult" context="eventId" class="btn btn-info">Set Result</t:pagelink>
+                        <t:submit value="Update Event" class="btn btn-warning" />
+                        <t:pagelink page="events/SetResult" context="eventPK" class="btn btn-info">Set Result</t:pagelink>
                         <t:pagelink page="events" class="btn btn-secondary">Go back</t:pagelink>
                     </div>
                 </div>
             </t:form>
         </div>
-        <script src="/js/dateInputEdit.js"></script>
     </t:security.authenticated>
     <t:security.notauthenticated>
         <div class="container d-flex justify-content-center align-items-center loginMessage">

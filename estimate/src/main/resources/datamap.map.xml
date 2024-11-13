@@ -229,6 +229,6 @@
 		<overwrite>false</overwrite>
 		<createPropertyNames>false</createPropertyNames>
 		<createPKProperties>true</createPKProperties>
-		<client>true</client>
+		<client>false</client>
 	</cgen>
 </data-map>

@@ -19,7 +19,7 @@ import org.apache.tapestry5.corelib.components.TextField;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.tynamo.security.services.SecurityService;
 
-import edu.ndsu.cs.estimate.cayenne.persistent.Task;
+import edu.ndsu.cs.estimate.services.tasks.TaskInterface;
 import edu.ndsu.cs.estimate.cayenne.persistent.User;
 import edu.ndsu.cs.estimate.entities.interfaces.UserAccount;
 import edu.ndsu.cs.estimate.services.database.interfaces.UserAccountDatabaseService;
@@ -30,7 +30,7 @@ public class Index {
 	private TaskDatabaseService taskDBS;
 	
 	@Property
-	private List<? extends Task> tasks;
+	private List<? extends TaskInterface> tasks;
 	@SuppressWarnings("deprecation")
 	@Property
 	@Persist
@@ -47,12 +47,9 @@ public class Index {
     
     @InjectComponent
     private Form dateForm;
-    
-    @Component(id = "dateRange", parameters = {"value=dateRange"})
-    private TextField dateRangeField;
 	
 	@Property
-	private Task task; 
+	private TaskInterface task; 
 	int size;
 	
 	@Inject
@@ -100,7 +97,7 @@ public class Index {
             }
         }
 
-        tasks = taskDBS.listAllTasks(start, end, userAccount); // Fetch tasks based on date range
+        tasks = taskDBS.listAllTasks(start, end, userAccount, "All"); // Fetch tasks based on date range
         noTasks = tasks.isEmpty();
     }
 	
@@ -126,7 +123,7 @@ public class Index {
     	getTasks();
     }
 	
-	public long returnDifferenceEstimated(Task task) {
+	public long returnDifferenceEstimated(TaskInterface task) {
 		java.util.Date TaskStartDate = task.getStartDate();
 		System.out.println("Start Date" + task.getStartDate() + "| End Date : " + task.getEstEndDate());
 		java.util.Date TaskExpectedEndDate = task.getEstEndDate();
@@ -136,7 +133,7 @@ public class Index {
 		
 		return StartExpectDiffInDays;
 	}
-	public long returnDifferenceActual(Task task) {
+	public long returnDifferenceActual(TaskInterface task) {
 		java.util.Date TaskStartDate = task.getStartDate();
 		LocalDate holderDate = task.getActualEndDate();
 		java.util.Date TaskActualEndDate= Date.from(holderDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
@@ -152,7 +149,7 @@ public class Index {
 		System.out.println("hello two");
 		Date start = new Date("12/1/2022");
 		Date end = new Date("12/9/2022");
-		tasks = taskDBS.listAllTasks(start,end, (User)this.userAccount);
+		tasks = taskDBS.listAllTasks(start,end, (User)this.userAccount, "All");
 		size = tasks.size();
 		Object[][] graphArray = new Object[size][3];
 		graphArray[0][0] = " ";
@@ -161,7 +158,7 @@ public class Index {
 		int currentPointer = 1;
 		System.out.println(tasks.toString());
 		System.out.println(graphArray[0][1]);
-		for (Task currentTask : tasks) {
+		for (TaskInterface currentTask : tasks) {
 			String TaskName = currentTask.getName();
 			java.util.Date TaskStartDate = currentTask.getStartDate();
 			java.util.Date TaskExpectedEndDate = currentTask.getEstEndDate();

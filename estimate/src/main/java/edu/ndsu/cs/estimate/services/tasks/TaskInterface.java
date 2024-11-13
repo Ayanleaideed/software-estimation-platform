@@ -1,20 +1,11 @@
 package edu.ndsu.cs.estimate.services.tasks;
-import java.util.ArrayList;
-
-import java.util.List;
 
 import org.apache.cayenne.ObjectContext;
-import org.apache.tapestry5.ioc.annotations.Inject;
-
-import edu.ndsu.cs.estimate.cayenne.persistent.User;
 import edu.ndsu.cs.estimate.entities.interfaces.UserAccount;
-import edu.ndsu.cs.estimate.services.tasks.TaskDatabaseService;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 public interface TaskInterface {
@@ -45,9 +36,9 @@ public interface TaskInterface {
     public int       getTimeTaken();
 	public void   	 setTimeTaken(int timeTaken);
 
-    public UserAccount     getUser();
+    public UserAccount     	getUser();
 	public void   			setUser(UserAccount user); 
-	
+
 	public void setObjectContext(ObjectContext obj);
     public ObjectContext getObjectContext();
 
@@ -59,6 +50,10 @@ public interface TaskInterface {
 			errors.add("Name must be included.");
 		} else if(getName().length() > 25) {
 			errors.add("Name cannot contain more than 25 characters."); 
+		} else if(getEstEndDate() == null) {
+			errors.add("Estimated end date must be included and in the format MM/dd/yyyy.");
+		} else if(getStartDate() == null) {
+			errors.add("Start date must be included and in the format MM/dd/yyyy.");
 		} else if(getEstEndDate().before(getStartDate())) {
 			errors.add("Estimated end date must be after start date.");
 		} else if(getTimeTaken() > 999999999999L) {
@@ -71,6 +66,16 @@ public interface TaskInterface {
 		return errors; 
 	}
 
-
-	
+	// Method to get the status of a task
+	public default String getStatus() {
+		if (getCompleted()) {
+			return "Completed";
+		} else if (getDropped()) {
+			return "Dropped";
+		} else if (getWillNotComplete()) {
+			return "Will Not Complete";
+		} else {
+			return "In Progress";
+		}
+	}
 }
