@@ -125,7 +125,10 @@
                                                 <t:actionlink t:id="drop" aria-expanded="false" context="task.PK" class="btn btn-secondary mb-1">Dropped</t:actionlink>
                                             </li>
                                             <li class="d-flex justify-content-center">
-                                                <t:actionlink t:id="willNotComplete" aria-expanded="false" context="task.PK" class="btn btn-secondary">Will Not Complete</t:actionlink>
+                                                <t:actionlink t:id="willNotComplete" aria-expanded="false" context="task.PK" class="btn btn-secondary mb-1">Will Not Complete</t:actionlink>
+                                            </li>
+                                            <li class="d-flex justify-content-center">
+                                                <t:actionlink t:id="inProgress" aria-expanded="false" context="task.PK" class="btn btn-secondary">In Progress</t:actionlink>
                                             </li>
                                         </ul>
                                     </div>

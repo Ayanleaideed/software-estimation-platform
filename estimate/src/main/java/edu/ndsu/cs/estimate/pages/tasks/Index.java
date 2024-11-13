@@ -357,7 +357,6 @@ public class Index {
             CayenneTaskFactory.generateInstance(taskDBS.getCayenneService().newContext(), userAccount);
         }
         getTasks(selectedStatus); // Update displayed tasks after adding
-        System.err.println("Amount of tasks now " + tasks.size());
     }
 
     @OnEvent(component = "complete")
@@ -397,5 +396,25 @@ public class Index {
         // Re-fetch tasks to ensure updated status
         getTasks(selectedStatus);
         return Index.class;
+    }
+
+    @OnEvent(component = "inProgress")
+    Object onClickInProgress(int pk) {
+        TaskInterface tempTask = taskDBS.getTask(pk);
+        tempTask.setCompleted(false);
+        tempTask.setDropped(false);
+        tempTask.setWillNotComplete(false);
+        taskDBS.updateTask(tempTask);
+
+        // Re-fetch tasks to ensure updated status
+        getTasks(selectedStatus);
+        return Index.class;
+    }
+
+    @OnEvent(component="showAll")
+    void onClickShowAll() {
+        startDate = "";
+        finishDate = "";
+        getTasks(selectedStatus);
     }
 }

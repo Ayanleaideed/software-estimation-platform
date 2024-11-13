@@ -37,17 +37,17 @@ public class Task extends _Task implements TaskInterface{
 
 	@Override
 	public boolean getCompleted() {
-		return false;
+		return completed;
 	}
 
 	@Override
 	public boolean getDropped() {
-		return false;
+		return dropped;
 	}
 	
 	@Override
 	public boolean getWillNotComplete() {
-		return false;
+		return willNotComplete;
 	}
 
 	@Override
