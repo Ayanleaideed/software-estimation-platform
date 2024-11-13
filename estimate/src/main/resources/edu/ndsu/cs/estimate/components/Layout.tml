@@ -4,7 +4,7 @@
       <meta charset="utf-8" />
       <title>${title}</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta name="author" content="Group L Fall 2023" />
+      <meta name="author" content="Winners ;) Fall 2024" />
       <link rel="shortcut icon" href="/favicon.ico" />
       <link rel="stylesheet" href="/fontawesome-free-6.4.2-web/css/all.min.css"/>
       <link rel="stylesheet" type="text/css" href="/css/layout.css" />
@@ -53,7 +53,7 @@
       <t:body />
     </div>
     <footer class="mt-auto bg-dark text-white text-center p-1">
-        <p>CS 413 -  Fall 2023</p>
+        <p>CSCI 413 -  Fall 2024</p>
     </footer>  
   </body>
 </html>

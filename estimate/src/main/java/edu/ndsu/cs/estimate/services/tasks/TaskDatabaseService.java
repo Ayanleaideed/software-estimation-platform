@@ -11,7 +11,7 @@ import edu.ndsu.cs.estimate.services.database.interfaces.CayenneService;
 
 
 public interface TaskDatabaseService {
-	public List<? extends TaskInterface> listAllTasks(Date start, Date end, UserAccount user);  
+	public List<? extends TaskInterface> listAllTasks(Date start, Date end, UserAccount user, String status);  
 	public List<? extends TaskInterface> listCompleted(User user);
 	public boolean isTaskNameValidEditing(String name, int PK);
 	boolean isTaskNameValidAdding(String taskName);

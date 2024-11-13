@@ -1,16 +1,11 @@
 package edu.ndsu.cs.estimate.pages.tasks;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
-import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.InjectComponent;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.corelib.components.Form;
-import org.apache.tapestry5.corelib.components.TextField;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.alerts.AlertManager;
 import org.apache.tapestry5.alerts.Duration;
@@ -43,30 +38,37 @@ public class EditTask {
     private Integer taskPK;
 
     @Property
-    private List<? extends HoursInterface> hours;
+    private List<? extends HoursInterface> taskHours;
 
     @Property
     private HoursInterface hour;
 
     @Property
     private boolean noHours;
+
+	@Property
+	private int editHours;
     
     @Property
 	private String estEndDateStr;
     
-
     void setupRender() {
-    	if(taskPK != null) {
-			task = taskDatabase.getTask(taskPK);
-		}
-    	
-        //if (task != null) {
-        //   hours = hoursDatabase.listAllHoursByTask(task);
-        //    noHours = hours.isEmpty();
-        //} else {
-        //    noHours = true;
-        //}
+        if (taskPK != null) {
+            task = taskDatabase.getTask(taskPK);
+            if (task != null) {
+                getHours();
+            } else {
+                noHours = true;
+            }
+        } else {
+            noHours = true;
+        }
     }
+
+    private void getHours() {
+        taskHours = hoursDatabase.listAllHoursByTask(task);
+        noHours = taskHours.isEmpty();
+    } 
     
     void onActivate(Integer taskPK) {
     	this.taskPK = taskPK; 
@@ -91,5 +93,25 @@ public class EditTask {
 		alertManager.alert(Duration.TRANSIENT, Severity.SUCCESS, "Task added successfully.");
 		return Index.class;
 	}
+
+    void onSubmitFromDeleteForm(int pk) {
+        // Delete the hour entry
+        hoursDatabase.deleteHours(pk);
+
+        // Refresh displayed hours
+        getHours();
+    }
+
+    void onSubmitFromEditForm(int pk) {
+        HoursInterface tempHours = hoursDatabase.getHours(pk);
+        tempHours.setHoursLogged(editHours);
+        hoursDatabase.updateHours(tempHours);
+
+        // Reset editHours
+        editHours = 0;
+
+        // Refresh displayed hours
+        getHours();
+    }
 
 }

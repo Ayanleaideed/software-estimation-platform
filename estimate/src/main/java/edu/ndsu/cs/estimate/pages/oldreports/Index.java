@@ -97,7 +97,7 @@ public class Index {
             }
         }
 
-        tasks = taskDBS.listAllTasks(start, end, userAccount); // Fetch tasks based on date range
+        tasks = taskDBS.listAllTasks(start, end, userAccount, "All"); // Fetch tasks based on date range
         noTasks = tasks.isEmpty();
     }
 	
@@ -149,7 +149,7 @@ public class Index {
 		System.out.println("hello two");
 		Date start = new Date("12/1/2022");
 		Date end = new Date("12/9/2022");
-		tasks = taskDBS.listAllTasks(start,end, (User)this.userAccount);
+		tasks = taskDBS.listAllTasks(start,end, (User)this.userAccount, "All");
 		size = tasks.size();
 		Object[][] graphArray = new Object[size][3];
 		graphArray[0][0] = " ";

@@ -1,18 +1,26 @@
 <html t:type="layout" title="Add Hours"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
       xmlns:p="tapestry:parameter">
-      
-	<t:form t:id="hoursForm" >
-      	<t:errors/>
-      	<t:label for="timestamp" />
-      	<span class="input-group-text" title="Planned end date">
-              <i class="fa fa-calendar"></i>
-        </span>            
-        <input t:id="timestamp" type="text" class="form-control" placeholder="Showing all dates" readonly="readonly"/>
-      	<t:label for="hoursLogged" />
-      	<t:textField t:id="hoursLogged" value="hour.hoursLogged" />
-      	<t:submit value="Add Hours" />
-	    <t:pagelink page="tasks/EditTask" class="btn btn-default">Cancel</t:pagelink>
-     </t:form>
-      
+
+    <t:form t:id="hoursForm">
+        <t:errors/>
+        
+        <!-- Timestamp Field with Date Picker and Icon -->
+        <t:label for="timestamp">Timestamp</t:label>
+        <div class="input-group">
+            <span class="input-group-text" title="Planned end date">
+                <i class="fa fa-calendar"></i>
+            </span>            
+            <t:dateField t:id="timestamp" value="timestamp" class="form-control" placeholder="Select date"/>
+        </div>
+
+        <!-- Hours Logged Field with Inline Error -->
+        <t:label for="hoursLogged">Hours Logged</t:label>
+        <t:textField t:id="hoursLogged" value="hour.hoursLogged" class="form-control" placeholder="Enter hours"/>
+        <t:error for="hoursLogged"/>
+
+        <!-- Submit and Cancel Buttons with Accessibility Labels -->
+        <t:submit value="Add Hours" class="btn btn-primary" aria-label="Submit hours logged"/>
+        <t:pagelink page="tasks/EditTask" class="btn btn-default" aria-label="Cancel adding hours and go to Edit Task">Cancel</t:pagelink>
+    </t:form>
 </html>

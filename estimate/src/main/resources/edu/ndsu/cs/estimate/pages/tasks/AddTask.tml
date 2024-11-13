@@ -16,7 +16,7 @@
                 
                 <t:label for="endDate">Estimated End Date *</t:label>
                 <t:datefield t:id="endDate" value="task.estEndDate"/>
-                
+                <br/>
                 <t:submit t:class="btn btn-primary" value="Create New Task" /> 
                 <t:pagelink page="tasks" class="btn btn-secondary">Go Back</t:pagelink>
 
