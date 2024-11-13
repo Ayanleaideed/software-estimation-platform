@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" class="h-100">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.2/css/bootstrap.min.css"/>
   <head>
       <meta charset="utf-8" />
       <title>${title}</title>
@@ -16,7 +17,7 @@
 <body class ="d-flex flex-column h-100">
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-logo" href="/">
+        <a class="navbar-logo" href="/Index">
           <img src="/images/EstiMateLogo.png" alt="Home" class="logo"></img>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

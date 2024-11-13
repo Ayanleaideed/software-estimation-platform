@@ -49,7 +49,7 @@
                             <t:textField t:id="finishDateInput" value="finishDate" class="form-control date-input" placeholder="Finish Date (MM/dd/yyyy)" style="width: 30%;" />
                             
                             <input type="submit" class="btn btn-primary" value="Search" />
-                            <button type="button" class="btn btn-secondary" onclick="resetDateRange()">Show All</button>
+                            <t:actionlink t:id="showAll" class="btn btn-secondary">Show All</t:actionlink>
                         </div>
                     </t:form>
                 </div>

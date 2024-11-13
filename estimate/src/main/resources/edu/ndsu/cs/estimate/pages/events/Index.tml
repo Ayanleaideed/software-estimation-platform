@@ -11,7 +11,7 @@
                         <div class="input-group">
                             <t:textField t:id="dateInput" value="dateRange" class="form-control" placeholder="Showing all dates" />
                             <input type="submit" class="btn btn-primary" value="Search"/>
-                            <button type="button" class="btn btn-secondary" onclick="resetDateRange()">Show All</button>
+                            <t:actionlink t:id="showAll" class="btn btn-secondary">Show All</t:actionlink>
                         </div>
                     </t:form>
                 </div>
@@ -59,7 +59,7 @@
             </div>
         </t:unless>
         <div class="container">
-            <p>Looking for the original <a href="/estimation">estimation calibration</a>?</p>
+            <p>Looking for the original <a href="/estimation/Index">estimation calibration</a>?</p>
         </div>
 	</t:security.authenticated>
 	<t:security.notauthenticated>

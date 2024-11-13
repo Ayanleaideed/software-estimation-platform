@@ -2,27 +2,44 @@
 		xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" 
 		xmlns:p="tapestry:parameter"
 		title="Create New Task | EstiMate">
-<link rel="stylesheet" type="text/css" href="/css/tasks.css" />
+<link rel="stylesheet" type="text/css" href="/css/tasks.css" />    
+<link rel="stylesheet" type="text/css" href="/css/datepicker.css" /> 
 
     <t:security.authenticated>
             <h2 class="text-center mb-5">Add Task</h2>
             <t:form t:id="taskForm">
                 <t:errors/>
-                <t:label for="name" class="form-label">Name * </t:label>
-                <t:textField t:id="name" value="task.name" validate="required,maxLength=25" class="form-control" />
+                <div class="row justify-content-center">
+                    <div class="col-md-6 col-lg-4 mb-3">
+                		<t:label for="name" class="form-label">Name * </t:label>
+                		<t:textField t:id="name" value="task.name" validate="required,maxLength=25" class="form-control" />
+                    </div>
+                </div>
                 
-                <t:label for="startDate">Start Date *</t:label>
-                <t:datefield t:id="startDate" value="task.startDate"/>
+                <div class="row justify-content-center">
+                    <div class="col-md-6 col-lg-4 mb-3">
+                		<t:label for="startDate">Start Date *</t:label>
+                		<t:datefield t:id="startDate" value="task.startDate"/>
+                    </div>
+                </div>
                 
-                <t:label for="endDate">Estimated End Date *</t:label>
-                <t:datefield t:id="endDate" value="task.estEndDate"/>
-                <br/>
-                <t:submit t:class="btn btn-primary" value="Create New Task" /> 
-                <t:pagelink page="tasks" class="btn btn-secondary">Go Back</t:pagelink>
+                <div class="row justify-content-center">
+                    <div class="col-md-6 col-lg-4 mb-3">
+                		<t:label for="endDate">Estimated End Date *</t:label>
+                		<t:datefield t:id="endDate" value="task.estEndDate"/>
+                    </div>
+                </div>
+                
+                <div class="row justify-content-center mb-5">
+                    <div class="col-md-6 col-lg-4 mb-3 d-grid gap-2">
+                		<t:submit t:class="btn btn-primary" value="Create New Task" /> 
+                		<t:pagelink page="tasks" class="btn btn-secondary">Go Back</t:pagelink>
 
-                <t:if test="noTasks">
-                   <t:actionlink t:id="actionlink" event="action" class="btn btn-info">Create Demo Tasks</t:actionlink>
-                </t:if>
+                		<t:if test="noTasks">
+                   			<t:actionlink t:id="actionlink" event="action" class="btn btn-info">Create Demo Tasks</t:actionlink>
+                		</t:if>
+                    </div>
+                </div>
             </t:form>
     </t:security.authenticated>
     <t:security.notauthenticated>

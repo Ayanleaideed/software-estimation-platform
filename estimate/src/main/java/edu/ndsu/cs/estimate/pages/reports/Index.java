@@ -268,4 +268,10 @@ public class Index {
 			System.out.println(graphArray[currentPointer][0] + " " + graphArray[currentPointer][1] + " " + graphArray[currentPointer][2]);	
 		}
 	}
+	
+	@OnEvent(component="showAll")
+	void onClickShowAll() {
+		dateRange = "";
+		getTasks();
+	}
 }

@@ -1,5 +1,6 @@
 <t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter" title="Edit Task | EstiMate">
     <link rel="stylesheet" type="text/css" href="/css/tasks.css" />
+    <link rel="stylesheet" type="text/css" href="/css/datepicker.css" /> 
     <t:security.authenticated>
         <div class="container mt-3">
             <h2 class="text-center mb-5">Edit Task</h2>
