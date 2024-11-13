@@ -1,5 +1,6 @@
 <html t:type="layout" title="Edit Hours"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd">
+      <link rel="stylesheet" type="text/css" href="/css/datepicker.css" /> 
  <div class="container">
         
 </html>

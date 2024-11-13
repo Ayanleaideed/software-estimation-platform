@@ -144,5 +144,11 @@ public class Index {
         db.deleteEvent(eventId);
         getEvents();
     }
+    
+    @OnEvent(component="showAll")
+	void onClickShowAll() {
+    	dateRange = "";
+    	getEvents();
+	}
 
 }
