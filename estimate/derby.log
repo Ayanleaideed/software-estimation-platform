@@ -1,11 +1,11 @@
 ----------------------------------------------------------------
-Wed Nov 13 10:57:36 CST 2024:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0193-2675-8739-000005539920 
-on database directory memory:C:\Users\Noahh\OneDrive\Desktop\NDSU\2024 Fall Semester\CSCI 413\Group Project\estimate\estimate\testdb with class loader WebAppClassLoader{Tapestry 5 Quickstart Project}@2a4cf2d1 
-Loaded from file:/C:/Users/Noahh/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
-java.vendor=Oracle Corporation
-java.runtime.version=17.0.4+11-LTS-179
-user.dir=C:\Users\Noahh\OneDrive\Desktop\NDSU\2024 Fall Semester\CSCI 413\Group Project\estimate\estimate
+Fri Nov 15 21:26:01 CST 2024:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0193-3301-927c-000006f00638 
+on database directory memory:C:\Users\yolky\OneDrive\Documents\Homework\Fall 2024\CSCI 413\Group Project\Repository\estimate\estimate\testdb with class loader WebAppClassLoader{Tapestry 5 Quickstart Project}@5f0f37e9 
+Loaded from file:/C:/Users/yolky/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
+java.vendor=Azul Systems, Inc.
+java.runtime.version=17.0.12+7-LTS
+user.dir=C:\Users\yolky\OneDrive\Documents\Homework\Fall 2024\CSCI 413\Group Project\Repository\estimate\estimate
 os.name=Windows 11
 os.arch=amd64
 os.version=10.0

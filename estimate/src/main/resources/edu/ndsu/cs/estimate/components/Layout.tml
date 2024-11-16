@@ -33,7 +33,7 @@
                 <t:pagelink class="nav-link" page="reports">Reports</t:pagelink>
               </li>
               <li class="nav-item">
-                <t:pagelink class="nav-link" page="events">Events</t:pagelink>
+                <t:pagelink class="nav-link" page="estimation">Events</t:pagelink>
               </li>
             </t:security.authenticated>
           </ul>

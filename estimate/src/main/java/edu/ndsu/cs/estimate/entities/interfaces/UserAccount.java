@@ -10,6 +10,8 @@ import org.apache.shiro.util.SimpleByteSource;
 import org.apache.tapestry5.beanmodel.BeanModel;
 import org.apache.tapestry5.beanmodel.services.BeanModelSource;
 import org.apache.tapestry5.commons.Messages;
+import java.util.regex.Matcher; 
+import java.util.regex.Pattern; 
 
 
 
@@ -82,6 +84,22 @@ public interface UserAccount {
 		return true; 	
 	}
 	
+	/*
+	 * Method to validate if a username is an email or not
+	 */
+	private static boolean isValidEmail(String email) 
+    { 
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+ 
+                            "[a-zA-Z0-9_+&*-]+)*@" + 
+                            "(?:[a-zA-Z0-9-]+\\.)+[a-z" + 
+                            "A-Z]{2,7}$"; 
+                              
+        Pattern pat = Pattern.compile(emailRegex); 
+        if (email == null) 
+            return false; 
+        return pat.matcher(email).matches(); 
+    }
+	
 	/* Default method to validate a UserAccount. Checks if the name, ID, and
 	 *  the email address exist and are of appropriate length. It also uses
 	 *  the Apache Commons email validator to ensure that the supplied email
@@ -92,6 +110,12 @@ public interface UserAccount {
 	 *  with the database. 
 	 */
 	public default List<String> validate() {
+		String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+ 
+                "[a-zA-Z0-9_+&*-]+)*@" + 
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" + 
+                "A-Z]{2,7}$"; 
+		Pattern pat = Pattern.compile(emailRegex); 
+		  
 		ArrayList<String> errors = new ArrayList<String>(); 
 		
 		if(getUserName() == null || getUserName().trim().isEmpty()) {
@@ -99,6 +123,9 @@ public interface UserAccount {
 		}
 		else if(getUserName().length() > 50) {
 			errors.add("Name cannot be greater than 50 characters."); 
+		}
+		else if (!isValidEmail(getUserName())) {
+			errors.add("Username must be in the form of an email.");
 		}
 		return errors; 
 	}

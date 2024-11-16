@@ -17,5 +17,7 @@ public interface HoursDatabaseService {
 	public void	updateHours(HoursInterface hours);
 	
 	public CayenneService getCayenneService();
+	
+	public int sumOfHoursForTask(TaskInterface task);
 }
 

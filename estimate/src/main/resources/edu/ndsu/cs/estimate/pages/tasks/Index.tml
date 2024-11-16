@@ -78,7 +78,7 @@
                                     <h4>${task.getName()}</h4>
                                     <h6>Start Date: ${task.getStartDate()}</h6>
                                     <h6>Planned End Date: ${task.getEstEndDate()}</h6>
-                                    <h6>Hours Logged: ${task.getTimeTaken()}</h6>
+                                    <h6>Hours Logged: ${showAllHours(task)}</h6>
                                     <h6>Status: ${task.getStatus()}</h6>
                                     <div class="row">
                                         <t:pagelink class="btn btn-primary mb-1" page="tasks/EditTask" context="task.pk">Edit Task</t:pagelink>

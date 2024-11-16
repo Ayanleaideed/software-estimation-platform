@@ -417,4 +417,8 @@ public class Index {
         finishDate = "";
         getTasks(selectedStatus);
     }
+    
+    public int showAllHours(TaskInterface task) {
+    	return hoursDBS.sumOfHoursForTask(task);
+    }
 }

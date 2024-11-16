@@ -55,14 +55,14 @@ public class CayenneUserAccountDatabaseService implements UserAccountDatabaseSer
 		moderator.setName("moderator");
 		
 		User regularUser = context.newObject(User.class);
-		regularUser.setUserName("JohnDoe");
+		regularUser.setUserName("JohnDoe@gmail.com");
 		regularUser.setPasswordSalt(new SecureRandomNumberGenerator().nextBytes().toHex());
-		regularUser.setPassword("pass1234");
+		regularUser.setPassword("Password1!");
 		
 		User adminUser  = context.newObject(User.class);
-		adminUser.setUserName("JaneDoe");
+		adminUser.setUserName("JaneDoe@gmail.com");
 		adminUser.setPasswordSalt(new SecureRandomNumberGenerator().nextBytes().toHex());
-		adminUser.setPassword("pass1234");
+		adminUser.setPassword("Password1!");
 		adminUser.addRole(admin);
 		adminUser.addRole(manager);
 		

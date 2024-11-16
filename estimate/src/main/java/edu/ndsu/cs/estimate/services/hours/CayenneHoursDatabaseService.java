@@ -76,4 +76,20 @@ public class CayenneHoursDatabaseService implements HoursDatabaseService {
         context.commitChanges();
         hoursMap.put(hours.getPK(), hours); // Cache updated hour after commit
     }
+    
+    @Override
+    public int sumOfHoursForTask(TaskInterface task) {
+        var context = cayenneService.newContext();
+        List<? extends HoursInterface> hoursList = ObjectSelect.query(Hours.class)
+                .where(Hours.TASKS.eq((Task) task))
+                .select(context);
+        
+        // Sum total hours of a task
+        int totalHours = 0;
+        for (HoursInterface hour : hoursList) {
+            totalHours += hour.getHoursLogged();
+        }
+
+        return totalHours;
+    }
 }
