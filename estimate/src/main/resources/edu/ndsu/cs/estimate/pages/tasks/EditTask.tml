@@ -42,13 +42,33 @@
                 <t:unless test="noHours">
                     <t:grid source="taskHours" row="hour" include="timestamp, hoursLogged" add="actions" class="table table-bordered text-center">
                         <p:timestampCell>
-                            ${hour.getTimestamp()}
+                            ${hour.getFormattedDate()}
                         </p:timestampCell>
                         <p:hoursLoggedCell>
                             ${hour.getHoursLogged()}
                         </p:hoursLoggedCell>
                         <p:actionsCell>
                             <div class="d-flex justify-content-center">
+                                <button class="btn btn-secondary mb-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Edit Time Stamp
+                                </button>
+                                
+                                <!-- Dropdown Menu for Time Stamp Form -->
+                                <ul class="dropdown-menu text-center" style="min-width: 425px;">
+                                    <li class="d-flex flex-column align-items-center">
+                                        <div class="d-flex align-items-center">
+                                            <span class="me-2">Time Stamp:</span>
+                                            <!-- Form for editing time stamp -->
+                                            <t:form t:id="editTimeStampForm" context="hour.PK" class="d-flex">
+                                                <!-- <t:dateField t:id="editTimeStamp" t:value="hoursTimeStamp" class="form-control me-2 text-center" style="width: 100px;" placeholder="Enter Time Stamp" /> -->
+                                                <t:textfield t:id="editTimeStamp" class="form-control me-2 text-center" style="width: 150px;" placeholder="(MM/DD/YYYY)" />
+                                                <t:submit value="Edit Time Stamp" class="btn btn-primary" />
+                                            </t:form>
+                                        </div>
+                                    </li>
+                                </ul>
+                                &nbsp;
+                                
                                 <button class="btn btn-secondary mb-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Edit Hours Logged
                                 </button>

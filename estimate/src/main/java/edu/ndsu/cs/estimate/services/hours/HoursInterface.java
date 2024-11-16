@@ -1,4 +1,5 @@
 package edu.ndsu.cs.estimate.services.hours;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import java.util.List;
@@ -41,6 +42,11 @@ public interface HoursInterface {
 		return errors; 
 	}
 
-
+	public default String getFormattedDate() {
+		Date date = getTimestamp();
+		SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+		String dateString = formatter.format(date); // value is : 3/17/2014
+		return dateString;
+	}
 	
 }

@@ -1,5 +1,8 @@
 package edu.ndsu.cs.estimate.pages.tasks;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.tapestry5.annotations.InjectComponent;
@@ -26,6 +29,9 @@ public class EditTask {
 
     @InjectComponent
     private Form taskForm;
+    
+    @InjectComponent
+    private Form editTimeStampForm;
 
     @Inject
     private AlertManager alertManager;
@@ -33,7 +39,6 @@ public class EditTask {
     @Property
     @Persist
     private TaskInterface task;
-
     @Property
     private Integer taskPK;
 
@@ -48,6 +53,9 @@ public class EditTask {
 
 	@Property
 	private int editHours;
+	
+	@Property
+	private String editTimeStamp;
     
     @Property
 	private String estEndDateStr;
@@ -113,5 +121,27 @@ public class EditTask {
         // Refresh displayed hours
         getHours();
     }
+    
+    void onSubmitFromEditTimeStampForm(int pk) {
+        HoursInterface tempHours = hoursDatabase.getHours(pk);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        //SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
+        dateFormat.setLenient(false);
+        if (editTimeStamp != null && !editTimeStamp.isEmpty()) {
+        	try {
+        		Date timeStamp = dateFormat.parse(editTimeStamp);
+        		tempHours.setTimestamp(timeStamp);
+        		hoursDatabase.updateHours(tempHours);
+        	} catch (ParseException e) {
+        		editTimeStampForm.recordError("The date format is invalid. Please use MM/dd/yyyy.");
+        		return;
+        	}
+        }
 
+        // Reset editHours
+        editTimeStamp = "";
+
+        // Refresh displayed hours
+        getHours();
+    }
 }

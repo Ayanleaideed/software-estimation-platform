@@ -1,15 +1,22 @@
 package edu.ndsu.cs.estimate.services.tasks;
 
 import org.apache.cayenne.ObjectContext;
+import org.apache.cayenne.query.ObjectSelect;
+import org.apache.tapestry5.ioc.annotations.Inject;
+
+import edu.ndsu.cs.estimate.cayenne.persistent.Hours;
+import edu.ndsu.cs.estimate.cayenne.persistent.Task;
 import edu.ndsu.cs.estimate.entities.interfaces.UserAccount;
+import edu.ndsu.cs.estimate.services.hours.HoursDatabaseService;
+import edu.ndsu.cs.estimate.services.hours.HoursInterface;
 
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public interface TaskInterface {
-	
     public Integer 	getPK(); 
 
     public String 	getName();
