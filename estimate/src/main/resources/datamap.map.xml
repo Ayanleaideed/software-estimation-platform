@@ -76,6 +76,7 @@
 			<info:property xmlns:info="http://cayenne.apache.org/schema/10/info" name="comment" value="using bcrypt"/>
 		</db-attribute>
 		<db-attribute name="PasswordSalt" type="VARCHAR" isMandatory="true" length="32"/>
+		<db-attribute name="UserEmail" type="VARCHAR" isMandatory="true" length="128"/>
 		<db-attribute name="UserId" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
 		<db-attribute name="UserName" type="VARCHAR" isMandatory="true" length="128"/>
 	</db-entity>
@@ -124,6 +125,7 @@
 	<obj-entity name="User" className="edu.ndsu.cs.estimate.cayenne.persistent.User" dbEntityName="Users">
 		<obj-attribute name="passwordHash" type="java.lang.String" db-attribute-path="PasswordHash"/>
 		<obj-attribute name="passwordSalt" type="java.lang.String" db-attribute-path="PasswordSalt"/>
+		<obj-attribute name="userEmail" type="java.lang.String" db-attribute-path="UserEmail"/>
 		<obj-attribute name="userName" type="java.lang.String" db-attribute-path="UserName"/>
 	</obj-entity>
 	<db-relationship name="exersises" source="CallibrationCategory" target="ExerciseCategories" toMany="true">

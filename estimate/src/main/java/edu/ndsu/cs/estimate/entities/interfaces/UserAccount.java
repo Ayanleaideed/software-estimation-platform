@@ -20,6 +20,9 @@ public interface UserAccount {
 	
 	public String	getUserName();
 	public void		setUserName(String name);
+
+	public String getUserEmail();
+	public void setUserEmail(String email);
 	
 	public Integer	getUserID(); 
 	

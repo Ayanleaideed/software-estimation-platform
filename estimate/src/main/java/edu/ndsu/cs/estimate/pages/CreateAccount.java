@@ -48,10 +48,15 @@ public class CreateAccount {
     @InjectComponent
     private Form createAccountForm; // Form component for creating a user account
 
+    @Property
+    private String userEmail;
+
     // This method sets up the user account if it is not already initialized or set
     void setupRender() {
         if (userAccount == null || userAccount.getPK() == null || userAccount.getPK() == -1) {
             userAccount = userAccountDatabaseService.getNewUserAccount();
+            if (userAccount.getUserEmail() == null) 
+                userAccount.setUserEmail("");   // Default to an empty string to avoid validation failure
         }
     }
 
@@ -60,6 +65,18 @@ public class CreateAccount {
         // Check if username already exists
         if (isUsernameExists(userName)) {
             createAccountForm.recordError("Username already exists. Please choose a different username.");
+            return;
+        }
+
+        // Ensure email is provided
+        if (userEmail == null || userEmail.isEmpty()) {
+            createAccountForm.recordError("Email is required.");
+            return;
+        }
+
+        // Basic email format validation
+        if (!isValidEmail(userEmail)) {
+            createAccountForm.recordError("Please enter a valid email address.");
             return;
         }
 
@@ -77,6 +94,7 @@ public class CreateAccount {
 
         // Set the username and password salt for the user account
         userAccount.setUserName(userName);
+        userAccount.setUserEmail(userEmail);
         userAccount.setPasswordSalt(new SecureRandomNumberGenerator().nextBytes().toHex());
         userAccount.setPassword(passWord);
 
@@ -96,6 +114,11 @@ public class CreateAccount {
             e.printStackTrace();
             return false; // Return false in case of any error
         }
+    }
+
+    private boolean isValidEmail(String email) {
+        String emailRegex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+        return email.matches(emailRegex);
     }
 
     // Validates the strength of the password (at least one uppercase, one lowercase, one number, and one special character)

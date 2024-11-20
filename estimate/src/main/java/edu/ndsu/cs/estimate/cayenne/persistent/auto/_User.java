@@ -28,6 +28,7 @@ public abstract class _User extends BaseDataObject {
 
     public static final Property<String> PASSWORD_HASH = Property.create("passwordHash", String.class);
     public static final Property<String> PASSWORD_SALT = Property.create("passwordSalt", String.class);
+    public static final Property<String> USER_EMAIL = Property.create("userEmail", String.class);
     public static final Property<String> USER_NAME = Property.create("userName", String.class);
     public static final Property<List<CallibrationEstimate>> ESTIMATES = Property.create("estimates", List.class);
     public static final Property<List<Role>> ROLES = Property.create("roles", List.class);
@@ -35,6 +36,7 @@ public abstract class _User extends BaseDataObject {
 
     protected String passwordHash;
     protected String passwordSalt;
+    protected String userEmail;
     protected String userName;
 
     protected Object estimates;
@@ -59,6 +61,16 @@ public abstract class _User extends BaseDataObject {
     public String getPasswordSalt() {
         beforePropertyRead("passwordSalt");
         return this.passwordSalt;
+    }
+
+    public void setUserEmail(String userEmail) {
+        beforePropertyWrite("userEmail", this.userEmail, userEmail);
+        this.userEmail = userEmail;
+    }
+
+    public String getUserEmail() {
+        beforePropertyRead("userEmail");
+        return this.userEmail;
     }
 
     public void setUserName(String userName) {
@@ -121,6 +133,8 @@ public abstract class _User extends BaseDataObject {
                 return this.passwordHash;
             case "passwordSalt":
                 return this.passwordSalt;
+            case "userEmail":
+                return this.userEmail;
             case "userName":
                 return this.userName;
             case "estimates":
@@ -146,6 +160,9 @@ public abstract class _User extends BaseDataObject {
                 break;
             case "passwordSalt":
                 this.passwordSalt = (String)val;
+                break;
+            case "userEmail":
+                this.userEmail = (String)val;
                 break;
             case "userName":
                 this.userName = (String)val;
@@ -177,6 +194,7 @@ public abstract class _User extends BaseDataObject {
         super.writeState(out);
         out.writeObject(this.passwordHash);
         out.writeObject(this.passwordSalt);
+        out.writeObject(this.userEmail);
         out.writeObject(this.userName);
         out.writeObject(this.estimates);
         out.writeObject(this.roles);
@@ -188,6 +206,7 @@ public abstract class _User extends BaseDataObject {
         super.readState(in);
         this.passwordHash = (String)in.readObject();
         this.passwordSalt = (String)in.readObject();
+        this.userEmail = (String)in.readObject();
         this.userName = (String)in.readObject();
         this.estimates = in.readObject();
         this.roles = in.readObject();
