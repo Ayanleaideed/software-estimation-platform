@@ -1,5 +1,6 @@
 package edu.ndsu.cs.estimate.pages;
 
+import edu.ndsu.cs.estimate.entities.interfaces.UserAccount;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
@@ -9,61 +10,73 @@ import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.tynamo.security.services.SecurityService;
+import edu.ndsu.cs.estimate.services.database.interfaces.UserAccountDatabaseService;
 
 public class Login {
+    @Property
+    private String usernameOrEmail;
 
     @Property
-    private String username; // Stores the username entered by the user
+    private String password;
 
     @Property
-    private String password; // Stores the password entered by the user
-
-    @Property
-    private boolean rememberMe; // Stores the "Remember me" option selected by the user
+    private boolean rememberMe;
 
     @InjectComponent
-    private Form loginForm; // Form component for managing the login form and its validation
+    private Form loginForm;
 
     @Inject
-    private SecurityService securityService; // Service for managing security and authentication
+    private SecurityService securityService;
 
     @Inject
-    private AlertManager alertManager; // Manages alert messages to be shown to the user
+    private AlertManager alertManager;
 
-    // Validates the form fields before submission
+    @Inject
+    private UserAccountDatabaseService userAccountDatabaseService;
+
+    // Validate form inputs
     void onValidateFromLoginForm() {
-        // Check if the username is empty and record an error if it is
-        if (username == null || username.trim().isEmpty()) {
-            loginForm.recordError("Username cannot be empty.");
+        if (usernameOrEmail == null || usernameOrEmail.trim().isEmpty()) {
+            loginForm.recordError("Username or Email cannot be empty.");
         }
 
-        // Check if the password is empty and record an error if it is
         if (password == null || password.trim().isEmpty()) {
             loginForm.recordError("Password cannot be empty.");
         }
     }
 
-    // Method called upon successful form submission
+    // Handle form submission
     public Object onSuccessFromLoginForm() {
-        Subject currentUser = securityService.getSubject(); // Get the current user (subject) for authentication
+        Subject currentUser = securityService.getSubject();
 
-        // Ensure the subject is not null (a safeguard check)
         if (currentUser == null) {
-            throw new IllegalStateException("Subject can’t be null");
+            throw new IllegalStateException("Subject can't be null");
         }
 
-        // Create a token with the entered username and password for authentication
-        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
-        token.setRememberMe(rememberMe); // Set the rememberMe property on the token
+        // Attempt to find the user by username
+        UserAccount account = userAccountDatabaseService.getUserAccount(usernameOrEmail);
+        if (account == null) {
+            // If not found by username, attempt to find by email
+            account = userAccountDatabaseService.getUserAccountByEmail(usernameOrEmail);
+        }
+
+        if (account == null) {
+            loginForm.recordError("Invalid username/email or password.");
+            return null;
+        }
+
+        // Create a token with the username and password
+        UsernamePasswordToken token = new UsernamePasswordToken(account.getUserName(), password);
+        token.setRememberMe(rememberMe);
 
         try {
-            // Attempt to log in with the provided credentials
+            // Attempt to log in
             currentUser.login(token);
-            return Index.class; // Redirect to the Index page on successful login
+            return Index.class; // Redirect to the home page upon successful login
         } catch (AuthenticationException e) {
-            // Catch authentication errors and show an error message if login fails
-            loginForm.recordError("Invalid username or password.");
-            return null; // Stay on the login page if authentication fails
+            // Handle login failure
+            loginForm.recordError("Invalid username/email or password.");
+            return null;
         }
     }
 }
