@@ -3,3 +3,76 @@
 /build/
 /.apt_generated/
 /.apt_generated_tests/
+
+
+
+# Logs
+logs/
+*.log
+
+# Derby Database Files
+*.data
+*.properties
+*.db
+derby.log
+
+# Sensitive Information Files
+*.env
+*.key
+*.pem
+*.crt
+secrets/
+config/
+application.yml
+application.properties
+
+# Compiled Class Files
+*.class
+
+# Generated Files
+*.war
+*.ear
+*.jar
+
+# IDE Directories and Files
+.idea/
+.vscode/
+*.iml
+
+# Maven and Gradle Directories
+target/
+out/
+build/
+!src/main/resources/**
+
+# OS Generated Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Backup Files
+*.bak
+*.swp
+*.tmp
+*.old
+
+# Java-specific
+*.class
+*.jks
+
+# Ignore Eclipse project files
+*.project
+*.classpath
+*.settings/
+
+# IntelliJ project files
+*.idea/
+*.iml
+out/
+
+# Ignore sensitive database files
+db/
+
+# Ignore test-related files
+test-output/
+*.test

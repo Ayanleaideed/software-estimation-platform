@@ -44,7 +44,6 @@ public class CreateAccount {
     @InjectComponent
     private Form createAccountForm;
 
-
     // This method sets up the user account if it is not already initialized or set
     void setupRender() {
         if (userAccount == null || userAccount.getPK() == null || userAccount.getPK() == -1) {
@@ -64,8 +63,14 @@ public class CreateAccount {
             return;
         }
 
-        // Check if email already exists (if email is provided)
-        if (userEmail != null && !userEmail.trim().isEmpty() && isEmailExists(userEmail)) {
+        // Check if email is empty or null
+        if (userEmail == null || userEmail.trim().isEmpty()) {
+            createAccountForm.recordError("Email is required.");
+            return;
+        }
+
+        // Check if email already exists
+        if (isEmailExists(userEmail)) {
             createAccountForm.recordError("An account with this email already exists. Please use a different email.");
             return;
         }
@@ -94,6 +99,7 @@ public class CreateAccount {
             createAccountForm.recordError(error);
         }
     }
+
     // Handles the success case when the user successfully submits the account creation form
     Object onSuccessFromCreateAccountForm() {
         if (!createAccountForm.getHasErrors()) {
@@ -107,6 +113,7 @@ public class CreateAccount {
         }
         return null;
     }
+
     // Checks if the username already exists in the database
     private boolean isUsernameExists(String username) {
         try {
@@ -117,6 +124,7 @@ public class CreateAccount {
             return false;
         }
     }
+
     // Checks if the email already exists in the database
     private boolean isEmailExists(String email) {
         try {
@@ -127,12 +135,13 @@ public class CreateAccount {
             return false;
         }
     }
+
     // Validates the strength of the password (at least one uppercase, one lowercase, one number, and one special character)
     private boolean isPasswordStrong(String password) {
         boolean hasUppercase = false;
         boolean hasLowercase = false;
-        boolean hasNumber      = false; 
-        boolean hasSpecial     = false;
+        boolean hasNumber = false;
+        boolean hasSpecial = false;
 
         for (char c : password.toCharArray()) {
             if (Character.isUpperCase(c)) hasUppercase = true;
@@ -143,6 +152,7 @@ public class CreateAccount {
 
         return hasUppercase && hasLowercase && hasNumber && hasSpecial;
     }
+
     // Attempts to log the user in automatically after account creation
     private Object performAutoLogin(String username, String password, boolean rememberMe) {
         Subject currentUser = securityService.getSubject();
@@ -154,10 +164,10 @@ public class CreateAccount {
         token.setRememberMe(rememberMe);
 
         try {
-            currentUser.login(token);  // Attempt to log in with the provided credentials
+            currentUser.login(token); // Attempt to log in with the provided credentials
             alertManager.alert(Duration.SINGLE, Severity.SUCCESS, "Account created and logged in successfully.");
             return Index.class;
-        } catch (AuthenticationException e) {  // Catch authentication errors and show an error message if login fails
+        } catch (AuthenticationException e) { // Catch authentication errors and show an error message if login fails
             createAccountForm.recordError("Automatic login failed. Please try to log in manually.");
             alertManager.alert(Duration.SINGLE, Severity.ERROR, "Automatic login failed. Please try to log in manually.");
             return null;

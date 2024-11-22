@@ -18,11 +18,13 @@
                     <label for="userName">Username <span class="text-danger">*</span></label>
                 </div>
                 
-                <!-- Email Field -->
+
+               <!-- Email Field -->
                 <div class="form-floating mb-3">
-                    <t:textfield t:id="userEmail" value="userEmail" class="form-control" placeholder="Email (optional)" />
-                    <label for="userEmail">Email</label>
+                    <t:textfield t:id="userEmail" value="userEmail" class="form-control" placeholder="Email" validate="required" />
+                    <label for="userEmail">Email <span class="text-danger">*</span></label>
                 </div>
+
                 
                 <!-- Password Field -->
                 <div class="form-floating mb-4">
