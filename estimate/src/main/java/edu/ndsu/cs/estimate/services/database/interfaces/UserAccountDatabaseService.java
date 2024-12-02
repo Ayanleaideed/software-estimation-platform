@@ -11,6 +11,9 @@ import edu.ndsu.cs.estimate.entities.interfaces.UserAccount;
 
 public interface UserAccountDatabaseService {
 
+	// Method to get a user account by email
+	public UserAccount getUserAccountByEmail(String email);
+
 	public List<? extends UserAccount> 	getUserAccounts(); 
 	public List<? extends RoleInterface>			getRoles();
 	

@@ -97,13 +97,22 @@ public class CayenneUserAccountDatabaseService implements UserAccountDatabaseSer
 				.selectOne(newContext);
 	}
 
+	// Method to get a user account by email
+	@Override
+	public UserAccount getUserAccountByEmail(String email) {
+		return ObjectSelect.query(User.class)
+				.where(User.USER_EMAIL.eq(email))
+				.selectOne(cayenneService.newContext());
+	}
+
+	// Method to get a user account by username
 	@Override
 	public UserAccount getUserAccount(String userName) {
 		return ObjectSelect.query(User.class)
 				.where(User.USER_NAME.eq(userName))
 				.selectOne(cayenneService.newContext());
 	}
-	
+
 
 	@Override
 	public UserAccount getNewUserAccount() {
@@ -247,5 +256,8 @@ public class CayenneUserAccountDatabaseService implements UserAccountDatabaseSer
 			return getRole(Integer.parseInt(clientValue), context);
 		}
 	}
+
+
+
 }
 
