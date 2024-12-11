@@ -41,10 +41,13 @@ public class CayenneTaskDatabaseService implements TaskDatabaseService{
 			query = query.and(Task.DROPPED.eq(true));
 		} else if ("Will Not Complete".equals(status)) {
 			query = query.and(Task.WILL_NOT_COMPLETE.eq(true));
+		} else if ("Cannot Complete".equals(status)) {
+			query = query.and(Task.CANNOT_COMPLETE.eq(true));
 		} else if ("In Progress".equals(status)) {
 			query = query.and(Task.COMPLETED.eq(false))
 						.and(Task.DROPPED.eq(false))
-						.and(Task.WILL_NOT_COMPLETE.eq(false));
+						.and(Task.WILL_NOT_COMPLETE.eq(false))
+						.and(Task.CANNOT_COMPLETE.eq(false));
 		}
 
 		return query.select(cayenneService.newContext());
@@ -80,7 +83,7 @@ public class CayenneTaskDatabaseService implements TaskDatabaseService{
 	@Override
 	public boolean isTaskNameValidAdding(String taskName) {
 			List<Task> query = ObjectSelect.query(Task.class)
-					.where(Task.COMPLETED.eq(false).andExp(Task.DROPPED.eq(false).andExp(Task.WILL_NOT_COMPLETE.eq(false)).andExp(Task.NAME.eq(taskName))))
+					.where(Task.COMPLETED.eq(false).andExp(Task.DROPPED.eq(false).andExp(Task.WILL_NOT_COMPLETE.eq(false)).andExp(Task.CANNOT_COMPLETE.eq(false)).andExp(Task.NAME.eq(taskName))))
 					.select(cayenneService.newContext());
 			if (query.isEmpty()) {
 				return true;
@@ -99,7 +102,15 @@ public class CayenneTaskDatabaseService implements TaskDatabaseService{
 		cal.add(Calendar.DATE, 7);
 		Date end = cal.getTime();
 		List<Task> tasksList = ObjectSelect.query(Task.class)
-								.where(Task.COMPLETED.eq(false).andExp(Task.DROPPED.eq(false).andExp(Task.WILL_NOT_COMPLETE.eq(false)).andExp(Task.EST_END_DATE.between(start, end))))
+								.where(
+									Task.COMPLETED.eq(false)
+									.andExp(
+										Task.DROPPED.eq(false)
+										.andExp(Task.WILL_NOT_COMPLETE.eq(false))
+										.andExp(Task.CANNOT_COMPLETE.eq(false))
+										.andExp(Task.EST_END_DATE.between(start, end))
+									)
+								)
 								.select(cayenneService.newContext());
 		for (Task task : tasksList) {
 			alerts.add("The task " +task.getName() + " is due within the week!");

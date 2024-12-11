@@ -5,11 +5,13 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.cayenne.BaseDataObject;
 import org.apache.cayenne.exp.ExpressionFactory;
 import org.apache.cayenne.exp.Property;
 
+import edu.ndsu.cs.estimate.cayenne.persistent.Hours;
 import edu.ndsu.cs.estimate.cayenne.persistent.User;
 
 /**
@@ -26,24 +28,30 @@ public abstract class _Task extends BaseDataObject {
     public static final String TASK_ID_PK_COLUMN = "TaskId";
 
     public static final Property<LocalDate> ACTUAL_END_DATE = Property.create("actualEndDate", LocalDate.class);
+    public static final Property<Boolean> CANNOT_COMPLETE = Property.create("cannotComplete", Boolean.class);
     public static final Property<Boolean> COMPLETED = Property.create("completed", Boolean.class);
     public static final Property<Boolean> DROPPED = Property.create("dropped", Boolean.class);
     public static final Property<Date> EST_END_DATE = Property.create("estEndDate", Date.class);
+    public static final Property<Integer> EST_HOURS = Property.create("estHours", Integer.class);
     public static final Property<String> NAME = Property.create("name", String.class);
     public static final Property<Date> START_DATE = Property.create("startDate", Date.class);
     public static final Property<Integer> TIME_TAKEN = Property.create("timeTaken", Integer.class);
     public static final Property<Boolean> WILL_NOT_COMPLETE = Property.create("willNotComplete", Boolean.class);
+    public static final Property<List<Hours>> HOURS = Property.create("hours", List.class);
     public static final Property<User> USER = Property.create("user", User.class);
 
     protected LocalDate actualEndDate;
+    protected boolean cannotComplete;
     protected boolean completed;
     protected boolean dropped;
     protected Date estEndDate;
+    protected int estHours;
     protected String name;
     protected Date startDate;
     protected Integer timeTaken;
     protected boolean willNotComplete;
 
+    protected Object hours;
     protected Object user;
 
     public void setActualEndDate(LocalDate actualEndDate) {
@@ -54,6 +62,16 @@ public abstract class _Task extends BaseDataObject {
     public LocalDate getActualEndDate() {
         beforePropertyRead("actualEndDate");
         return this.actualEndDate;
+    }
+
+    public void setCannotComplete(boolean cannotComplete) {
+        beforePropertyWrite("cannotComplete", this.cannotComplete, cannotComplete);
+        this.cannotComplete = cannotComplete;
+    }
+
+	public boolean isCannotComplete() {
+        beforePropertyRead("cannotComplete");
+        return this.cannotComplete;
     }
 
     public void setCompleted(boolean completed) {
@@ -84,6 +102,16 @@ public abstract class _Task extends BaseDataObject {
     public Date getEstEndDate() {
         beforePropertyRead("estEndDate");
         return this.estEndDate;
+    }
+
+    public void setEstHours(int estHours) {
+        beforePropertyWrite("estHours", this.estHours, estHours);
+        this.estHours = estHours;
+    }
+
+    public int getEstHours() {
+        beforePropertyRead("estHours");
+        return this.estHours;
     }
 
     public void setName(String name) {
@@ -129,6 +157,19 @@ public abstract class _Task extends BaseDataObject {
         return this.willNotComplete;
     }
 
+    public void addToHours(Hours obj) {
+        addToManyTarget("hours", obj, true);
+    }
+
+    public void removeFromHours(Hours obj) {
+        removeToManyTarget("hours", obj, true);
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Hours> getHours() {
+        return (List<Hours>)readProperty("hours");
+    }
+
     public void setUser(User user) {
         setToOneTarget("user", user, true);
     }
@@ -146,12 +187,16 @@ public abstract class _Task extends BaseDataObject {
         switch(propName) {
             case "actualEndDate":
                 return this.actualEndDate;
+            case "cannotComplete":
+                return this.cannotComplete;
             case "completed":
                 return this.completed;
             case "dropped":
                 return this.dropped;
             case "estEndDate":
                 return this.estEndDate;
+            case "estHours":
+                return this.estHours;
             case "name":
                 return this.name;
             case "startDate":
@@ -160,6 +205,8 @@ public abstract class _Task extends BaseDataObject {
                 return this.timeTaken;
             case "willNotComplete":
                 return this.willNotComplete;
+            case "hours":
+                return this.hours;
             case "user":
                 return this.user;
             default:
@@ -177,6 +224,9 @@ public abstract class _Task extends BaseDataObject {
             case "actualEndDate":
                 this.actualEndDate = (LocalDate)val;
                 break;
+            case "cannotComplete":
+                this.cannotComplete = val == null ? false : (boolean)val;
+                break;
             case "completed":
                 this.completed = val == null ? false : (boolean)val;
                 break;
@@ -185,6 +235,9 @@ public abstract class _Task extends BaseDataObject {
                 break;
             case "estEndDate":
                 this.estEndDate = (Date)val;
+                break;
+            case "estHours":
+                this.estHours = val == null ? 0 : (int)val;
                 break;
             case "name":
                 this.name = (String)val;
@@ -197,6 +250,9 @@ public abstract class _Task extends BaseDataObject {
                 break;
             case "willNotComplete":
                 this.willNotComplete = val == null ? false : (boolean)val;
+                break;
+            case "hours":
+                this.hours = val;
                 break;
             case "user":
                 this.user = val;
@@ -218,13 +274,16 @@ public abstract class _Task extends BaseDataObject {
     protected void writeState(ObjectOutputStream out) throws IOException {
         super.writeState(out);
         out.writeObject(this.actualEndDate);
+        out.writeBoolean(this.cannotComplete);
         out.writeBoolean(this.completed);
         out.writeBoolean(this.dropped);
         out.writeObject(this.estEndDate);
+        out.writeInt(this.estHours);
         out.writeObject(this.name);
         out.writeObject(this.startDate);
         out.writeObject(this.timeTaken);
         out.writeBoolean(this.willNotComplete);
+        out.writeObject(this.hours);
         out.writeObject(this.user);
     }
 
@@ -232,13 +291,16 @@ public abstract class _Task extends BaseDataObject {
     protected void readState(ObjectInputStream in) throws IOException, ClassNotFoundException {
         super.readState(in);
         this.actualEndDate = (LocalDate)in.readObject();
+        this.cannotComplete = in.readBoolean();
         this.completed = in.readBoolean();
         this.dropped = in.readBoolean();
         this.estEndDate = (Date)in.readObject();
+        this.estHours = in.readInt();
         this.name = (String)in.readObject();
         this.startDate = (Date)in.readObject();
         this.timeTaken = (Integer)in.readObject();
         this.willNotComplete = in.readBoolean();
+        this.hours = in.readObject();
         this.user = in.readObject();
     }
 

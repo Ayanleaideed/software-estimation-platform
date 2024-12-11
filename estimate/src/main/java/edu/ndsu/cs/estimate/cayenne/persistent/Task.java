@@ -4,36 +4,34 @@ import edu.ndsu.cs.estimate.cayenne.persistent.auto._Task;
 import edu.ndsu.cs.estimate.entities.interfaces.UserAccount;
 import edu.ndsu.cs.estimate.services.tasks.TaskInterface;
 
-public class Task extends _Task implements TaskInterface{
+public class Task extends _Task implements TaskInterface {
 
-    private static final long serialVersionUID = 1L; 
-    
-    public Integer getPK()
-    {
-    	if(getObjectId() != null && !getObjectId().isTemporary())
-    	{
-    		return (Integer) getObjectId().getIdSnapshot().get(TASK_ID_PK_COLUMN);
-    	}
-    	return null; 
-    }
-    
-    @Override
-    public String toString() {
-    	return name; 
-    }
-    
-    @Override
-    public boolean equals(Object o) {
-    	if(o instanceof Task) {
-    		Task other = (Task) o;
-    		if (this.getPK() == null || other.getPK() == null) {
-    			return false;
-    		} else {
-    			return this.getPK().equals(other.getPK());
-    		} 
-    	}
-    	return false; 
-    }
+	private static final long serialVersionUID = 1L;
+
+	public Integer getPK() {
+		if (getObjectId() != null && !getObjectId().isTemporary()) {
+			return (Integer) getObjectId().getIdSnapshot().get(TASK_ID_PK_COLUMN);
+		}
+		return null;
+	}
+
+	@Override
+	public String toString() {
+		return name;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (o instanceof Task) {
+			Task other = (Task) o;
+			if (this.getPK() == null || other.getPK() == null) {
+				return false;
+			} else {
+				return this.getPK().equals(other.getPK());
+			}
+		}
+		return false;
+	}
 
 	@Override
 	public boolean getCompleted() {
@@ -44,19 +42,24 @@ public class Task extends _Task implements TaskInterface{
 	public boolean getDropped() {
 		return dropped;
 	}
-	
+
 	@Override
 	public boolean getWillNotComplete() {
 		return willNotComplete;
 	}
 
 	@Override
-	public void setUser(UserAccount user) {
-		setUser((User)user);
-		
+	public boolean getCannotComplete() {
+		return cannotComplete;
 	}
 
-	
+	@Override
+	public int getEstHours() {
+		return estHours;
+	}
 
-
+	@Override
+	public void setUser(UserAccount user) {
+		setUser((User) user);
+	}
 }

@@ -107,16 +107,16 @@ public class Index {
             makeExamples = false;
         }
         if (selectedStatus == null) {
-            selectedStatus = "In Progress"; // Default status to query for 
+            selectedStatus = "In Progress"; // Default status to query for
         }
-        if (securityService.getSubject().getPrincipal() == null ) {
-            return;  // User needs to log in
+        if (securityService.getSubject().getPrincipal() == null) {
+            return; // User needs to log in
         }
         // Alerts if tasks are due within the next week
         List<String> alerts = taskDBS.getDeadlineNotifications();
         if (alerts.size() > 0) {
             String alertString = "";
-            for(String alert : alerts) {
+            for (String alert : alerts) {
                 alertString += alert + "\n";
             }
             alertManager.alert(Duration.SINGLE, Severity.INFO, alertString);
@@ -130,8 +130,8 @@ public class Index {
     private void getTasks(String status) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         dateFormat.setLenient(false);
-        Date start = new Date(0);  // Default to 1/1/1970 if no start date
-        Date end = new Date(2145916800000L);  // Default to 1/1/2038 if no finish date
+        Date start = new Date(0); // Default to 1/1/1970 if no start date
+        Date end = new Date(2145916800000L); // Default to 1/1/2038 if no finish date
 
         // Parse the startDate if provided
         if (startDate != null && !startDate.isEmpty()) {
@@ -153,7 +153,8 @@ public class Index {
             }
         }
 
-        if (makeExamples) makeExampleTasks();
+        if (makeExamples)
+            makeExampleTasks();
         tasks = taskDBS.listAllTasks(start, end, userAccount, selectedStatus);
         noTasks = tasks.isEmpty();
     }
@@ -189,6 +190,13 @@ public class Index {
     @OnEvent(component = "filterWillNotComplete")
     Object onFilterStatusWillNotComplete() {
         selectedStatus = "Will Not Complete";
+        getTasks(selectedStatus);
+        return Index.class;
+    }
+
+    @OnEvent(component = "filterCannotComplete")
+    Object onFilterStatusCannotComplete() {
+        selectedStatus = "Cannot Complete";
         getTasks(selectedStatus);
         return Index.class;
     }
@@ -235,18 +243,18 @@ public class Index {
         TaskInterface tempTask = taskDBS.getTask(pk);
 
         if (tempTask.getPK() == null) {
-            taskDBS.updateTask(tempTask);  // Commit task to the database to ensure PK is set
+            taskDBS.updateTask(tempTask); // Commit task to the database to ensure PK is set
         }
 
         HoursInterface newHour = hoursDBS.getNewHours(tempTask); // Pass tempTask to ensure context consistency
         newHour.setHoursLogged(this.hours);
         newHour.setTimestamp(new Date());
-        newHour.setTask(tempTask);  // Link Hours to Task
+        newHour.setTask(tempTask); // Link Hours to Task
 
         hoursDBS.updateHours(newHour);
         int updatedTimeTaken = tempTask.getTimeTaken() + this.hours;
         tempTask.setTimeTaken(updatedTimeTaken);
-        taskDBS.updateTask(tempTask);  // Commit updated task with incremented hours
+        taskDBS.updateTask(tempTask); // Commit updated task with incremented hours
 
         getTasks(selectedStatus);
     }
@@ -255,18 +263,18 @@ public class Index {
         TaskInterface tempTask = taskDBS.getTask(pk);
 
         if (tempTask.getPK() == null) {
-            taskDBS.updateTask(tempTask);  // Commit task to the database to ensure PK is set
+            taskDBS.updateTask(tempTask); // Commit task to the database to ensure PK is set
         }
 
         HoursInterface newHour = hoursDBS.getNewHours(tempTask); // Pass tempTask to ensure context consistency
         newHour.setHoursLogged(1);
         newHour.setTimestamp(new Date());
-        newHour.setTask(tempTask);  // Link Hours to Task
+        newHour.setTask(tempTask); // Link Hours to Task
 
         hoursDBS.updateHours(newHour);
         int updatedTimeTaken = tempTask.getTimeTaken() + 1;
         tempTask.setTimeTaken(updatedTimeTaken);
-        taskDBS.updateTask(tempTask);  // Commit updated task with incremented hours
+        taskDBS.updateTask(tempTask); // Commit updated task with incremented hours
 
         getTasks(selectedStatus);
     }
@@ -275,18 +283,18 @@ public class Index {
         TaskInterface tempTask = taskDBS.getTask(pk);
 
         if (tempTask.getPK() == null) {
-            taskDBS.updateTask(tempTask);  // Commit task to the database to ensure PK is set
+            taskDBS.updateTask(tempTask); // Commit task to the database to ensure PK is set
         }
 
         HoursInterface newHour = hoursDBS.getNewHours(tempTask); // Pass tempTask to ensure context consistency
         newHour.setHoursLogged(2);
         newHour.setTimestamp(new Date());
-        newHour.setTask(tempTask);  // Link Hours to Task
+        newHour.setTask(tempTask); // Link Hours to Task
 
         hoursDBS.updateHours(newHour);
         int updatedTimeTaken = tempTask.getTimeTaken() + 2;
         tempTask.setTimeTaken(updatedTimeTaken);
-        taskDBS.updateTask(tempTask);  // Commit updated task with incremented hours
+        taskDBS.updateTask(tempTask); // Commit updated task with incremented hours
 
         getTasks(selectedStatus);
     }
@@ -295,18 +303,18 @@ public class Index {
         TaskInterface tempTask = taskDBS.getTask(pk);
 
         if (tempTask.getPK() == null) {
-            taskDBS.updateTask(tempTask);  // Commit task to the database to ensure PK is set
+            taskDBS.updateTask(tempTask); // Commit task to the database to ensure PK is set
         }
 
         HoursInterface newHour = hoursDBS.getNewHours(tempTask); // Pass tempTask to ensure context consistency
         newHour.setHoursLogged(3);
         newHour.setTimestamp(new Date());
-        newHour.setTask(tempTask);  // Link Hours to Task
+        newHour.setTask(tempTask); // Link Hours to Task
 
         hoursDBS.updateHours(newHour);
         int updatedTimeTaken = tempTask.getTimeTaken() + 3;
         tempTask.setTimeTaken(updatedTimeTaken);
-        taskDBS.updateTask(tempTask);  // Commit updated task with incremented hours
+        taskDBS.updateTask(tempTask); // Commit updated task with incremented hours
 
         getTasks(selectedStatus);
     }
@@ -315,18 +323,18 @@ public class Index {
         TaskInterface tempTask = taskDBS.getTask(pk);
 
         if (tempTask.getPK() == null) {
-            taskDBS.updateTask(tempTask);  // Commit task to the database to ensure PK is set
+            taskDBS.updateTask(tempTask); // Commit task to the database to ensure PK is set
         }
 
         HoursInterface newHour = hoursDBS.getNewHours(tempTask); // Pass tempTask to ensure context consistency
         newHour.setHoursLogged(5);
         newHour.setTimestamp(new Date());
-        newHour.setTask(tempTask);  // Link Hours to Task
+        newHour.setTask(tempTask); // Link Hours to Task
 
         hoursDBS.updateHours(newHour);
         int updatedTimeTaken = tempTask.getTimeTaken() + 5;
         tempTask.setTimeTaken(updatedTimeTaken);
-        taskDBS.updateTask(tempTask);  // Commit updated task with incremented hours
+        taskDBS.updateTask(tempTask); // Commit updated task with incremented hours
 
         getTasks(selectedStatus);
     }
@@ -335,18 +343,18 @@ public class Index {
         TaskInterface tempTask = taskDBS.getTask(pk);
 
         if (tempTask.getPK() == null) {
-            taskDBS.updateTask(tempTask);  // Commit task to the database to ensure PK is set
+            taskDBS.updateTask(tempTask); // Commit task to the database to ensure PK is set
         }
 
         HoursInterface newHour = hoursDBS.getNewHours(tempTask); // Pass tempTask to ensure context consistency
         newHour.setHoursLogged(10);
         newHour.setTimestamp(new Date());
-        newHour.setTask(tempTask);  // Link Hours to Task
+        newHour.setTask(tempTask); // Link Hours to Task
 
         hoursDBS.updateHours(newHour);
         int updatedTimeTaken = tempTask.getTimeTaken() + 10;
         tempTask.setTimeTaken(updatedTimeTaken);
-        taskDBS.updateTask(tempTask);  // Commit updated task with incremented hours
+        taskDBS.updateTask(tempTask); // Commit updated task with incremented hours
 
         getTasks(selectedStatus);
     }
@@ -365,6 +373,7 @@ public class Index {
         tempTask.setCompleted(true);
         tempTask.setDropped(false);
         tempTask.setWillNotComplete(false);
+        tempTask.setCannotComplete(false);
         taskDBS.updateTask(tempTask);
 
         // Re-fetch tasks to ensure updated status
@@ -378,6 +387,7 @@ public class Index {
         tempTask.setCompleted(false);
         tempTask.setDropped(true);
         tempTask.setWillNotComplete(false);
+        tempTask.setCannotComplete(false);
         taskDBS.updateTask(tempTask);
 
         // Re-fetch tasks to ensure updated status
@@ -391,6 +401,7 @@ public class Index {
         tempTask.setCompleted(false);
         tempTask.setDropped(false);
         tempTask.setWillNotComplete(true);
+        tempTask.setCannotComplete(false);
         taskDBS.updateTask(tempTask);
 
         // Re-fetch tasks to ensure updated status
@@ -404,6 +415,7 @@ public class Index {
         tempTask.setCompleted(false);
         tempTask.setDropped(false);
         tempTask.setWillNotComplete(false);
+        tempTask.setCannotComplete(false);
         taskDBS.updateTask(tempTask);
 
         // Re-fetch tasks to ensure updated status
@@ -411,14 +423,28 @@ public class Index {
         return Index.class;
     }
 
-    @OnEvent(component="showAll")
+    @OnEvent(component = "cannotComplete")
+    Object onClickCannotComplete(int pk) {
+        TaskInterface tempTask = taskDBS.getTask(pk);
+        tempTask.setCompleted(false);
+        tempTask.setDropped(false);
+        tempTask.setWillNotComplete(false);
+        tempTask.setCannotComplete(true);
+        taskDBS.updateTask(tempTask);
+
+        // Re-fetch tasks to ensure updated status
+        getTasks(selectedStatus);
+        return Index.class;
+    }
+
+    @OnEvent(component = "showAll")
     void onClickShowAll() {
         startDate = "";
         finishDate = "";
         getTasks(selectedStatus);
     }
-    
+
     public int showAllHours(TaskInterface task) {
-    	return hoursDBS.sumOfHoursForTask(task);
+        return hoursDBS.sumOfHoursForTask(task);
     }
 }

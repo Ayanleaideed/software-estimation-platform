@@ -1,4 +1,4 @@
-# Estimate
+# EstiMate
 
 ## Getting Started
 
@@ -10,7 +10,7 @@ Welcome to Estimate! This guide will help you set up and start using the project
 
 ### Name
 
-Estimate
+EstiMate
 
 ### Description
 
