@@ -1,16 +1,32 @@
 <t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter" title="Estimation | EstiMate">
 	<link rel="stylesheet" type="text/css" href="/css/estimation.css" />
 	<t:security.authenticated>
-		<t:security.authenticated HasRole="admin">
-			<t:pagelink page="estimation/ModeratorPage" class="btn btn-default navbar-btn">View Suggestions</t:pagelink>
-		</t:security.authenticated>
-		
-		<t:grid source="categories" row="category" include="name, description" add="actions">
-			<p:actionsCell>
-				<t:pagelink page="estimation/ViewExercises" context="category.pk"> View Exercises</t:pagelink> | 
-				<t:pagelink page="estimation/SuggestNewEvent" context="category.pk"> Suggest new event</t:pagelink>
-			</p:actionsCell> 
-		</t:grid>
+	<div style="width: 80%;margin-left: auto;margin-right: auto;">
+		<t:security.hasRole role="admin">
+			<t:pagelink page="estimation/ModeratorPage" class="btn btn-primary" style="margin-top: 20px">View Suggestions</t:pagelink>
+		</t:security.hasRole>
+                <table class="table table-striped mt-4" style="width: 100%;margin-left: auto;margin-right: auto;">
+                    <thead>
+                        <tr>
+                            <th class="col-md-2">Name</th>
+                            <th class="col-md-2">Description</th>
+                            <th class="col-md-2"></th>
+                        </tr>
+                    </thead>                    
+                    <tbody>
+                        <t:loop source="categories" value="category">
+                            <tr>
+                                <td>${category.name}</td>
+                                <td>${category.description}</td>
+                                <td align="right">
+									<t:pagelink page="estimation/ViewExercises" context="category.pk" class="btn btn-sm btn-primary" style="margin-right:10px">View Exercises</t:pagelink>
+									<t:pagelink page="estimation/SuggestNewEvent" context="category.pk" class="btn btn-sm btn-success">Suggest new event</t:pagelink>
+                                </td>
+                            </tr>
+                        </t:loop>
+                    </tbody>              
+                </table>
+				</div>
 	</t:security.authenticated>
 	<t:security.notauthenticated>
 		<div class="container d-flex justify-content-center align-items-center loginMessage">

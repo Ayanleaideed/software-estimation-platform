@@ -73,7 +73,7 @@
                 <div class="container">
                     <div class="row" style="margin-top: 2rem;">
                         <div class="col-3" style="padding: 2rem;" t:type="loop" t:source="tasks" t:value="task">
-                            <div class="card" style="width: 18rem; border-width: 1rem; background-color: #7c74f6;">
+                            <div class="card" style="width: 18rem; border-width: 7px; background-color: #818589; border-radius: 10">
                                 <div class="card-body" style="background-color: #ffffff;">
                                     <h4>${task.getName()}</h4>
                                     <h6>Start Date: ${task.getStartDate()}</h6>
