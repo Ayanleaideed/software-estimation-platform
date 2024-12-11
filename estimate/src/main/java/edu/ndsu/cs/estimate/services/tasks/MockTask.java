@@ -11,71 +11,81 @@ import edu.ndsu.cs.estimate.entities.interfaces.UserAccount;
 
 public class MockTask implements TaskInterface {
 
-
-	private Integer	PK; 
+	private Integer PK;
 	private LocalDate actualEndDate;
 	private boolean completed;
-    private boolean dropped;
-    private Date estEndDate;
-    private String name;
-    private Date startDate;
-    private Integer timeTaken;
-    private UserAccount user;
-    private boolean willNotComplete;
-	
-	private static int nextPK = 1; 
-	
-	private MockTask(int PK, String name, int timeTaken, Date startDate, Date estEndDate, LocalDate actualEndDate, boolean completed, boolean dropped, UserAccount user, boolean willNotComplete) {
+	private boolean dropped;
+	private Date estEndDate;
+	private String name;
+	private Date startDate;
+	private Integer timeTaken;
+	private UserAccount user;
+	private boolean willNotComplete;
+	private boolean cannotComplete;
+	private int estHours;
+
+	private static int nextPK = 1;
+
+	private MockTask(int PK, String name, int timeTaken, Date startDate, Date estEndDate, LocalDate actualEndDate,
+			boolean completed, boolean dropped, UserAccount user, boolean willNotComplete, boolean cannotComplete,
+			int estHours) {
 		super();
-		this.PK 				= PK; 
-		this.name 				= name;
-		this.timeTaken			= timeTaken;
-		this.startDate			= startDate;
-		this.estEndDate 		= estEndDate;
-		this.actualEndDate 		= actualEndDate;
-		this.completed			= completed;
-		this.dropped 			= dropped;
-		this.user 				= user;
-		this.willNotComplete 	= willNotComplete;
+		this.PK = PK;
+		this.name = name;
+		this.timeTaken = timeTaken;
+		this.startDate = startDate;
+		this.estEndDate = estEndDate;
+		this.actualEndDate = actualEndDate;
+		this.completed = completed;
+		this.dropped = dropped;
+		this.user = user;
+		this.willNotComplete = willNotComplete;
+		this.cannotComplete = cannotComplete;
+		this.estHours = estHours;
 	}
-	
+
 	public MockTask() {
-		this(nextPK++, "Unknown", 0, new Date(0), new Date(0),LocalDate.now(),false,false, new User(), false);
+		this(nextPK++, "Unknown", 0, new Date(0), new Date(0), LocalDate.now(), false, false, new User(), false, false,
+				0);
 	}
-	
-	public MockTask(String name, int timeTaken, Date startDate, Date estEndDate, LocalDate actualEndDate, boolean completed, boolean dropped, UserAccount user, boolean willNotComplete) {
-		this(nextPK++, name, timeTaken, startDate, estEndDate, actualEndDate, completed, dropped, user, willNotComplete);
+
+	public MockTask(String name, int timeTaken, Date startDate, Date estEndDate, LocalDate actualEndDate,
+			boolean completed, boolean dropped, UserAccount user, boolean willNotComplete, boolean cannotComplete,
+			int estHours) {
+		this(nextPK++, name, timeTaken, startDate, estEndDate, actualEndDate, completed, dropped, user, willNotComplete,
+				cannotComplete, estHours);
 	}
-	
+
 	public Integer getPK() {
 		return PK;
-	} 
-	
+	}
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	@Override
 	public TaskInterface clone() {
-		return new MockTask(PK, name, timeTaken, startDate, estEndDate, actualEndDate, completed, dropped, user, willNotComplete);
+		return new MockTask(PK, name, timeTaken, startDate, estEndDate, actualEndDate, completed, dropped, user,
+				willNotComplete, cannotComplete, estHours);
 	}
-	
+
 	@Override
 	public String toString() {
-		return name; 
+		return name;
 	}
-	
+
 	@Override
 	public boolean equals(Object o) {
-		if(o instanceof MockTask) {
-			MockTask t = (MockTask)o; 
+		if (o instanceof MockTask) {
+			MockTask t = (MockTask) o;
 			return this.PK == t.PK;
 		}
-		return false; 
+		return false;
 	}
 
 	@Override
@@ -86,7 +96,7 @@ public class MockTask implements TaskInterface {
 	@Override
 	public void setActualEndDate(LocalDate actualEndDate) {
 		this.actualEndDate = actualEndDate;
-		
+
 	}
 
 	@Override
@@ -97,7 +107,7 @@ public class MockTask implements TaskInterface {
 	@Override
 	public void setCompleted(boolean completed) {
 		this.completed = completed;
-		
+
 	}
 
 	@Override
@@ -108,7 +118,7 @@ public class MockTask implements TaskInterface {
 	@Override
 	public void setDropped(boolean dropped) {
 		this.dropped = dropped;
-		
+
 	}
 
 	@Override
@@ -119,7 +129,7 @@ public class MockTask implements TaskInterface {
 	@Override
 	public void setEstEndDate(Date estEndDate) {
 		this.estEndDate = estEndDate;
-		
+
 	}
 
 	@Override
@@ -130,7 +140,7 @@ public class MockTask implements TaskInterface {
 	@Override
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
-		
+
 	}
 
 	@Override
@@ -151,29 +161,46 @@ public class MockTask implements TaskInterface {
 	@Override
 	public void setUser(UserAccount user) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 	@Override
 	public boolean getWillNotComplete() {
 		return this.willNotComplete;
 	}
-	
+
 	@Override
 	public void setWillNotComplete(boolean willNotComplete) {
 		this.willNotComplete = willNotComplete;
 	}
 
 	@Override
+	public boolean getCannotComplete() {
+		return this.cannotComplete;
+	}
+
+	@Override
+	public void setCannotComplete(boolean cannotComplete) {
+		this.cannotComplete = cannotComplete;
+	}
+
+	@Override
+	public int getEstHours() {
+		return this.estHours;
+	}
+
+	@Override
+	public void setEstHours(int estHours) {
+		this.estHours = estHours;
+	}
+
+	@Override
 	public void setObjectContext(ObjectContext obj) {
-		// TODO Auto-generated method stub	
+		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public ObjectContext getObjectContext() {
 		return null;
 	}
-
-	
 }
-

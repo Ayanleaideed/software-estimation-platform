@@ -4,8 +4,6 @@
 /.apt_generated/
 /.apt_generated_tests/
 
-
-
 # Logs
 logs/
 *.log
@@ -76,3 +74,6 @@ db/
 # Ignore test-related files
 test-output/
 *.test
+
+# Ignore bin
+bin/

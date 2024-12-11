@@ -68,6 +68,7 @@ public class AddTask {
 		task.setDropped(false);
 		task.setCompleted(false);
 		task.setWillNotComplete(false);
+		task.setCannotComplete(false);
 		String principal = securityService.getSubject().getPrincipal().toString();
 		userAccount = userAccountDatabaseService.getUserAccountFromContext(task.getObjectContext(), principal);
 		task.setUser((User) userAccount);
@@ -80,10 +81,10 @@ public class AddTask {
 
 	void onValidateFromTaskForm() {
 		List<String> errors = task.validate();
-		for(String error : errors) {
+		for (String error : errors) {
 			taskForm.recordError(error);
-		}	
-		if(!taskForm.getHasErrors()) {
+		}
+		if (!taskForm.getHasErrors()) {
 			taskDatabase.updateTask(task);
 		}
 	}

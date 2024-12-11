@@ -34,6 +34,11 @@
                                     Will Not Complete
                                 </t:actionlink>
                             </li>
+                            <li>
+                                <t:actionlink class="dropdown-item" t:id="filterCannotComplete" t:event="filterStatus">
+                                    Cannot Complete
+                                </t:actionlink>
+                            </li>
                         </ul>
                     </div> <!-- End of Task Status Section -->
                 </div>
@@ -78,6 +83,7 @@
                                     <h4>${task.getName()}</h4>
                                     <h6>Start Date: ${task.getStartDate()}</h6>
                                     <h6>Planned End Date: ${task.getEstEndDate()}</h6>
+                                    <h6>Estimated Hours: ${task.getEstHours()}</h6>
                                     <h6>Hours Logged: ${showAllHours(task)}</h6>
                                     <h6>Status: ${task.getStatus()}</h6>
                                     <div class="row">
@@ -128,7 +134,10 @@
                                                 <t:actionlink t:id="willNotComplete" aria-expanded="false" context="task.PK" class="btn btn-secondary mb-1">Will Not Complete</t:actionlink>
                                             </li>
                                             <li class="d-flex justify-content-center">
-                                                <t:actionlink t:id="inProgress" aria-expanded="false" context="task.PK" class="btn btn-secondary">In Progress</t:actionlink>
+                                                <t:actionlink t:id="inProgress" aria-expanded="false" context="task.PK" class="btn btn-secondary mb-1">In Progress</t:actionlink>
+                                            </li>
+                                            <li class="d-flex justify-content-center">
+                                                <t:actionlink t:id="cannotComplete" aria-expanded="false" context="task.PK" class="btn btn-secondary">Cannot Complete</t:actionlink>
                                             </li>
                                         </ul>
                                     </div>

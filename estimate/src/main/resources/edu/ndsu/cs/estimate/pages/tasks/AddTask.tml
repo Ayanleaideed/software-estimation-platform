@@ -29,6 +29,13 @@
                 		<t:datefield t:id="endDate" value="task.estEndDate"/>
                     </div>
                 </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-md-6 col-lg-4 mb-3">
+                		<t:label for="endDate">Estimated Hours *</t:label>
+                        <t:textfield t:id="estHours" value="task.estHours" validate="required" class="form-control" />
+                    </div>
+                </div>
                 
                 <div class="row justify-content-center mb-5">
                     <div class="col-md-6 col-lg-4 mb-3 d-grid gap-2">
