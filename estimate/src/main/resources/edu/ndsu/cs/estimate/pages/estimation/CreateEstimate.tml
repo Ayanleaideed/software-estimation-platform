@@ -21,8 +21,8 @@
                 </table>
 		<t:form t:id="estimateForm" >
 			<t:errors/>
-			<t:label for="estimation" />
-			<t:textField t:id="estimation" value="estimate.percentPrediction" />
+			<t:label for="estimationSelector" />
+			<t:select t:id="estimationSelector" model="literal:0,25,50,75,100" value="estimate.percentPrediction"/>
 			<br/>
 			<t:submit value="Submit Estimation" style="margin-right:10px"/>
 			<t:pagelink page="estimation" class="btn btn-secondary">Cancel</t:pagelink>

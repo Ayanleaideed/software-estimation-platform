@@ -1,27 +1,30 @@
 <t:layout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd" xmlns:p="tapestry:parameter" title="Estimation | EstiMate">
 	<link rel="stylesheet" type="text/css" href="/css/estimation.css" />
 	<t:security.authenticated>
-	<table class="table table-striped mt-4" style="width: 80%;margin-left: auto;margin-right: auto;">
-                    <thead>
-                        <tr>
-                            <th class="col-md-2">Name</th>
-                            <th class="col-md-2">Description</th>
-                            <th class="col-md-2"></th>
-                        </tr>
-                    </thead>                    
-                    <tbody>
-                        <t:loop source="suggestions" value="suggestion">
+    <div style="width: 80%;margin-left: auto;margin-right: auto;">
+        <t:pagelink page="estimation" class="btn btn-primary" style="margin-top: 20px">Back</t:pagelink>
+        <table class="table table-striped mt-4" style="width: 100%;margin-left: auto;margin-right: auto;">
+                        <thead>
                             <tr>
-                                <td>${suggestion.name}</td>
-                                <td>${suggestion.description}</td>
-                                <td align="right">
-									<t:eventlink event="approve" context="suggestion.pk" class="btn btn-sm btn-success" style="margin-right:10px">Approve</t:eventlink> 
-									<t:eventlink event="deny" context="suggestion.pk" class="btn btn-sm btn-danger">Deny</t:eventlink>
-                                </td>
+                                <th class="col-md-2">Name</th>
+                                <th class="col-md-2">Description</th>
+                                <th class="col-md-2"></th>
                             </tr>
-                        </t:loop>
-                    </tbody>              
-                </table>
+                        </thead>                    
+                        <tbody>
+                            <t:loop source="suggestions" value="suggestion">
+                                <tr>
+                                    <td>${suggestion.name}</td>
+                                    <td>${suggestion.description}</td>
+                                    <td align="right">
+                                        <t:eventlink event="approve" context="suggestion.pk" class="btn btn-sm btn-success" style="margin-right:10px">Approve</t:eventlink> 
+                                        <t:eventlink event="deny" context="suggestion.pk" class="btn btn-sm btn-danger">Deny</t:eventlink>
+                                    </td>
+                                </tr>
+                            </t:loop>
+                        </tbody>              
+                    </table>
+                </div>
 	</t:security.authenticated>
 	<t:security.notauthenticated>
 		<div class="container d-flex justify-content-center align-items-center loginMessage">
